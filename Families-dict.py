@@ -25,6 +25,13 @@ def create_person_dict():
            'FAMC': child}
     return dic
 
+def create_family_dict():
+
+    FAMID = ''
+    HUSBID = ''
+    WIFEID = ''
+    dic = {'FAM': FAMID, 'HUSB': HUSBID, 'WIFE': WIFEID}
+    return dic
 
 def read_individuals(file):
     """
@@ -43,11 +50,7 @@ def read_individuals(file):
         level = words[0]
         tag = ''
         args = ''
-        FAMID = ''
-        HUSBID = ''
-        WIFEID = ''
-        HNAME = ''
-        WNAME = ''
+
 
         if len(words) < 2 or (not level.isdigit()):
             continue
@@ -62,9 +65,6 @@ def read_individuals(file):
                 is_individual = False
                 current_id = ''
 
-            if WIFEID or HUSBID in dic[current_id]:
-                print(create_person_dict())
-            continue
 
         if is_individual:
             tag = words[1]
