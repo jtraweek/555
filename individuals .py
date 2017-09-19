@@ -1,3 +1,4 @@
+import sys
 from prettytable import PrettyTable
 
 """
@@ -92,59 +93,34 @@ def create_pretty_tables(individuals):
     print(pt_fam)
 
 ###############################################################################
-
-def get_name(person_id, individuals):
+def test(did_pass):
     """
-    Test to get the name of a specific person.
+    Print the result of a test 
     """
-    return individuals.get(person_id).get('NAME')
-
-
-def get_gender(person_id, individuals):
+    linenum = sys._getframe(1).f_lineno # get the caller's line number
+    if did_pass:
+        msg = 'Test at line {0} ok.'.format(linenum)
+    else:
+        msg = 'Test at line {0} FAILED.'.format(linenum)
+    print(msg)
+    
+def test_suite(individuals):
     """
-    Test to get the ID of a specific person.
+    Tests that values match GEDCOM file
     """
-    return individuals.get(person_id).get('SEX')
-
-
-def get_birthday(person_id, individuals):
-    """
-    Test to get the birthday of a specific person.
-    """
-    return individuals.get(person_id).get('BIRT')
-
-
-def get_death(person_id, individuals):
-    """
-    Test to get the death date of a specific person.
-    """
-    return individuals.get(person_id).get('DEAT')
-
-
-def get_child(person_id, individuals):
-    """
-    Test to get the ID of a specific person's child.
-    """
-    return individuals.get(person_id).get('FAMC')
-
-
-def get_spouse(person_id, individuals):
-    """
-    Test to get the ID of a specific person's spouse.
-    """
-    return individuals.get(person_id).get('FAMS')
+    test(individuals['@I1@']['NAME'] == 'Rickard /Stark/')
+    test(individuals['@I1@']['SEX'] == 'M')
+    test(individuals['@I1@']['BIRT'] == '18 DEC 0230')
+    test(individuals['@I1@']['DEAT'] == '9 MAY 0280')
+    test(individuals['@I1@']['FAMC'] == 'NA') 
+    test(individuals['@I1@']['FAMS'] == '@F1@')
 
 ###############################################################################
 
 def main(file):
     individuals = read_individuals(file)
     create_pretty_tables(individuals)
-    print(get_name('@I1@', individuals))
-    print(get_gender('@I1@', individuals))
-    print(get_birthday('@I1@', individuals))
-    print(get_death('@I1@', individuals))
-    print(get_child('@I1@', individuals))
-    print(get_spouse('@I1@', individuals))
+    test_suite(individuals)
 
 ###############################################################################
 
