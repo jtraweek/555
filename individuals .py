@@ -78,14 +78,20 @@ def read_individuals(file):
     return dic
     
 def create_pretty_tables(individuals):
+    """
+    Creates tables to display file information.
+    """
     pt_indi = PrettyTable(['ID', 'Name'[0]])
     indi_id = sorted(individuals)
+    
     for item in indi_id:
         pt_indi.add_row([item, str(individuals[item]['NAME'])])
+        
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
     print(pt_indi)
     print(pt_fam)
 
+###############################################################################
 
 def get_name(person_id, individuals):
     """
@@ -128,14 +134,19 @@ def get_spouse(person_id, individuals):
     """
     return individuals.get(person_id).get('FAMS')
 
+###############################################################################
+
+def main(file):
+    individuals = read_individuals(file)
+    create_pretty_tables(individuals)
+    print(get_name('@I1@', individuals))
+    print(get_gender('@I1@', individuals))
+    print(get_birthday('@I1@', individuals))
+    print(get_death('@I1@', individuals))
+    print(get_child('@I1@', individuals))
+    print(get_spouse('@I1@', individuals))
+
+###############################################################################
 
 file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-individuals = read_individuals(file)
-create_pretty_tables(individuals)
-
-print(get_name('@I1@', individuals))
-print(get_gender('@I1@', individuals))
-print(get_birthday('@I1@', individuals))
-print(get_death('@I1@', individuals))
-print(get_child('@I1@', individuals))
-print(get_spouse('@I1@', individuals))
+main(file)
