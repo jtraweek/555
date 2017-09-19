@@ -1,5 +1,6 @@
 import sys
 from prettytable import PrettyTable
+from collections import OrderedDict
 
 """
 Valid GEDCOM file tags:
@@ -29,7 +30,7 @@ def read_individuals(file):
     Creates a dictionary called individuals.
     Key value pairs are individual IDs and the dictionary containing their GEDCOM information.
     """
-    dic = {}
+    dic = OrderedDict({})
     is_individual = False
     current_id = ''
     is_date = False
@@ -83,9 +84,8 @@ def create_pretty_tables(individuals):
     Creates tables to display file information.
     """
     pt_indi = PrettyTable(['ID', 'Name'[0]])
-    indi_id = sorted(individuals)
     
-    for item in indi_id:
+    for item in individuals:
         pt_indi.add_row([item, str(individuals[item]['NAME'])])
         
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
