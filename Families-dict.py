@@ -87,20 +87,67 @@ def read_individuals(file):
                 else:
                     dic[current_id][tag] = args
 
-            if len(words) == 3 and words[2] == "FAM" and level == 0:
-                tag = words[2]
-                FAMID = words[1].replace("@", "")
-
-            if len(words) == 3 and words[1] == "HUSB" and level == 1:
-                tag = words[1]
-                HUSBID = words[2].replace("@", "")
-
-            if len(words) == 3 and words[1] == "WIFE" and level == 1:
-                tag = words[1]
-                WIFEID = words[2].replace("@", "")
     return dic
 
+def read_families(file):
+    """
+    Creates a dictionary called families.
+    Key value pairs are family,husband,and wife IDs and the dictionary containing their GEDCOM information.
+    """
+    dic = OrderedDict({})
+    is_family = False
+    is_husband = False
+    is_wife = False
+    current_id = ''
 
+    for line in file:
+        line = line.strip()
+        words = line.split(' ')
+        level = words[0]
+        tag = ''
+        args = ''
+
+
+        if len(words) < 2 or (not level.isdigit()):
+            continue
+
+        level = int(level)
+        if level == 0:
+            if len(words) == 3 and words[2] == 'FAM':
+                is_family = True
+                current_id = words[1].replace("@","")
+                dic[current_id] = create_family_dict()
+            else:
+                is_family = False
+                current_id = ''
+
+            if len(words) == 3 and words[1] == "HUSB" and level == 1:
+                is_husband = True
+                tag = words[1]
+                HUSBID = words[2].replace("@", "")
+                dic[current_id] = create_family_dict()
+            else:
+                is_husband = False
+                current_id = ''
+
+            if len(words) == 3 and words[1] == "WIFE" and level == 1:
+                is_wife = True
+                tag = words[1]
+                WIFEID = words[2].replace("@", "")
+                dic[current_id] = create_family_dict()
+            else:
+                is_wife = False
+                current_id = ''
+
+        if is_individual:
+            tag = words[1]
+
+            if level == VALID_TAGS.get(tag):
+                for i in range(2, len(words)):
+                    args += words[i] + ' '
+                args = args[:-1]
+
+    return dic
 
 def create_pretty_tables(individuals):
     """
