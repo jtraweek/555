@@ -50,7 +50,7 @@ def read_individuals(file):
         if level == 0:
             if len(words) == 3 and words[2] == 'INDI':
                 is_individual = True
-                current_id = words[1]
+                current_id = words[1].replace("@","")
                 dic[current_id] = create_person_dict()
             else:
                 is_individual = False
@@ -108,12 +108,12 @@ def test_suite(individuals):
     """
     Tests that values match GEDCOM file
     """
-    test(individuals['@I1@']['NAME'] == 'Rickard /Stark/')
-    test(individuals['@I1@']['SEX'] == 'M')
-    test(individuals['@I1@']['BIRT'] == '18 DEC 0230')
-    test(individuals['@I1@']['DEAT'] == '9 MAY 0280')
-    test(individuals['@I1@']['FAMC'] == 'NA') 
-    test(individuals['@I1@']['FAMS'] == '@F1@')
+    test(individuals['I1']['NAME'] == 'Rickard /Stark/')
+    test(individuals['I1']['SEX'] == 'M')
+    test(individuals['I1']['BIRT'] == '18 DEC 0230')
+    test(individuals['I1']['DEAT'] == '9 MAY 0280')
+    test(individuals['I1']['FAMC'] == 'NA') 
+    test(individuals['I1']['FAMS'] == '@F1@')
 
 ###############################################################################
 
