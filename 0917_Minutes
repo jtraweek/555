@@ -1,0 +1,31 @@
+Minutes of the meeting held on Sunday
+Author - Maryam
+
+Artifact's we are using:
+ -   Julie's Repository: 555.
+ -   Liu's GEDCOM program. 
+ -   Celeste's, and Julie's GEDCOM file.
+    
+Duties assigned:
+
+Liu:
+Create individual dictionary in Python that includes: ID, NAME, BIRTHDAY.
+Story point 4 and 5 
+
+Maryam: 
+Create families dictionary in Python that includes: FAMILY ID, HUSBAND NAME, HUSBAND ID, WIFE NAME, WIFE ID. 
+Story point 2 and 3 
+
+Julie: 
+Printing the pretty tables for both dictionaries. 
+Story point 1 and 6. 
+
+Celeste: 
+Completing the spreadsheet + sprint planning. 
+Story point 7 and 8. 
+
+Notes:
+
+Deadline for the dictionaries coding hopefully be Monday morning or before.
+Any issue we ran to we can address it in whats app and plan a meeting by Monday for this project only.
+And each Saturday we will hold up a meeting for discussing the sprint activities + planning. 
