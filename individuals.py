@@ -8,17 +8,26 @@ Valid GEDCOM file tags:
 VALID_TAGS = {'NAME': 1, 'SEX': 1, 'FAMC': 1, 'FAMS': 1, 'DATE': 2}
 DATE_TAGS = {'BIRT': 1, 'DEAT': 1}
 
+
+def get_name(person_id, individuals):
+    string = ''
+    for name in individuals.get(person_id).get('NAME'):
+        string += name + '\n'
+        string = string[:-1]
+    return string
+
+
 def create_person_dict():
     """
-    Creates an empty dictionary of personal information within the GEDCOM file. 
+    Creates an empty dictionary of personal information within the GEDCOM file.
     Key value pairs are tags and their arguments.
     """
-    name = 'NA'
-    sex = 'NA'
-    birth_date = 'NA'
-    death_date = 'NA'
-    spouse = 'NA'
-    child = 'NA'
+    name = []
+    sex = []
+    birth_date = []
+    death_date = []
+    spouse = []
+    child = []
     dic = {'NAME': name, 'SEX': sex, 'BIRT': birth_date,
            'DEAT': death_date, 'FAMS': spouse,
            'FAMC': child}
@@ -30,6 +39,7 @@ def read_individuals(file):
     Creates a dictionary called individuals.
     Key value pairs are individual IDs and the dictionary containing their GEDCOM information.
     """
+    file.seek(0)
     dic = OrderedDict({})
     is_individual = False
     current_id = ''
@@ -50,7 +60,7 @@ def read_individuals(file):
         if level == 0:
             if len(words) == 3 and words[2] == 'INDI':
                 is_individual = True
-                current_id = words[1].replace("@","")
+                current_id = words[1].replace('@', '')
                 dic[current_id] = create_person_dict()
             else:
                 is_individual = False
@@ -68,42 +78,46 @@ def read_individuals(file):
             if level == VALID_TAGS.get(tag):
                 for i in range(2, len(words)):
                     args += words[i] + ' '
-                args = args[:-1]
+                args = args[:-1].replace('@', '')
 
             if len(args) > 0:
                 if is_date:
-                    dic[current_id][last_tag] = args
+                    dic[current_id][last_tag].append(args)
                     is_date = False
                     last_tag = ''
                 else:
-                    dic[current_id][tag] = args
+                    dic[current_id][tag].append(args)
     return dic
-    
+
+
 def create_pretty_tables(individuals):
     """
     Creates tables to display file information.
     """
     pt_indi = PrettyTable(['ID', 'Name'[0]])
-    
+
     for item in individuals:
-        pt_indi.add_row([item, str(individuals[item]['NAME'])])
-        
+        # pt_indi.add_row([item, str(individuals[item]['NAME'])])
+        pt_indi.add_row([item, get_name(item, individuals)])
+
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
     print(pt_indi)
     print(pt_fam)
 
+
 ###############################################################################
 def test(did_pass):
     """
-    Print the result of a test 
+    Print the result of a test
     """
-    linenum = sys._getframe(1).f_lineno # get the caller's line number
+    linenum = sys._getframe(1).f_lineno  # get the caller's line number
     if did_pass:
         msg = 'Test at line {0} ok.'.format(linenum)
     else:
         msg = 'Test at line {0} FAILED.'.format(linenum)
     print(msg)
-    
+
+
 def test_suite(individuals):
     """
     Tests that values match GEDCOM file
@@ -112,8 +126,9 @@ def test_suite(individuals):
     test(individuals['I1']['SEX'] == 'M')
     test(individuals['I1']['BIRT'] == '18 DEC 0230')
     test(individuals['I1']['DEAT'] == '9 MAY 0280')
-    test(individuals['I1']['FAMC'] == 'NA') 
+    test(individuals['I1']['FAMC'] == 'NA')
     test(individuals['I1']['FAMS'] == '@F1@')
+
 
 ###############################################################################
 
@@ -121,6 +136,7 @@ def main(file):
     individuals = read_individuals(file)
     create_pretty_tables(individuals)
     test_suite(individuals)
+
 
 ###############################################################################
 
