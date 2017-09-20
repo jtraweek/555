@@ -1,0 +1,43 @@
++-----+----------------------+
+|  ID |         Name         |
++-----+----------------------+
+|  I1 |   Rickard /Stark/    |
+|  I2 |    Lyarra /Locke/    |
+|  I3 |    Benjen /Stark/    |
+|  I4 |   Brandon /Stark/    |
+|  I5 |    Lyanna /Stark/    |
+|  I6 | Rhaegar /Targaryen/  |
+|  I7 |  Aegar /Targaryen/   |
+|  I8 | Eddard (Ned) /Stark/ |
+|  I9 |   Catelyn /Tully/    |
+| I10 |     Robb /Stark/     |
+| I11 |    Sansa /Stark/     |
+| I12 |     Bran /Stark/     |
+| I13 |    Rickon /Stark/    |
+| I14 |     Arya /Stark/     |
+| I15 |   Talisa /Maegyr/    |
+| I16 | Joffery /Baratheon/  |
+| I17 |  Tyrion /Lanister/   |
+| I18 |   Ramsey /Bolton/    |
+| I19 |    Wylla /Unkown/    |
+| I20 |      Jon /Snow/      |
++-----+----------------------+
++----+------------+----------------------+---------+-----------------+
+| ID | Husband ID |     Husband Name     | Wife ID |    Wife Name    |
++----+------------+----------------------+---------+-----------------+
+| F1 |     I1     |   Rickard /Stark/    |    I2   |  Lyarra /Locke/ |
+| F2 |     I6     | Rhaegar /Targaryen/  |    I5   |  Lyanna /Stark/ |
+| F3 |     I8     | Eddard (Ned) /Stark/ |    I9   | Catelyn /Tully/ |
+| F4 |     I8     | Eddard (Ned) /Stark/ |   I19   |  Wylla /Unkown/ |
+| F5 |    I10     |     Robb /Stark/     |   I15   | Talisa /Maegyr/ |
+| F6 |    I16     | Joffery /Baratheon/  |   I11   |  Sansa /Stark/  |
+| F7 |    I17     |  Tyrion /Lanister/   |   I11   |  Sansa /Stark/  |
+| F8 |    I18     |   Ramsey /Bolton/    |   I11   |  Sansa /Stark/  |
++----+------------+----------------------+---------+-----------------+
+Test at line 212 ok.
+Test at line 213 ok.
+Test at line 214 ok.
+Test at line 215 ok.
+Test at line 216 ok.
+Test at line 217 ok.
+Done
