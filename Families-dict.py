@@ -173,10 +173,15 @@ def create_pretty_tables(individuals, family):
     """
     Creates tables to display file information.
     """
-    pt_indi = PrettyTable(['ID', 'Name'])
+    pt_indi = PrettyTable(['ID', 'Name','Sex', 'Birthday', 'Death', 'Spouse'])
 
     for item in individuals:
-        pt_indi.add_row([item, get_args(item, 'NAME', individuals)])
+        pt_indi.add_row([item, 
+                         get_args(item, 'NAME', individuals), 
+                         get_args(item, 'SEX', individuals), 
+                         get_args(item, 'BIRT', individuals),  
+                         get_args(item, 'DEAT', individuals), 
+                         get_args(item, 'FAMS', individuals)])
 
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
 
