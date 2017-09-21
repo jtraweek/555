@@ -1,4 +1,5 @@
 import sys
+import datetime
 from prettytable import PrettyTable
 from collections import OrderedDict
 
@@ -161,26 +162,46 @@ Getters
 def get_args(item_id, tag, dic):
     string = ''
     for name in dic.get(item_id).get(tag):
-        string += name + '\n'
-    string = string[:-1]
+        string += name + ', '
+    string = string[:-2]
     if string != '':
         return string
     else:
         return 'NA'
 
 
+def get_age(person_id, individuals):
+    birth = individuals.get(person_id).get('BIRT')[0].split(' ')[-1]
+    year = datetime.date.today().year
+    if not is_alive(person_id, individuals):
+        year = individuals.get(person_id).get('DEAT')[0].split(' ')[-1]
+    age = int(year) - int(birth)
+    if age < 150:
+        return age
+    return 'NA'
+
+
+def is_alive(person_id, individuals):
+    if individuals.get(person_id).get('DEAT'):
+        return False
+    return True
+
+
 def create_pretty_tables(individuals, family):
     """
     Creates tables to display file information.
     """
-    pt_indi = PrettyTable(['ID', 'Name','Sex', 'Birthday', 'Death', 'Spouse'])
+    pt_indi = PrettyTable(['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death', 'Child', 'Spouse'])
 
     for item in individuals:
-        pt_indi.add_row([item, 
-                         get_args(item, 'NAME', individuals), 
-                         get_args(item, 'SEX', individuals), 
-                         get_args(item, 'BIRT', individuals),  
-                         get_args(item, 'DEAT', individuals), 
+        pt_indi.add_row([item,
+                         get_args(item, 'NAME', individuals),
+                         get_args(item, 'SEX', individuals),
+                         get_args(item, 'BIRT', individuals),
+                         get_age(item, individuals),
+                         is_alive(item, individuals),
+                         get_args(item, 'DEAT', individuals),
+                         get_args(item, 'FAMC', individuals),
                          get_args(item, 'FAMS', individuals)])
 
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
@@ -189,13 +210,14 @@ def create_pretty_tables(individuals, family):
         husband = get_args(item, 'HUSB', family)
         wife = get_args(item, 'WIFE', family)
 
-        pt_fam.add_row([item, husband, get_args(husband,'NAME',individuals), wife, get_args(wife,'NAME',individuals)])
+        pt_fam.add_row(
+            [item, husband, get_args(husband, 'NAME', individuals), wife, get_args(wife, 'NAME', individuals)])
 
     print(pt_indi)
     print(pt_fam)
 
 
-        ###############################################################################
+###############################################################################
 
 
 def test(did_pass):
