@@ -1,27 +1,27 @@
-+-----+----------------------+
-|  ID |         Name         |
-+-----+----------------------+
-|  I1 |   Rickard /Stark/    |
-|  I2 |    Lyarra /Locke/    |
-|  I3 |    Benjen /Stark/    |
-|  I4 |   Brandon /Stark/    |
-|  I5 |    Lyanna /Stark/    |
-|  I6 | Rhaegar /Targaryen/  |
-|  I7 |  Aegar /Targaryen/   |
-|  I8 | Eddard (Ned) /Stark/ |
-|  I9 |   Catelyn /Tully/    |
-| I10 |     Robb /Stark/     |
-| I11 |    Sansa /Stark/     |
-| I12 |     Bran /Stark/     |
-| I13 |    Rickon /Stark/    |
-| I14 |     Arya /Stark/     |
-| I15 |   Talisa /Maegyr/    |
-| I16 | Joffery /Baratheon/  |
-| I17 |  Tyrion /Lanister/   |
-| I18 |   Ramsey /Bolton/    |
-| I19 |    Wylla /Unkown/    |
-| I20 |      Jon /Snow/      |
-+-----+----------------------+
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------------+
+|  ID |         Name         | Gender |   Birthday  | Age | Alive |    Death    | Child |      Spouse      |
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------------+
+|  I1 |   Rickard /Stark/    |   M    | 18 DEC 0230 |  50 | False |  9 MAY 0280 |   NA  |       @F1@       |
+|  I2 |    Lyarra /Locke/    |   F    | 11 OCT 0239 |  43 | False |  9 DEC 0282 |   NA  |       @F1@       |
+|  I3 |    Benjen /Stark/    |   M    | 17 NOV 0267 |  NA |  True |      NA     |  @F1@ |        NA        |
+|  I4 |   Brandon /Stark/    |   M    | 16 MAR 0262 |  20 | False |  5 JUL 0282 |  @F1@ |        NA        |
+|  I5 |    Lyanna /Stark/    |   F    | 30 JUL 0266 |  17 | False |  5 DEC 0283 |  @F1@ |       @F2@       |
+|  I6 | Rhaegar /Targaryen/  |   M    |  4 AUG 0259 |  24 | False | 12 FEB 0283 |   NA  |       @F2@       |
+|  I7 |  Aegar /Targaryen/   |   M    | 11 OCT 0283 |  NA |  True |      NA     |  @F2@ |        NA        |
+|  I8 | Eddard (Ned) /Stark/ |   M    | 15 FEB 0263 |  36 | False | 15 MAY 0299 |  @F1@ |    @F3@, @F4@    |
+|  I9 |   Catelyn /Tully/    |   F    | 15 APR 0264 |  35 | False | 28 JUL 0299 |   NA  |       @F3@       |
+| I10 |     Robb /Stark/     |   M    |  8 JAN 0283 |  16 | False | 28 JUL 0299 |  @F3@ |       @F5@       |
+| I11 |    Sansa /Stark/     |   F    |  6 JUN 0286 |  NA |  True |      NA     |  @F3@ | @F6@, @F7@, @F8@ |
+| I12 |     Bran /Stark/     |   M    | 17 MAR 0290 |  NA |  True |      NA     |  @F3@ |        NA        |
+| I13 |    Rickon /Stark/    |   M    | 13 SEP 0295 |  8  | False |  7 SEP 0303 |  @F3@ |        NA        |
+| I14 |     Arya /Stark/     |   F    | 29 AUG 0289 |  NA |  True |      NA     |  @F3@ |        NA        |
+| I15 |   Talisa /Maegyr/    |   F    |  8 APR 0285 |  14 | False | 28 JUL 0299 |   NA  |       @F5@       |
+| I16 | Joffery /Baratheon/  |   M    |  7 JUN 0286 |  14 | False | 12 MAY 0300 |   NA  |       @F6@       |
+| I17 |  Tyrion /Lanister/   |   M    | 16 AUG 0273 |  NA |  True |      NA     |   NA  |       @F7@       |
+| I18 |   Ramsey /Bolton/    |   M    | 13 NOV 0282 |  21 | False |  8 SEP 0303 |   NA  |       @F8@       |
+| I19 |    Wylla /Unkown/    |   F    |  1 JAN 0263 |  NA |  True |      NA     |   NA  |       @F4@       |
+| I20 |      Jon /Snow/      |   M    | 11 OCT 0283 |  NA |  True |      NA     |  @F4@ |        NA        |
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------------+
 +----+------------+----------------------+---------+-----------------+
 | ID | Husband ID |     Husband Name     | Wife ID |    Wife Name    |
 +----+------------+----------------------+---------+-----------------+
@@ -34,10 +34,10 @@
 | F7 |    I17     |  Tyrion /Lanister/   |   I11   |  Sansa /Stark/  |
 | F8 |    I18     |   Ramsey /Bolton/    |   I11   |  Sansa /Stark/  |
 +----+------------+----------------------+---------+-----------------+
-Test at line 212 ok.
-Test at line 213 ok.
-Test at line 214 ok.
-Test at line 215 ok.
-Test at line 216 ok.
-Test at line 217 ok.
+Test at line 239 ok.
+Test at line 240 ok.
+Test at line 241 ok.
+Test at line 242 ok.
+Test at line 243 ok.
+Test at line 244 ok.
 Done
