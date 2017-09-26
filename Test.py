@@ -12,16 +12,16 @@ families = Gedcom.read_families(file)
 
 
 def is_marriage_before_divorce(family_id, families):
-    marriage = families.get(family_id).get('MARR')
-    divorce = families.get(family_id).get('DIV')
+    marriage = Gedcom.get_args(family_id, 'MARR', families)
+    divorce = Gedcom.get_args(family_id, 'DIV', families)
 
-    if len(marriage) == 0:
+    if marriage == 'NA':
         return False
-    marriage_date = datetime.strptime(marriage[0], '%d %b %Y')
-    if len(divorce) == 0:
+    marriage_date = datetime.strptime(marriage, '%d %b %Y')
+    if divorce == 'NA':
         divorce_date = datetime.today()
     else:
-        divorce_date = datetime.strptime(divorce[0], '%d %b %Y')
+        divorce_date = datetime.strptime(divorce, '%d %b %Y')
 
     if divorce_date.year >= marriage_date.year:
         if divorce_date.month >= marriage_date.month:
@@ -31,23 +31,23 @@ def is_marriage_before_divorce(family_id, families):
 
 
 def is_marriage_before_death(family_id, families, individuals):
-    marriage = families.get(family_id).get('MARR')
+    marriage = Gedcom.get_args(family_id, 'MARR', families)
 
-    husband = individuals.get(families.get(family_id).get('HUSB')[0]).get('DEAT')
-    wife = individuals.get(families.get(family_id).get('WIFE')[0]).get('DEAT')
+    husband = Gedcom.get_args(Gedcom.get_args(family_id, 'HUSB', families), 'DEAT', individuals)
+    wife = Gedcom.get_args(Gedcom.get_args(family_id, 'WIFE', families), 'DEAT', individuals)
 
-    if len(marriage) == 0:
+    if marriage == 'NA':
         return False
-    marriage_date = datetime.strptime(marriage[0], '%d %b %Y')
+    marriage_date = datetime.strptime(marriage, '%d %b %Y')
 
-    if len(husband) == 0:
+    if husband == 'NA':
         husband_date = datetime.today()
     else:
-        husband_date = datetime.strptime(husband[0], '%d %b %Y')
-    if len(wife) == 0:
+        husband_date = datetime.strptime(husband, '%d %b %Y')
+    if wife == 'NA':
         wife_date = datetime.today()
     else:
-        wife_date = datetime.strptime(wife[0], '%d %b %Y')
+        wife_date = datetime.strptime(wife, '%d %b %Y')
 
     if husband_date.year >= marriage_date.year and wife_date.year >= marriage_date.year:
         if husband_date.month >= marriage_date.month and wife_date.month >= marriage_date.month:
