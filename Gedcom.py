@@ -257,5 +257,5 @@ def main(file):
 
 ###############################################################################
 
-file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-main(file)
+# file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+# main(file)
