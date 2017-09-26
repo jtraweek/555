@@ -187,7 +187,7 @@ def is_alive(person_id, individuals):
     return True
 
 
-def create_pretty_tables(individuals, family):
+def create_pretty_tables(individuals, families):
     """
     Creates tables to display file information.
     """
@@ -206,9 +206,9 @@ def create_pretty_tables(individuals, family):
 
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
 
-    for item in family:
-        husband = get_args(item, 'HUSB', family)
-        wife = get_args(item, 'WIFE', family)
+    for item in families:
+        husband = get_args(item, 'HUSB', families)
+        wife = get_args(item, 'WIFE', families)
 
         pt_fam.add_row(
             [item, husband, get_args(husband, 'NAME', individuals), wife, get_args(wife, 'NAME', individuals)])
@@ -248,8 +248,8 @@ def test_suite(dic):
 
 def main(file):
     individuals = read_individuals(file)
-    family = read_families(file)
-    create_pretty_tables(individuals, family)
+    families = read_families(file)
+    create_pretty_tables(individuals, families)
     test_suite(individuals)
 
     print('Done')
