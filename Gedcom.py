@@ -187,11 +187,45 @@ def is_alive(person_id, individuals):
     return True
 
 
+def dates_before_current_indi(birth, death):
+    """
+    Checks birth, death dates to ensure they occurred before the current date
+    """
+    birth_date = datetime.datetime.strptime(birth, '%d %b %Y')
+    if death != 'NA':
+        death_date = datetime.datetime.strptime(death, '%d %b %Y')
+        if birth_date.date() < datetime.datetime.today().date() and death_date.date() < datetime.datetime.today().date():
+            return True
+        else:
+            return False
+    if birth_date.date() < datetime.datetime.today().date():
+        return True
+    else:
+        return False
+        
+def dates_before_current_fam(marriage, divorce):
+    """
+    Checks marriage, divorce dates to ensure they occurred before current date
+    """
+    if marriage == 'NA' and divorce == 'NA':
+        return True
+    marriage_date = datetime.datetime.strptime(marriage, '%d %b %Y')
+    if divorce != 'NA':
+        divorce_date = datetime.datetime.strptime(divorce, '%d %b %Y')
+        if marriage_date.date() < datetime.datetime.today().date() and divorce_date.date() < datetime.datetime.today().date():
+            return True
+        else:
+            return False
+    if marriage_date.date() < datetime.datetime.today().date():
+        return True
+    else:
+        return False        
+
 def create_pretty_tables(individuals, families):
     """
     Creates tables to display file information.
     """
-    pt_indi = PrettyTable(['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death', 'Child', 'Spouse'])
+    pt_indi = PrettyTable(['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death','Dates Before Now', 'Child', 'Spouse'])
 
     for item in individuals:
         pt_indi.add_row([item,
@@ -201,17 +235,22 @@ def create_pretty_tables(individuals, families):
                          get_age(item, individuals),
                          is_alive(item, individuals),
                          get_args(item, 'DEAT', individuals),
+                         dates_before_current_indi (get_args(item, 'BIRT', individuals), get_args(item, 'DEAT', individuals)),
                          get_args(item, 'FAMC', individuals),
                          get_args(item, 'FAMS', individuals)])
 
-    pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
+    pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name', 'Dates Before Now'])
 
     for item in families:
         husband = get_args(item, 'HUSB', families)
         wife = get_args(item, 'WIFE', families)
 
-        pt_fam.add_row(
-            [item, husband, get_args(husband, 'NAME', individuals), wife, get_args(wife, 'NAME', individuals)])
+        pt_fam.add_row([item, 
+                        husband, 
+                        get_args(husband, 'NAME', individuals), 
+                        wife, 
+                        get_args(wife, 'NAME', individuals),
+                        dates_before_current_fam(get_args(item, 'MARR', families), get_args(item, 'DIV', families))])
 
     print(pt_indi)
     print(pt_fam)
@@ -257,5 +296,3 @@ def main(file):
 
 ###############################################################################
 
-# file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-# main(file)
