@@ -11,7 +11,6 @@ FAM_DATE_TAGS = {'DIV': 1, 'MARR': 1}
 VALID_IND_TAGS = {'NAME': 1, 'SEX': 1, 'FAMC': 1, 'FAMS': 1, 'DATE': 2}
 IND_DATE_TAGS = {'BIRT': 1, 'DEAT': 1}
 
-
 def create_person_dict():
     """
     Creates an empty dictionary of personal information within the GEDCOM file.
@@ -28,7 +27,6 @@ def create_person_dict():
            'FAMC': child}
     return dic
 
-
 def create_family_dict():
     husband = []
     wife = []
@@ -38,7 +36,6 @@ def create_family_dict():
 
     dic = {'HUSB': husband, 'WIFE': wife, 'CHIL': child, 'MARR': marriage_date, 'DIV': divorce_date}
     return dic
-
 
 def read_individuals(file):
     """
@@ -95,7 +92,6 @@ def read_individuals(file):
                         dic[current_id][tag].append(args)
     return dic
 
-
 def read_families(file):
     """
     Creates a dictionary called families.
@@ -150,7 +146,6 @@ def read_families(file):
                 else:
                     if tag in dic[current_id]:
                         dic[current_id][tag].append(args)
-
     return dic
 
 def get_args(item_id, tag, dic):
@@ -160,12 +155,12 @@ def get_args(item_id, tag, dic):
     string = ''
     for name in dic.get(item_id).get(tag):
         string += name + ', '
+        
     string = string[:-2]
     if string != '':
         return string
     else:
         return 'NA'
-
 
 def get_age(person_id, individuals):
     birth = individuals.get(person_id).get('BIRT')[0].split(' ')[-1]
@@ -173,16 +168,15 @@ def get_age(person_id, individuals):
     if not is_alive(person_id, individuals):
         year = individuals.get(person_id).get('DEAT')[0].split(' ')[-1]
     age = int(year) - int(birth)
+    
     if age < 150:
         return age
     return 'NA'
-
 
 def is_alive(person_id, individuals):
     if individuals.get(person_id).get('DEAT'):
         return False
     return True
-
 
 def dates_b4_current_indi(birth, death):
     """
@@ -195,6 +189,7 @@ def dates_b4_current_indi(birth, death):
             return True
         else:
             return False
+            
     if birth_date.date() < datetime.datetime.today().date():
         return True
     else:
@@ -207,12 +202,14 @@ def dates_b4_current_fam(marriage, divorce):
     if marriage == 'NA' and divorce == 'NA':
         return True
     marriage_date = datetime.datetime.strptime(marriage, '%d %b %Y')
+    
     if divorce != 'NA':
         divorce_date = datetime.datetime.strptime(divorce, '%d %b %Y')
         if marriage_date.date() < datetime.datetime.today().date() and divorce_date.date() < datetime.datetime.today().date():
             return True
         else:
             return False
+            
     if marriage_date.date() < datetime.datetime.today().date():
         return True
     else:
@@ -234,23 +231,22 @@ def div_b4_death(divorce, husb_death, wife_death):
             husb_death_date = datetime.datetime.strptime(husb_death, '%d %b %Y')
             if divorce_date.date() > husb_death_date.date():
                 husb_death_check = False
+                
         if wife_death != 'NA':
             wife_death_date = datetime.datetime.strptime(wife_death, '%d %b %Y')
             if divorce_date.date() > wife_death_date.date():
                 wife_death_check = False
+                
         if husb_death_check == True and wife_death_check == True:
             return True
         else:
             return False
     
-    
-
 def create_pretty_tables(individuals, families):
     """
     Creates tables to display file information.
     """
     pt_indi = PrettyTable(['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death','Dates Before Now', 'Child', 'Spouse'])
-
     for item in individuals:
         pt_indi.add_row([item,
                          get_args(item, 'NAME', individuals),
@@ -264,50 +260,19 @@ def create_pretty_tables(individuals, families):
                          get_args(item, 'FAMS', individuals)])
 
     pt_fam = PrettyTable(['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name', 'Dates Before Now', 'DIV before DEAT'])
-
     for item in families:
         husband = get_args(item, 'HUSB', families)
         wife = get_args(item, 'WIFE', families)
-
         pt_fam.add_row([item, 
                         husband, 
                         get_args(husband, 'NAME', individuals), 
                         wife, 
                         get_args(wife, 'NAME', individuals),
                         dates_b4_current_fam(get_args(item, 'MARR', families), get_args(item, 'DIV', families)),
-                        div_b4_death(get_args(item, 'DIV', families), get_args(husband, 'DEAT', individuals), get_args(wife, 'DEAT', individuals))])
+                        div_b4_death(get_args(item, 'DIV', families), get_args(husband, 'DEAT', individuals), get_args(wife, 'DEAT', individuals))])    
                         
-
     print(pt_indi)
     print(pt_fam)
-
-
-###############################################################################
-
-
-def test(did_pass):
-    """
-    Print the result of a test
-    """
-    linenum = sys._getframe(1).f_lineno  # get the caller's line number
-    if did_pass:
-        msg = 'Test at line {0} ok.'.format(linenum)
-    else:
-        msg = 'Test at line {0} FAILED.'.format(linenum)
-    print(msg)
-
-
-def test_suite(dic):
-    """
-    Tests that values match GEDCOM file
-    """
-    test(get_args('I1', 'NAME', dic) == 'Rickard /Stark/')
-    test(get_args('I1', 'SEX', dic) == 'M')
-    test(get_args('I1', 'BIRT', dic) == '18 DEC 0230')
-    test(get_args('I1', 'DEAT', dic) == '9 MAY 0280')
-    test(get_args('I1', 'FAMC', dic) == 'NA')
-    test(get_args('I1', 'FAMS', dic) == '@F1@')
-
 
 ###############################################################################
 
@@ -315,11 +280,8 @@ def main(file):
     individuals = read_individuals(file)
     families = read_families(file)
     create_pretty_tables(individuals, families)
-    test_suite(individuals)
-
     print('Done')
 
-
 ###############################################################################
-file = open(r'C:\Users\Julie\Documents\GitHub\555\Test GEDCOM Files\JULIE GEDCOM.ged')
-main(file)
+#file = open(r'C:\Users\Julie\Documents\GitHub\555\Test GEDCOM Files\JULIE GEDCOM.ged')
+#main(file)
