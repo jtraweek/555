@@ -218,15 +218,30 @@ def dates_b4_current_fam(marriage, divorce):
     else:
         return False
 
-def div_b4_death(divorce_date, husb_death, wife_death):
+def div_b4_death(divorce, husb_death, wife_death):
     """
     Ensures divorce date occurred after death of husband & wife
     """
-    if divorce_date == 'NA':
+    if divorce == 'NA':
         div_b4_death = 'NO DIV'
         return div_b4_death
     elif husb_death == 'NA' and wife_death == 'NA':
         return True
+    else:
+        divorce_date = datetime.datetime.strptime(divorce, '%d %b %Y')
+        husb_death_check, wife_death_check = True, True
+        if husb_death != 'NA':
+            husb_death_date = datetime.datetime.strptime(husb_death, '%d %b %Y')
+            if divorce_date.date() > husb_death_date.date():
+                husb_death_check = False
+        if wife_death != 'NA':
+            wife_death_date = datetime.datetime.strptime(wife_death, '%d %b %Y')
+            if divorce_date.date() > wife_death_date.date():
+                wife_death_check = False
+        if husb_death_check == True and wife_death_check == True:
+            return True
+        else:
+            return False
     
     
 
@@ -260,6 +275,7 @@ def create_pretty_tables(individuals, families):
                         wife, 
                         get_args(wife, 'NAME', individuals),
                         dates_b4_current_fam(get_args(item, 'MARR', families), get_args(item, 'DIV', families)),
+                        div_b4_death(get_args(item, 'DIV', families), get_args(husband, 'DEAT', individuals), get_args(wife, 'DEAT', individuals))])
                         
 
     print(pt_indi)

@@ -37,7 +37,24 @@ class TestMethods(unittest.TestCase):
     
     def test_invalid_divorce_before_now(self):
         self.assertFalse(Gedcom.dates_b4_current_fam('11 DEC 2016', '14 JAN 2018'))  
+    
+    def test_no_death_div_b4_death(self):   
+        self.assertTrue(Gedcom.div_b4_death('12 NOV 2014', 'NA', 'NA'))
+    
+    def test_valid_div_b4_death(self):
+        self.assertTrue(Gedcom.div_b4_death('12 NOV 2014', '15 JAN 2015', '21 FEB 2017'))
+    
+    def test_div_after_wife_death_div_b4_death(self):
+        self.assertFalse(Gedcom.div_b4_death('12 NOV 2014', '15 JAN 2015', '21 FEB 2013'))
         
+    def test_div_after_husb_death_div_b4_death(self):
+        self.assertFalse(Gedcom.div_b4_death('12 NOV 2014', '15 JAN 2012', '21 FEB 2017'))
+        
+    def test_div_after_both_death_div_b4_death(self):
+        self.assertFalse(Gedcom.div_b4_death('12 NOV 2014', '15 JAN 2010', '21 FEB 2011'))
+    
+    def test_no_div_div_b4_death(self):
+        self.assertTrue(Gedcom.div_b4_death('NA', '15 JAN 2015', '21 FEB 2017'))
 
 if __name__ == '__main__':
     unittest.main()
