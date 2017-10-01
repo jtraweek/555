@@ -1,7 +1,7 @@
 
+0 HEAD
 0 NOTE Repository:555
 0 NOTE Julie
-0 HEAD
 1 SOUR Family Echo
 2 WWW http://www.familyecho.com/
 1 FILE My Family
@@ -283,7 +283,7 @@
 1 MARR
 2 DATE 15 NOV 0300
 2 PLAC King's Landing
-1 ANUL
+1 DIV
 2 DATE 26 MAY 0301
 1 _CURRENT N
 0 @F8@ FAM
