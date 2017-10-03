@@ -1,0 +1,265 @@
+0 HEAD
+0 NOTE CS 555 Jiazhen Liu 10394882
+0 NOTE Maked up family of three generations
+0 NOTE Modified based on JRR Tolkein's Family
+0 @I1@ INDI
+1 NAME John Ronald Reuel /Tolkien/
+2 GIVN John Ronald Reuel
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 5 JUN 1892
+1 DEAT Y
+2 DATE 1 OCT 1973
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Edith /Bratt/
+2 GIVN Edith
+2 SURN Bratt
+1 SEX F
+1 BIRT
+2 DATE 4 SEP 1889
+1 DEAT Y
+2 DATE 19 OCT 1971
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Michael Hilary Reuel /Tolkien/
+2 GIVN Michael Hilary Reuel
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 10 MAY 1920
+1 DEAT Y
+2 DATE 19 SEP 1984
+1 FAMS @F2@
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Joan /Griffiths/
+2 GIVN Joan
+2 SURN Griffiths
+1 SEX F
+1 BIRT
+2 DATE 11 OCT 1916
+1 DEAT Y
+2 DATE 9 MAR 1982
+1 FAMS @F2@
+0 @I5@ INDI
+1 NAME Michael /Tolkien/
+2 GIVN Michael
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 29 NOV 1944
+1 FAMS @F3@
+1 FAMS @F4@
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME Irene /Ferrier/
+2 GIVN Irene
+2 SURN Ferrier
+1 SEX F
+1 BIRT
+2 DATE 28 AUG 1944
+1 FAMS @F4@
+0 @I7@ INDI
+1 NAME Catherine /Tolkien/
+2 GIVN Catherine
+2 SURN Tolkien
+1 SEX F
+1 BIRT
+2 DATE 7 DEC 1969
+1 FAMC @F4@
+0 @I8@ INDI
+1 NAME Jan /Turner/
+2 GIVN Jan
+2 SURN Turner
+1 SEX F
+1 BIRT
+2 DATE 16 SEP 1945
+1 FAMS @F3@
+0 @I9@ INDI
+1 NAME Ruth /Tolkien/
+2 GIVN Ruth
+2 SURN Tolkien
+1 SEX F
+1 BIRT
+2 DATE 2 MAY 1982
+1 FAMC @F3@
+0 @I10@ INDI
+1 NAME Joanna /Tolkien/
+2 GIVN Joanna
+2 SURN Tolkien
+1 SEX F
+1 BIRT
+2 DATE 16 FEB 1945
+1 FAMS @F5@
+1 FAMC @F2@
+0 @I11@ INDI
+1 NAME Hugh /Baker/
+2 GIVN Hugh
+2 SURN Baker
+1 SEX M
+1 BIRT
+2 DATE 7 JAN 1940
+1 FAMS @F5@
+0 @I12@ INDI
+1 NAME Mandy /Baker/
+2 GIVN Mandy
+2 SURN Baker
+1 SEX F
+1 BIRT
+2 DATE 24 APR 1967
+1 FAMC @F5@
+0 @I13@ INDI
+1 NAME Royd /Baker/
+2 GIVN Royd
+2 SURN Baker
+1 SEX M
+1 BIRT
+2 DATE 7 MAR 1969
+1 FAMC @F5@
+0 @I14@ INDI
+1 NAME Michael /Baker/
+2 GIVN Michael
+2 SURN Baker
+1 SEX M
+1 BIRT
+2 DATE 2 JUN 1975
+1 FAMC @F5@
+0 @I15@ INDI
+1 NAME Christopher John Reuel /Tolkien/
+2 GIVN Christopher John Reuel
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 21 NOV 1924
+1 FAMS @F6@
+1 FAMS @F7@
+1 FAMC @F1@
+0 @I16@ INDI
+1 NAME Baillie /Klass/
+2 GIVN Baillie
+2 SURN Klass
+1 SEX F
+1 BIRT
+2 DATE 16 SEP 1941
+1 FAMS @F6@
+0 @I17@ INDI
+1 NAME Faith /Faulconbridge/
+2 GIVN Faith
+2 SURN Faulconbridge
+1 SEX F
+1 BIRT
+2 DATE 25 SEP 1928
+1 DEAT Y
+2 DATE 5 AUG 1957
+1 FAMS @F7@
+0 @I18@ INDI
+1 NAME Simon /Tolkien/
+2 GIVN Simon
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 25 MAR 1959
+1 FAMS @F8@
+1 FAMC @F7@
+0 @I19@ INDI
+1 NAME Tracy /Sternberg/
+2 GIVN Tracy
+2 SURN Sternberg
+1 SEX F
+1 BIRT
+2 DATE 1 JUN 1960
+1 FAMS @F8@
+0 @I20@ INDI
+1 NAME Nicholas /Tolkien/
+2 GIVN Nicholas
+2 SURN Tolkien
+1 SEX M
+1 BIRT
+2 DATE 6 AUG 1990
+1 FAMC @F8@
+0 @I21@ INDI
+1 NAME Adam Reuel /Tolkien/
+2 GIVN Adam Reuel
+2 SURN Tolkien
+1 SEX F
+1 BIRT
+2 DATE 4 DEC 1969
+1 FAMS @F9@
+1 FAMC @F6@
+0 @I22@ INDI
+1 NAME Dimitri /Tolkien-Paillet/
+2 GIVN Dimitri
+2 SURN Tolkien-Paillet
+1 SEX M
+1 BIRT
+2 DATE 5 AUG 2005
+1 FAMC @F9@
+0 @I23@ INDI
+1 NAME Rachel Clare Reuel /Tolkien/
+2 GIVN Rachel Clare Reuel
+2 SURN Tolkien
+1 SEX F
+1 BIRT
+2 DATE 26 SEP 1971
+1 FAMC @F6@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 1 JAN 1972
+1 CHIL @I3@
+1 CHIL @I15@
+1 _CURRENT Y
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 MARR
+2 DATE 1 JAN 1800
+1 DIV
+2 DATE 1 JAN 1780
+1 CHIL @I5@
+1 CHIL @I10@
+1 _CURRENT Y
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I8@
+1 MARR
+2 DATE 1 JAN 1800
+1 DIV
+2 DATE 1 JAN 1820
+1 CHIL @I9@
+1 _CURRENT Y
+0 @F4@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+1 CHIL @I7@
+1 _CURRENT N
+0 @F5@ FAM
+1 HUSB @I11@
+1 WIFE @I10@
+1 CHIL @I12@
+1 CHIL @I13@
+1 CHIL @I14@
+1 _CURRENT Y
+0 @F6@ FAM
+1 HUSB @I15@
+1 WIFE @I16@
+1 CHIL @I21@
+1 CHIL @I23@
+1 _CURRENT Y
+0 @F7@ FAM
+1 HUSB @I15@
+1 WIFE @I17@
+1 CHIL @I18@
+1 _CURRENT N
+0 @F8@ FAM
+1 HUSB @I18@
+1 WIFE @I19@
+1 CHIL @I20@
+1 _CURRENT Y
+0 @F9@ FAM
+1 WIFE @I21@
+1 CHIL @I22@
+0 TRLR
