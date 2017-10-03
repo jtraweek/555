@@ -14,6 +14,19 @@ def bir_deth(b,d):
             return True
         return False
 
+    def bir_marriage(wife_bir,husp_bir):
+    # this method will ensure that the birth date is before the marraige date.
+    for id in family:
+        wife_id = Gedcom.get_args(id, 'WIFE', family)
+        husp_id = Gedcom.get_args(id,'HUSB',family)
+        wife_bir = Gedcom.get_args(wife_id, 'BIRT', indivisuals)
+        husp_bir = Gedcom.get_args(husp_id, 'BIRT', indivisuals)
+        wife_birth_date = datetime.datetime.strptime(wife_bir, '%d %b %Y')
+        husb_birth_date = datetime.datetime.strptime(husp_bir, '%d %b %Y')
+
+        if wife_bir or husp_bir != " " or 'NA':
+            return True
+        return False
 
 
 def main(file):
