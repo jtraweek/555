@@ -216,7 +216,6 @@ def birth_before_marriage (family, individual_id, individuals) :
     
 ###############################################################################
 
-
 def test(did_pass):
     """
     Print the result of a test
