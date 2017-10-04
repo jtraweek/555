@@ -45,22 +45,22 @@ class TestMethods(unittest.TestCase):
         self.assertTrue(UsersStories.dates_b4_current_fam('11 DEC 2016'))
 
     def test_no_death_div_b4_death(self):
-        self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', 'NA', 'NA'))
+        self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', 'NA'))
 
     def test_valid_div_b4_death(self):
-        self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2015', '21 FEB 2017'))
+        self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2015'))
 
     def test_div_after_wife_death_div_b4_death(self):
-        self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2015', '21 FEB 2013'))
+        self.assertFalse(UsersStories.div_b4_death('15 JAN 2015', '21 FEB 2013'))
 
     def test_div_after_husb_death_div_b4_death(self):
-        self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2012', '21 FEB 2017'))
+        self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2012'))
 
     def test_div_after_both_death_div_b4_death(self):
-        self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2010', '21 FEB 2011'))
+        self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2010'))
 
     def test_no_div_div_b4_death(self):
-        self.assertTrue(UsersStories.div_b4_death('NA', '15 JAN 2015', '21 FEB 2017'))
+        self.assertTrue(UsersStories.div_b4_death('NA', '15 JAN 2015'))
 
     def test_birth_b4_death(self):  # YOU ARE TESTING THE FUNCTION, NOT THE VALUES!
         self.assertTrue(UsersStories.bir_deth('I1', individuals))
@@ -92,20 +92,36 @@ class TestMethods(unittest.TestCase):
         condition_satisfied_5 = UsersStories.age_less('I3', individuals)
         self.assertEqual(condition_satisfied_5, True)
 
-    def testBirthBeforeMarriage(self):
-        condition_satisfied_1 = UsersStories.birth_before_marriage(families, 'I3', individuals)
+    def testChildBirthAfterMarriage(self):
+        condition_satisfied_1 = UsersStories.child_birth_after_marriage('15 NOV 2014', '15 JAN 2010')
         self.assertEqual(condition_satisfied_1, False)
 
-        condition_satisfied_2 = UsersStories.birth_before_marriage(families, 'I7', individuals)
+        condition_satisfied_2 = UsersStories.child_birth_after_marriage('15 JAN 2015', '21 FEB 2013')
         self.assertEqual(condition_satisfied_2, False)
 
-        condition_satisfied_3 = UsersStories.birth_before_marriage(families, 'I13', individuals)
+        condition_satisfied_3 = UsersStories.child_birth_after_marriage('12 NOV 2014', '15 JAN 2012')
         self.assertEqual(condition_satisfied_3, False)
 
-        condition_satisfied_4 = UsersStories.birth_before_marriage(families, 'I5', individuals)
+        condition_satisfied_4 = UsersStories.child_birth_after_marriage('NA', '15 JAN 2015')
         self.assertEqual(condition_satisfied_4, True)
 
-        condition_satisfied_5 = UsersStories.birth_before_marriage(families, 'I10', individuals)
+        condition_satisfied_5 = UsersStories.child_birth_after_marriage('12 NOV 2014', 'NA')
+        self.assertEqual(condition_satisfied_5, True)
+
+    def testChildBirthBeforeDivorce(self):
+        condition_satisfied_1 = UsersStories.child_birth_before_divorce('15 JAN 2010', '12 NOV 2014')
+        self.assertEqual(condition_satisfied_1, False)
+
+        condition_satisfied_2 = UsersStories.child_birth_before_divorce('21 FEB 2013', '21 NOV 2015')
+        self.assertEqual(condition_satisfied_2, False)
+
+        condition_satisfied_3 = UsersStories.child_birth_before_divorce('15 JAN 2012', '15 OCT 2014')
+        self.assertEqual(condition_satisfied_3, False)
+
+        condition_satisfied_4 = UsersStories.child_birth_before_divorce('15 JAN 2016', '15 JAN 2015')
+        self.assertEqual(condition_satisfied_4, True)
+
+        condition_satisfied_5 = UsersStories.child_birth_before_divorce('12 NOV 2014', 'NA')
         self.assertEqual(condition_satisfied_5, True)
 
 

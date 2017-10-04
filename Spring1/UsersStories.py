@@ -1,5 +1,6 @@
 import Gedcom
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 def dates_b4_current_indi(d):
@@ -116,32 +117,18 @@ def is_marriage_before_death(person_id, family_id, families, individuals):
     return False
 
 
-def div_b4_death(divorce, husb_death, wife_death):
+def div_b4_death(divorce, death):
     """
     Ensures divorce date occurred after death of husband & wife
     """
-    if divorce == 'NA':
-        div_b4_death = 'NO DIV'
-        return div_b4_death
-    elif husb_death == 'NA' and wife_death == 'NA':
+    if divorce == 'NA' or death == 'NA':
         return True
     else:
         divorce_date = datetime.strptime(divorce, '%d %b %Y')
-        husb_death_check, wife_death_check = True, True
-        if husb_death != 'NA':
-            husb_death_date = datetime.strptime(husb_death, '%d %b %Y')
-            if divorce_date.date() > husb_death_date.date():
-                husb_death_check = False
-
-        if wife_death != 'NA':
-            wife_death_date = datetime.strptime(wife_death, '%d %b %Y')
-            if divorce_date.date() > wife_death_date.date():
-                wife_death_check = False
-
-        if husb_death_check == True and wife_death_check == True:
-            return True
-        else:
+        death_date = datetime.strptime(death, '%d %b %Y')
+        if divorce_date.date() > death_date.date():
             return False
+    return True
 
 
 def age_less(person_id, individuals):
@@ -150,26 +137,30 @@ def age_less(person_id, individuals):
     return True
 
 
-def birth_before_marriage(family, individual_id, individuals):
+def child_birth_after_marriage(marr, child_birth):
     """
     This function checks if a child is born before the marriage of their parents
     """
-    for family_id in family:
-        if Gedcom.get_args(family_id, 'MARR', family) == 'NA':
+    if marr == 'NA' or child_birth == 'NA':
+        return True
+    else:
+        marriage_date = datetime.strptime(marr, '%d %b %Y')
+        child_birth_date = datetime.strptime(child_birth, '%d %b %Y')
+        if child_birth_date.date() < marriage_date.date():
             return False
+    return True
 
-        marr = family.get(family_id).get('MARR')[0].split(' ')[-1]
-        children_list = family.get(family_id).get('CHIL')
 
-        if len(children_list) != 0:
-
-            for child in children_list:
-                if child == individual_id:
-                    birth = individuals.get(child).get('BIRT')[0].split(' ')[-1]
-                    diff_birth_marr = int(birth) - int(marr)
-                    if diff_birth_marr < 0:
-                        return False
-                    else:
-                        return True
-
-    return False
+def child_birth_before_divorce(div, child_birth):
+    """
+    This function checks if a child is born before the marriage of their parents
+    """
+    if div == 'NA' or child_birth == 'NA':
+        return True
+    else:
+        divorce_date = datetime.strptime(div, '%d %b %Y')
+        divorce_date_after_nine = divorce_date + relativedelta(months=9)
+        child_birth_date = datetime.strptime(child_birth, '%d %b %Y')
+        if child_birth_date.date() > divorce_date_after_nine.date():
+            return False
+    return True
