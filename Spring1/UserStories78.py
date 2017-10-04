@@ -1,6 +1,7 @@
 import sys
 import datetime
 import unittest
+
 """from prettytable import PrettyTable"""
 from collections import OrderedDict
 
@@ -39,7 +40,6 @@ def create_family_dict():
 
     dic = {'HUSB': husband, 'WIFE': wife, 'CHIL': child, 'MARR': marriage_date, 'DIV': divorce_date}
     return dic
-    
 
 
 def read_individuals(file):
@@ -95,7 +95,7 @@ def read_individuals(file):
                 else:
                     if tag in dic[current_id]:
                         dic[current_id][tag].append(args)
-                        
+
     return dic
 
 
@@ -193,16 +193,17 @@ def is_alive(person_id, individuals):
         return False
     return True
 
-def birth_before_marriage (family, individual_id, individuals) :
+
+def birth_before_marriage(family, individual_id, individuals):
     """
     This function checks if a child is born before the marriage of their parents
     """
     for family_id in family:
         marr = family.get(family_id).get('MARR')[0].split(' ')[-1]
         children_list = family.get(family_id).get('CHIL')
-   
+
         if len(children_list) != 0:
-        
+
             for child in children_list:
                 if child == individual_id:
                     birth = individuals.get(child).get('BIRT')[0].split(' ')[-1]
@@ -211,9 +212,10 @@ def birth_before_marriage (family, individual_id, individuals) :
                         return False
                     else:
                         return True
-                
+
     return False
-    
+
+
 ###############################################################################
 
 def test(did_pass):
@@ -247,61 +249,63 @@ class TestAge(unittest.TestCase):
     This class tests if the indiual is less than 150 years old
     The data we used in our main GEDCOM file is fictional. 
     And hence we have 'NA' if they are over 150 years old.
-    """ 
+    """
+
     def testAge(self):
-        
         file = open('/Users/celestesakhile/Desktop/555/Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
         individuals = read_individuals(file)
-        
-        condition_Satisfied_1 = get_age('I7',individuals)
-        self.assertEqual(condition_Satisfied_1,'NA')
-        
-        condition_Satisfied_2 = get_age('I6',individuals)
-        self.assertEqual(condition_Satisfied_2,24)
-        
-        condition_Satisfied_3 = get_age('I8',individuals)
-        self.assertEqual(condition_Satisfied_3,36)
-        
-        condition_Satisfied_4 = get_age('I11',individuals)
-        self.assertEqual(condition_Satisfied_4,'NA')
-        
-        condition_Satisfied_5 = get_age('I3',individuals)
-        self.assertEqual(condition_Satisfied_5,'NA')
-        
- 
+
+        condition_Satisfied_1 = get_age('I7', individuals)
+        self.assertEqual(condition_Satisfied_1, 'NA')
+
+        condition_Satisfied_2 = get_age('I6', individuals)
+        self.assertEqual(condition_Satisfied_2, 24)
+
+        condition_Satisfied_3 = get_age('I8', individuals)
+        self.assertEqual(condition_Satisfied_3, 36)
+
+        condition_Satisfied_4 = get_age('I11', individuals)
+        self.assertEqual(condition_Satisfied_4, 'NA')
+
+        condition_Satisfied_5 = get_age('I3', individuals)
+        self.assertEqual(condition_Satisfied_5, 'NA')
+
+
 if __name__ == '__main__':
     unittest.main()
+
 
 ###############################################################################
 
 class TestBirthBeforeMarriage(unittest.TestCase):
     """
     This class tests if the child is born before the marriage of their parents.
-    """  
+    """
+
     def testBirthBeforeMarriage(self):
-        
         file = open('/Users/celestesakhile/Desktop/555/Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
         individuals = read_individuals(file)
         family = read_families(file)
-        
-        condition_Satisfied_1 = birth_before_marriage(family,'I3',individuals)
-        self.assertEqual(condition_Satisfied_1,True)
-        
-        condition_Satisfied_2 = birth_before_marriage(family,'I7',individuals)
+
+        condition_Satisfied_1 = birth_before_marriage(family, 'I3', individuals)
+        self.assertEqual(condition_Satisfied_1, True)
+
+        condition_Satisfied_2 = birth_before_marriage(family, 'I7', individuals)
         self.assertEqual(condition_Satisfied_2, True)
-        
-        condition_Satisfied_3 = birth_before_marriage(family,'I13',individuals)
+
+        condition_Satisfied_3 = birth_before_marriage(family, 'I13', individuals)
         self.assertEqual(condition_Satisfied_3, True)
-        
-        condition_Satisfied_4 = birth_before_marriage(family,'I5',individuals)
-        self.assertEqual(condition_Satisfied_4,True)
-        
-        condition_Satisfied_5 = birth_before_marriage(family,'I10',individuals)
+
+        condition_Satisfied_4 = birth_before_marriage(family, 'I5', individuals)
+        self.assertEqual(condition_Satisfied_4, True)
+
+        condition_Satisfied_5 = birth_before_marriage(family, 'I10', individuals)
         self.assertEqual(condition_Satisfied_5, True)
-        
-    
+
+
 if __name__ == '__main__':
     unittest.main()
+
 
 ###############################################################################
 
@@ -309,9 +313,10 @@ if __name__ == '__main__':
 def main(file):
     individuals = read_individuals(file)
     family = read_families(file)
-    
+
     test_suite(individuals)
     print('Done')
+
 
 ###############################################################################
 

@@ -64,17 +64,49 @@ class TestMethods(unittest.TestCase):
 
     def test_birth_b4_death(self):  # YOU ARE TESTING THE FUNCTION, NOT THE VALUES!
         self.assertTrue(UsersStories.bir_deth('I1', individuals))
-    #     self.assertTrue(UsersStories.bir_deth('I2', individuals))
-    #     self.assertTrue(UsersStories.bir_deth('I3', individuals))
-    #     self.assertFalse(UsersStories.bir_deth('I11', individuals))
-    #     self.assertFalse(UsersStories.bir_deth('I12', individuals))
-    #
-    # def test_birth_b4_marriage(self):
-    #     self.assertTrue(UsersStories.bir_marriage('I17', 'F7', individuals, families))
-    #     self.assertTrue(UsersStories.bir_marriage('I15', 'F7', individuals, families))
-    #     self.assertTrue(UsersStories.bir_marriage('I18', 'F8', individuals, families))
-    #     self.assertFalse(UsersStories.bir_marriage('I19', 'F8', individuals, families))
-    #     self.assertFalse(UsersStories.bir_marriage('I21', 'F9', individuals, families))
+        self.assertTrue(UsersStories.bir_deth('I2', individuals))
+        self.assertTrue(UsersStories.bir_deth('I3', individuals))
+        self.assertFalse(UsersStories.bir_deth('I11', individuals))
+        self.assertFalse(UsersStories.bir_deth('I12', individuals))
+
+    def test_birth_b4_marriage(self):
+        self.assertTrue(UsersStories.bir_marriage('I17', 'F7', individuals, families))
+        self.assertTrue(UsersStories.bir_marriage('I15', 'F7', individuals, families))
+        self.assertTrue(UsersStories.bir_marriage('I18', 'F8', individuals, families))
+        self.assertFalse(UsersStories.bir_marriage('I19', 'F8', individuals, families))
+        self.assertFalse(UsersStories.bir_marriage('I21', 'F9', individuals, families))
+
+    def testAge(self):
+        condition_satisfied_1 = UsersStories.age_less('I7', individuals)
+        self.assertEqual(condition_satisfied_1, True)
+
+        condition_satisfied_2 = UsersStories.age_less('I6', individuals)
+        self.assertEqual(condition_satisfied_2, True)
+
+        condition_satisfied_3 = UsersStories.age_less('I8', individuals)
+        self.assertEqual(condition_satisfied_3, True)
+
+        condition_satisfied_4 = UsersStories.age_less('I11', individuals)
+        self.assertEqual(condition_satisfied_4, True)
+
+        condition_satisfied_5 = UsersStories.age_less('I3', individuals)
+        self.assertEqual(condition_satisfied_5, True)
+
+    def testBirthBeforeMarriage(self):
+        condition_satisfied_1 = UsersStories.birth_before_marriage(families, 'I3', individuals)
+        self.assertEqual(condition_satisfied_1, False)
+
+        condition_satisfied_2 = UsersStories.birth_before_marriage(families, 'I7', individuals)
+        self.assertEqual(condition_satisfied_2, False)
+
+        condition_satisfied_3 = UsersStories.birth_before_marriage(families, 'I13', individuals)
+        self.assertEqual(condition_satisfied_3, False)
+
+        condition_satisfied_4 = UsersStories.birth_before_marriage(families, 'I5', individuals)
+        self.assertEqual(condition_satisfied_4, True)
+
+        condition_satisfied_5 = UsersStories.birth_before_marriage(families, 'I10', individuals)
+        self.assertEqual(condition_satisfied_5, True)
 
 
 if __name__ == '__main__':

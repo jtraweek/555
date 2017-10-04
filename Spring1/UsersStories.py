@@ -158,3 +158,34 @@ def div_b4_death(divorce, husb_death, wife_death):
             return True
         else:
             return False
+
+
+def age_less(person_id, individuals):
+    if Gedcom.get_age(person_id, individuals) == 'NA':
+        return False
+    return True
+
+
+def birth_before_marriage(family, individual_id, individuals):
+    """
+    This function checks if a child is born before the marriage of their parents
+    """
+    for family_id in family:
+        if Gedcom.get_args(family_id, 'MARR', family) == 'NA':
+            return False
+
+        marr = family.get(family_id).get('MARR')[0].split(' ')[-1]
+        children_list = family.get(family_id).get('CHIL')
+
+        if len(children_list) != 0:
+
+            for child in children_list:
+                if child == individual_id:
+                    birth = individuals.get(child).get('BIRT')[0].split(' ')[-1]
+                    diff_birth_marr = int(birth) - int(marr)
+                    if diff_birth_marr < 0:
+                        return False
+                    else:
+                        return True
+
+    return False
