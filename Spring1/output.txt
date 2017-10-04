@@ -1,0 +1,50 @@
++-----+----------------------------------+--------+-------------+-----+-------+-------------+-------+------------+
+|  ID |               Name               | Gender |   Birthday  | Age | Alive |    Death    | Child |   Spouse   |
++-----+----------------------------------+--------+-------------+-----+-------+-------------+-------+------------+
+|  I1 |   John Ronald Reuel /Tolkien/    |   M    |  5 JUN 1892 |  81 | False |  1 OCT 1973 |   NA  |    @F1@    |
+|  I2 |          Edith /Bratt/           |   F    |  4 SEP 1889 |  82 | False | 19 OCT 1971 |   NA  |    @F1@    |
+|  I3 |  Michael Hilary Reuel /Tolkien/  |   M    | 10 MAY 1920 |  64 | False | 19 SEP 1984 |  @F1@ |    @F2@    |
+|  I4 |         Joan /Griffiths/         |   F    | 11 OCT 1916 |  66 | False |  9 MAR 1982 |   NA  |    @F2@    |
+|  I5 |        Michael /Tolkien/         |   M    | 29 NOV 1944 |  73 |  True |      NA     |  @F2@ | @F3@, @F4@ |
+|  I6 |         Irene /Ferrier/          |   F    | 28 AUG 1944 |  73 |  True |      NA     |   NA  |    @F4@    |
+|  I7 |       Catherine /Tolkien/        |   F    |  7 DEC 1969 |  48 |  True |      NA     |  @F4@ |     NA     |
+|  I8 |           Jan /Turner/           |   F    | 16 SEP 1945 |  72 |  True |      NA     |   NA  |    @F3@    |
+|  I9 |          Ruth /Tolkien/          |   F    |  2 MAY 1982 |  35 |  True |      NA     |  @F3@ |     NA     |
+| I10 |         Joanna /Tolkien/         |   F    | 16 FEB 1945 |  72 |  True |      NA     |  @F2@ |    @F5@    |
+| I11 |           Hugh /Baker/           |   M    |  7 JAN 1940 |  -2 | False |  1 JAN 1938 |   NA  |    @F5@    |
+| I12 |          Mandy /Baker/           |   F    | 24 APR 1967 |  0  | False | 23 APR 1967 |  @F5@ |     NA     |
+| I13 |           Royd /Baker/           |   M    |  7 MAR 1969 |  48 |  True |      NA     |  @F5@ |     NA     |
+| I14 |         Michael /Baker/          |   M    |  2 JUN 1975 |  42 |  True |      NA     |  @F5@ |     NA     |
+| I15 | Christopher John Reuel /Tolkien/ |   M    | 21 NOV 1924 |  93 |  True |      NA     |  @F1@ | @F6@, @F7@ |
+| I16 |         Baillie /Klass/          |   F    | 16 SEP 1941 |  76 |  True |      NA     |   NA  |    @F6@    |
+| I17 |      Faith /Faulconbridge/       |   F    | 25 SEP 1928 |  29 | False |  5 AUG 1957 |   NA  |    @F7@    |
+| I18 |         Simon /Tolkien/          |   M    | 25 MAR 1959 |  58 |  True |      NA     |  @F7@ |    @F8@    |
+| I19 |        Tracy /Sternberg/         |   F    |  1 JUN 1960 |  57 |  True |      NA     |   NA  |    @F8@    |
+| I20 |        Nicholas /Tolkien/        |   M    |  6 AUG 1990 |  27 |  True |      NA     |  @F8@ |     NA     |
+| I21 |       Adam Reuel /Tolkien/       |   F    |  4 DEC 1969 |  48 |  True |      NA     |  @F6@ |    @F9@    |
+| I22 |    Dimitri /Tolkien-Paillet/     |   M    |  5 AUG 2005 |  12 |  True |      NA     |  @F9@ |     NA     |
+| I23 |   Rachel Clare Reuel /Tolkien/   |   F    | 26 SEP 1971 |  46 |  True |      NA     |  @F6@ |     NA     |
++-----+----------------------------------+--------+-------------+-----+-------+-------------+-------+------------+
++----+------------+----------------------------------+---------+-----------------------+
+| ID | Husband ID |           Husband Name           | Wife ID |       Wife Name       |
++----+------------+----------------------------------+---------+-----------------------+
+| F1 |     I1     |   John Ronald Reuel /Tolkien/    |    I2   |     Edith /Bratt/     |
+| F2 |     I3     |  Michael Hilary Reuel /Tolkien/  |    I4   |    Joan /Griffiths/   |
+| F3 |     I5     |        Michael /Tolkien/         |    I8   |      Jan /Turner/     |
+| F4 |     I5     |        Michael /Tolkien/         |    I6   |    Irene /Ferrier/    |
+| F5 |    I11     |           Hugh /Baker/           |   I10   |    Joanna /Tolkien/   |
+| F6 |    I15     | Christopher John Reuel /Tolkien/ |   I16   |    Baillie /Klass/    |
+| F7 |    I15     | Christopher John Reuel /Tolkien/ |   I17   | Faith /Faulconbridge/ |
+| F8 |    I18     |         Simon /Tolkien/          |   I19   |   Tracy /Sternberg/   |
+| F9 |     NA     |                NA                |   I21   |  Adam Reuel /Tolkien/ |
++----+------------+----------------------------------+---------+-----------------------+
+Error: INDIVIDUAL: I11: Birthday 7 JAN 1940 occurs after death 1 JAN 1938
+Error: INDIVIDUAL: I12: Birthday 24 APR 1967 occurs after death 23 APR 1967
+Error: FAMILY: F1: Wife I2 death 19 OCT 1971 occurs before marriage 1 JAN 1972
+Error: FAMILY: F2: Husband I3 birthday 10 MAY 1920 occurs after marriage 1 JAN 1800
+Error: FAMILY: F2: Wife I4 birthday 11 OCT 1916 occurs after marriage 1 JAN 1800
+Error: FAMILY: F2: Marriage 1 JAN 1800 occurs after divorce 1 JAN 1780
+Error: FAMILY: F3: Husband I5 birthday 29 NOV 1944 occurs after marriage 1 JAN 1800
+Error: FAMILY: F3: Wife I8 birthday 16 SEP 1945 occurs after marriage 1 JAN 1800
+Error: FAMILY: F8: Wife I19 birthday 1 JUN 1960 occurs after marriage 1 DEC 1959
+Error: FAMILY: F9: Wife I21 birthday 4 DEC 1969 occurs after marriage 1 JAN 1966
