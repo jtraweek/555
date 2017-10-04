@@ -2,52 +2,41 @@ import Gedcom
 from datetime import datetime
 
 
-def dates_b4_current_indi(birth, death):
+def dates_b4_current_indi(d):
     """
     Checks birth, death dates to ensure they occurred before the current date
     """
-    birth_date = datetime.strptime(birth, '%d %b %Y')
-    if death != 'NA':
-        death_date = datetime.strptime(death, '%d %b %Y')
-        if birth_date.date() < datetime.today().date() and death_date.date() < datetime.today().date():
+    if d != 'NA':
+        date = datetime.strptime(d, '%d %b %Y')
+        if date.date() < datetime.today().date():
             return True
         else:
             return False
-
-    if birth_date.date() < datetime.today().date():
-        return True
     else:
-        return False
+        return True
 
 
-def dates_b4_current_fam(marriage, divorce):
+def dates_b4_current_fam(d):
     """
     Checks marriage, divorce dates to ensure they occurred before current date
     """
-    if marriage == 'NA' and divorce == 'NA':
-        return True
-    marriage_date = datetime.strptime(marriage, '%d %b %Y')
-
-    if divorce != 'NA':
-        divorce_date = datetime.strptime(divorce, '%d %b %Y')
-        if marriage_date.date() < datetime.today().date() and divorce_date.date() < datetime.today().date():
+    if d != 'NA':
+        date = datetime.strptime(d, '%d %b %Y')
+        if date.date() < datetime.today().date():
             return True
         else:
             return False
-
-    if marriage_date.date() < datetime.today().date():
-        return True
     else:
-        return False
+        return True
 
 
 def bir_marriage(person_id, family_id, individuals, families):
-    # this method will ensure that the birth date is before the marraige date.
+    # this method will ensure that the birth date is before the marriage date.
     b = Gedcom.get_args(person_id, 'BIRT', individuals)
     m = Gedcom.get_args(family_id, 'MARR', families)
 
     if b == 'NA' or m == 'NA':
-        return False
+        return True
     b_date = datetime.strptime(b, '%d %b %Y')
     m_date = datetime.strptime(m, '%d %b %Y')
 
@@ -85,7 +74,7 @@ def is_marriage_before_divorce(family_id, families):
     divorce = Gedcom.get_args(family_id, 'DIV', families)
 
     if marriage == 'NA':
-        return False
+        return True
     marriage_date = datetime.strptime(marriage, '%d %b %Y')
 
     # if no divorce record found
@@ -100,7 +89,7 @@ def is_marriage_before_divorce(family_id, families):
     return False
 
 
-def is_marriage_before_death(family_id, families, individuals):
+def is_marriage_before_death(person_id, family_id, families, individuals):
     """
     User Story 5: Marriage before death
     Marriage should occur before death of either spouse
@@ -109,25 +98,20 @@ def is_marriage_before_death(family_id, families, individuals):
     marriage = Gedcom.get_args(family_id, 'MARR', families)
 
     # get death record of family
-    husband = Gedcom.get_args(Gedcom.get_args(family_id, 'HUSB', families), 'DEAT', individuals)
-    wife = Gedcom.get_args(Gedcom.get_args(family_id, 'WIFE', families), 'DEAT', individuals)
+    deat = Gedcom.get_args(person_id, 'DEAT', individuals)
 
     if marriage == 'NA':
-        return False
+        return True
     marriage_date = datetime.strptime(marriage, '%d %b %Y')
 
     # if no death record found
     # set it today
-    if husband == 'NA':
-        husband_date = datetime.today()
+    if deat == 'NA':
+        date = datetime.today()
     else:
-        husband_date = datetime.strptime(husband, '%d %b %Y')
-    if wife == 'NA':
-        wife_date = datetime.today()
-    else:
-        wife_date = datetime.strptime(wife, '%d %b %Y')
+        date = datetime.strptime(deat, '%d %b %Y')
 
-    if husband_date >= marriage_date and wife_date >= marriage_date:
+    if date >= marriage_date:
         return True
     return False
 

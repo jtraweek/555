@@ -186,10 +186,11 @@ def get_args(item_id, tag, dic):
     Getter
     :return 'NA' on missing records
     """
-    if item_id == 'NA':
+    if type(dic) is not OrderedDict or item_id == 'NA' or item_id not in dic:
         return 'NA'
 
     string = ''
+    x = dic.get(item_id)
     for name in dic.get(item_id).get(tag):
         string += name + ', '
 
