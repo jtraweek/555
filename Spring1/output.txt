@@ -38,13 +38,13 @@
 | F8 |    I18     |         Simon /Tolkien/          |   I19   |   Tracy /Sternberg/   |
 | F9 |     NA     |                NA                |   I21   |  Adam Reuel /Tolkien/ |
 +----+------------+----------------------------------+---------+-----------------------+
-Error: INDIVIDUAL: I11: Birthday 7 JAN 1940 occurs after death 1 JAN 1938
-Error: INDIVIDUAL: I12: Birthday 24 APR 1967 occurs after death 23 APR 1967
-Error: FAMILY: F1: Wife I2 death 19 OCT 1971 occurs before marriage 1 JAN 1972
-Error: FAMILY: F2: Husband I3 birthday 10 MAY 1920 occurs after marriage 1 JAN 1800
-Error: FAMILY: F2: Wife I4 birthday 11 OCT 1916 occurs after marriage 1 JAN 1800
-Error: FAMILY: F2: Marriage 1 JAN 1800 occurs after divorce 1 JAN 1780
-Error: FAMILY: F3: Husband I5 birthday 29 NOV 1944 occurs after marriage 1 JAN 1800
-Error: FAMILY: F3: Wife I8 birthday 16 SEP 1945 occurs after marriage 1 JAN 1800
-Error: FAMILY: F8: Wife I19 birthday 1 JUN 1960 occurs after marriage 1 DEC 1959
-Error: FAMILY: F9: Wife I21 birthday 4 DEC 1969 occurs after marriage 1 JAN 1966
+Error: INDIVIDUAL: US03: I11: Birthday 7 JAN 1940 occurs after death 1 JAN 1938
+Error: INDIVIDUAL: US03: I12: Birthday 24 APR 1967 occurs after death 23 APR 1967
+Error: FAMILY: US05: F1: Wife I2 death 19 OCT 1971 occurs before marriage 1 JAN 1972
+Error: FAMILY: US02: F2: Husband I3 birthday 10 MAY 1920 occurs after marriage 1 JAN 1800
+Error: FAMILY: US02: F2: Wife I4 birthday 11 OCT 1916 occurs after marriage 1 JAN 1800
+Error: FAMILY: US04: F2: Marriage 1 JAN 1800 occurs after divorce 1 JAN 1780
+Error: FAMILY: US02: F3: Husband I5 birthday 29 NOV 1944 occurs after marriage 1 JAN 1800
+Error: FAMILY: US02: F3: Wife I8 birthday 16 SEP 1945 occurs after marriage 1 JAN 1800
+Error: FAMILY: US02: F8: Wife I19 birthday 1 JUN 1960 occurs after marriage 1 DEC 1959
+Error: FAMILY: US02: F9: Wife I21 birthday 4 DEC 1969 occurs after marriage 1 JAN 1966
