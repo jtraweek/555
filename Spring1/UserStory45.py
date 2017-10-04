@@ -22,10 +22,8 @@ def is_marriage_before_divorce(family_id, families):
     else:
         divorce_date = datetime.strptime(divorce, '%d %b %Y')
 
-    if divorce_date.year >= marriage_date.year:
-        if divorce_date.month >= marriage_date.month:
-            if divorce_date.day >= marriage_date.day:
-                return True
+    if divorce_date >= marriage_date:
+        return True
     return False
 
 
@@ -56,8 +54,6 @@ def is_marriage_before_death(family_id, families, individuals):
     else:
         wife_date = datetime.strptime(wife, '%d %b %Y')
 
-    if husband_date.year >= marriage_date.year and wife_date.year >= marriage_date.year:
-        if husband_date.month >= marriage_date.month and wife_date.month >= marriage_date.month:
-            if husband_date.day >= marriage_date.day and wife_date.day >= marriage_date.day:
-                return True
+    if husband_date >= marriage_date and wife_date >= marriage_date:
+        return True
     return False

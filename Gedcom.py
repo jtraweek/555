@@ -1,4 +1,3 @@
-import sys
 import datetime
 from prettytable import PrettyTable
 from collections import OrderedDict
@@ -227,79 +226,12 @@ def is_alive(person_id, individuals):
     return True
 
 
-def dates_b4_current_indi(birth, death):
-    """
-    Checks birth, death dates to ensure they occurred before the current date
-    """
-    birth_date = datetime.datetime.strptime(birth, '%d %b %Y')
-    if death != 'NA':
-        death_date = datetime.datetime.strptime(death, '%d %b %Y')
-        if birth_date.date() < datetime.datetime.today().date() and death_date.date() < datetime.datetime.today().date():
-            return True
-        else:
-            return False
-
-    if birth_date.date() < datetime.datetime.today().date():
-        return True
-    else:
-        return False
-
-
-def dates_b4_current_fam(marriage, divorce):
-    """
-    Checks marriage, divorce dates to ensure they occurred before current date
-    """
-    if marriage == 'NA' and divorce == 'NA':
-        return True
-    marriage_date = datetime.datetime.strptime(marriage, '%d %b %Y')
-
-    if divorce != 'NA':
-        divorce_date = datetime.datetime.strptime(divorce, '%d %b %Y')
-        if marriage_date.date() < datetime.datetime.today().date() and divorce_date.date() < datetime.datetime.today().date():
-            return True
-        else:
-            return False
-
-    if marriage_date.date() < datetime.datetime.today().date():
-        return True
-    else:
-        return False
-
-
-def div_b4_death(divorce, husb_death, wife_death):
-    """
-    Ensures divorce date occurred after death of husband & wife
-    """
-    if divorce == 'NA':
-        div_b4_death = 'NO DIV'
-        return div_b4_death
-    elif husb_death == 'NA' and wife_death == 'NA':
-        return True
-    else:
-        divorce_date = datetime.datetime.strptime(divorce, '%d %b %Y')
-        husb_death_check, wife_death_check = True, True
-        if husb_death != 'NA':
-            husb_death_date = datetime.datetime.strptime(husb_death, '%d %b %Y')
-            if divorce_date.date() > husb_death_date.date():
-                husb_death_check = False
-
-        if wife_death != 'NA':
-            wife_death_date = datetime.datetime.strptime(wife_death, '%d %b %Y')
-            if divorce_date.date() > wife_death_date.date():
-                wife_death_check = False
-
-        if husb_death_check == True and wife_death_check == True:
-            return True
-        else:
-            return False
-
-
 def create_pretty_tables(individuals, families):
     """
     Creates tables to display file information.
     """
     pt_indi = PrettyTable(
-        ['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death', 'Dates Before Now', 'Child', 'Spouse'])
+        ['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death', 'Child', 'Spouse'])
     for item in individuals:
         pt_indi.add_row([item,
                          get_args(item, 'NAME', individuals),
@@ -308,13 +240,11 @@ def create_pretty_tables(individuals, families):
                          get_age(item, individuals),
                          is_alive(item, individuals),
                          get_args(item, 'DEAT', individuals),
-                         dates_b4_current_indi(get_args(item, 'BIRT', individuals),
-                                               get_args(item, 'DEAT', individuals)),
                          get_args(item, 'FAMC', individuals),
                          get_args(item, 'FAMS', individuals)])
 
     pt_fam = PrettyTable(
-        ['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name', 'Dates Before Now', 'DIV before DEAT'])
+        ['ID', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name'])
     for item in families:
         husband = get_args(item, 'HUSB', families)
         wife = get_args(item, 'WIFE', families)
@@ -322,10 +252,7 @@ def create_pretty_tables(individuals, families):
                         husband,
                         get_args(husband, 'NAME', individuals),
                         wife,
-                        get_args(wife, 'NAME', individuals),
-                        dates_b4_current_fam(get_args(item, 'MARR', families), get_args(item, 'DIV', families)),
-                        div_b4_death(get_args(item, 'DIV', families), get_args(husband, 'DEAT', individuals),
-                                     get_args(wife, 'DEAT', individuals))])
+                        get_args(wife, 'NAME', individuals)])
 
     print(pt_indi)
     print(pt_fam)
@@ -338,4 +265,3 @@ def main(file):
     individuals = read_individuals(file)
     families = read_families(file)
     create_pretty_tables(individuals, families)
-    print('Done')
