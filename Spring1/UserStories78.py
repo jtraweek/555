@@ -265,7 +265,7 @@ class TestAge(unittest.TestCase):
         self.assertEqual(condition_Satisfied_3, 36)
 
         condition_Satisfied_4 = get_age('I11', individuals)
-        self.assertEqual(condition_Satisfied_4, 'NA')
+        self.assertEqual(condition_Satisfied_4, -2)
 
         condition_Satisfied_5 = get_age('I3', individuals)
         self.assertEqual(condition_Satisfied_5, 'NA')
