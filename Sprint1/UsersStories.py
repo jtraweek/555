@@ -3,32 +3,31 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 
-def dates_b4_current_indi(d):
+def dates_b4_current_indi(original_date):
     """
     Checks birth, death dates to ensure they occurred before the current date
     """
-    if d != 'NA':
-        date = datetime.strptime(d, '%d %b %Y')
+    if original_date != 'NA':
+        date = datetime.strptime(original_date, '%d %b %Y')
         if date.date() < datetime.today().date():
             return True
         else:
             return False
     else:
-        return True
+        return 'No date available'
 
-
-def dates_b4_current_fam(d):
+def dates_b4_current_fam(original_date):
     """
     Checks marriage, divorce dates to ensure they occurred before current date
     """
-    if d != 'NA':
-        date = datetime.strptime(d, '%d %b %Y')
+    if original_date != 'NA':
+        date = datetime.strptime(original_date, '%d %b %Y')
         if date.date() < datetime.today().date():
             return True
         else:
             return False
     else:
-        return True
+        return 'No date available'
 
 
 def bir_marriage(person_id, family_id, individuals, families):
@@ -121,14 +120,17 @@ def div_b4_death(divorce, death):
     """
     Ensures divorce date occurred after death of husband & wife
     """
-    if divorce == 'NA' or death == 'NA':
-        return True
+    if divorce == 'NA': 
+        return 'No divorce'
+    elif death == 'NA':
+        return 'No death'
     else:
         divorce_date = datetime.strptime(divorce, '%d %b %Y')
         death_date = datetime.strptime(death, '%d %b %Y')
         if divorce_date.date() > death_date.date():
             return False
-    return True
+        else:
+            return True
 
 
 def age_less(person_id, individuals):

@@ -45,7 +45,7 @@ class TestMethods(unittest.TestCase):
         self.assertTrue(UsersStories.dates_b4_current_fam('11 DEC 2016'))
 
     def test_no_death_div_b4_death(self):
-        self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', 'NA'))
+        self.assertEqual(UsersStories.div_b4_death('12 NOV 2014', 'NA'), 'No death')
 
     def test_valid_div_b4_death(self):
         self.assertTrue(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2015'))
@@ -60,7 +60,7 @@ class TestMethods(unittest.TestCase):
         self.assertFalse(UsersStories.div_b4_death('12 NOV 2014', '15 JAN 2010'))
 
     def test_no_div_div_b4_death(self):
-        self.assertTrue(UsersStories.div_b4_death('NA', '15 JAN 2015'))
+        self.assertEqual(UsersStories.div_b4_death('NA', '15 JAN 2015'), 'No divorce')
 
     def test_birth_b4_death(self):  # YOU ARE TESTING THE FUNCTION, NOT THE VALUES!
         self.assertTrue(UsersStories.bir_deth('I1', individuals))
