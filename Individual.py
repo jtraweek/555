@@ -1,9 +1,13 @@
+from datetime import datetime
+
+
 class Individual(object):
-    """
-    Init all the attributes except list ones with None
-    Init list attributes with blank list
-    """
     def __init__(self):
+        """
+        Init all the attributes except list ones with None
+        Init list attributes with blank list
+        """
+        self._id = None
         self._name = None
         self._sex = None
         self._birt = None
@@ -11,20 +15,30 @@ class Individual(object):
         self._spouse = []
         self._child = None
 
-    """
-    Getter
-    :return 'NA' on missing records
-    """
+    @property
+    def id(self):
+        """
+        Getter
+        :return 'NA' on missing records
+        """
+        if not self._id:
+            return 'NA'
+        return self._id
+
+    @id.setter
+    def id(self, _id):
+        """
+        Setter
+        Replace the attribute with given object
+        """
+        self._id = _id
+
     @property
     def name(self):
         if not self._name:
             return 'NA'
         return self._name
 
-    """
-    Setter
-    Replace the attribute with given object
-    """
     @name.setter
     def name(self, name):
         self._name = name
@@ -47,7 +61,13 @@ class Individual(object):
 
     @birt.setter
     def birt(self, birt):
-        self._birt = birt
+        self._birt = datetime.strptime(birt, '%d %b %Y')
+
+    @property
+    def birt_str(self):
+        if not self._birt:
+            return 'NA'
+        return self._birt.strftime('%d %b %Y')
 
     @property
     def deat(self):
@@ -57,40 +77,46 @@ class Individual(object):
 
     @deat.setter
     def deat(self, deat):
-        self._deat = deat
+        self._deat = datetime.strptime(deat, '%d %b %Y')
 
-    """
-    Default getter for list attributes
-    :return the list object
-    """
+    @property
+    def deat_str(self):
+        if not self._deat:
+            return 'NA'
+        return self._deat.strftime('%d %b %Y')
+
     @property
     def spouse(self):
+        """
+        Default getter for list attributes
+        :return the list object
+        """
         if not self._spouse:
             return 'NA'
         return self._spouse
 
-    """
-    Setter for list attributes
-    Append the given object to the list
-    """
     @spouse.setter
     def spouse(self, spouse):
+        """
+        Setter for list attributes
+        Append the given object to the list
+        """
         self._spouse.append(spouse)
 
-    """
-    Deleter for list attributes
-    """
     @spouse.deleter
     def spouse(self):
+        """
+        Deleter for list attributes
+        """
         self._spouse = []
 
-    """
-    String getter for list attributes
-    :return the string version of the list object
-            append commas for multiple values
-    """
     @property
     def spouse_str(self):
+        """
+        String getter for list attributes
+        :return the string version of the list object
+                append commas for multiple values
+        """
         if not self._spouse:
             return 'NA'
         string = ''
@@ -108,3 +134,32 @@ class Individual(object):
     @child.setter
     def child(self, child):
         self._child = child
+
+    @property
+    def age(self):
+        """
+        Built-in age calculation
+        :return: 'NA' on older than 150
+        """
+        if not self._birt:
+            birth = datetime.today()
+        else:
+            birth = self.birt
+        if not self._deat:
+            death = datetime.today()
+        else:
+            death = self.deat
+        age = death.year - birth.year
+        if 0 <= age < 150:
+            return age
+        return 'NA'
+
+    @property
+    def alive(self):
+        """
+        Built-in alive validate
+        :return: False on older than 150 or death record exists
+        """
+        if not self._deat or self.age != 'NA':
+            return True
+        return False
