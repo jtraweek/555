@@ -139,7 +139,7 @@ class Individual(object):
     def age(self):
         """
         Built-in age calculation
-        :return: 'NA' on older than 150
+        :return: 'NA' on older than 150 or younger than 0
         """
         if not self._birt:
             birth = datetime.today()
@@ -158,7 +158,7 @@ class Individual(object):
     def alive(self):
         """
         Built-in alive validate
-        :return: False on older than 150 or death record exists
+        :return: False on age 'NA' or death record exists
         """
         if not self._deat or self.age != 'NA':
             return True

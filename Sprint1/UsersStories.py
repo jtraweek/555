@@ -16,6 +16,7 @@ def dates_b4_current_indi(original_date):
     else:
         return 'No date available'
 
+
 def dates_b4_current_fam(original_date):
     """
     Checks marriage, divorce dates to ensure they occurred before current date
@@ -120,7 +121,7 @@ def div_b4_death(divorce, death):
     """
     Ensures divorce date occurred after death of husband & wife
     """
-    if divorce == 'NA': 
+    if divorce == 'NA':
         return 'No divorce'
     elif death == 'NA':
         return 'No death'

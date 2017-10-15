@@ -1,6 +1,6 @@
 import Gedcom
 import unittest
-import UsersStories
+from Sprint1 import UsersStories
 
 file = open('../Test GEDCOM Files/Liu ged.ged', 'r')
 individuals = Gedcom.read_individuals(file)

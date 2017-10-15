@@ -9,7 +9,7 @@ def read_individuals(_file):
     Key value pairs are individual IDs and the dictionary containing their GEDCOM information.
     """
     # reset the cursor
-    file.seek(0)
+    _file.seek(0)
     # init variables
     dic = OrderedDict({})
     is_individual = False
@@ -18,7 +18,7 @@ def read_individuals(_file):
     date_tag = ''
 
     # loop through the file
-    for line in file:
+    for line in _file:
         # trim
         line = line.strip()
         words = line.split(' ')
@@ -93,9 +93,9 @@ def main(_file):
     """
     Print a pretty table
     """
-    individuals = read_individuals(file)
+    individuals = read_individuals(_file)
     create_pretty_tables(individuals)
 
 
-file = open('./Test GEDCOM Files/Liu ged.ged', 'r')
-main(file)
+# file = open('./Test GEDCOM Files/Liu ged.ged', 'r')
+# main(file)

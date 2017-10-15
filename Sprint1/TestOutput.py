@@ -1,5 +1,5 @@
 import Gedcom
-from Spring1 import UsersStories
+from Sprint1 import UsersStories
 
 file = open('../Test GEDCOM Files/Liu ged.ged', 'r')
 Gedcom.main(file)
