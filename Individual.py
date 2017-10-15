@@ -1,4 +1,8 @@
 class Individual(object):
+    """
+    Init all the attributes except list ones with None
+    Init list attributes with blank list
+    """
     def __init__(self):
         self._name = None
         self._sex = None
@@ -7,12 +11,20 @@ class Individual(object):
         self._spouse = []
         self._child = None
 
+    """
+    Getter
+    :return 'NA' on missing records
+    """
     @property
     def name(self):
         if not self._name:
             return 'NA'
         return self._name
 
+    """
+    Setter
+    Replace the attribute with given object
+    """
     @name.setter
     def name(self, name):
         self._name = name
@@ -47,20 +59,36 @@ class Individual(object):
     def deat(self, deat):
         self._deat = deat
 
+    """
+    Default getter for list attributes
+    :return the list object
+    """
     @property
     def spouse(self):
         if not self._spouse:
             return 'NA'
         return self._spouse
 
+    """
+    Setter for list attributes
+    Append the given object to the list
+    """
     @spouse.setter
     def spouse(self, spouse):
         self._spouse.append(spouse)
 
+    """
+    Deleter for list attributes
+    """
     @spouse.deleter
     def spouse(self):
-        self._spouse = None
+        self._spouse = []
 
+    """
+    String getter for list attributes
+    :return the string version of the list object
+            append commas for multiple values
+    """
     @property
     def spouse_str(self):
         if not self._spouse:
