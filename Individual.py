@@ -8,6 +8,7 @@ class Individual(object):
         Init list attributes with blank list
         """
         self._id = None
+        self._id_count = 1
         self._name = None
         self._sex = None
         self._birt = None
@@ -163,3 +164,11 @@ class Individual(object):
         if not self._deat or self.age != 'NA':
             return True
         return False
+
+    @property
+    def id_count(self):
+        return self._id_count
+
+    @id_count.setter
+    def id_count(self, count):
+        self._id_count = count

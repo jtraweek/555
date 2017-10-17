@@ -75,6 +75,8 @@ def read_individuals(_file):
                     is_date = False
                     date_tag = ''
         if ind.id != 'NA':
+            if ind.id in dic:
+                ind.id_count = dic[ind.id].id_count + 1
             dic[ind.id] = ind
     return dic
 
