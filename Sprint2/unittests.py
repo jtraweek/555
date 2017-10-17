@@ -58,7 +58,7 @@ class JT(unittest.TestCase):
         families = Gedcom.read_families(file)
         self.assertTrue(user_story_11.no_bigamy('I1', individuals, families))
         self.assertTrue(user_story_11.no_bigamy('I11', individuals, families))
-        self.assertTrue(user_story_11.no_bigamy('I4', individuals, families))
+        self.assertTrue(user_story_11.no_bigamy('I14', individuals, families))
         self.assert_False(user_story_11.no_bigamy('I8', individuals, families))
         file.close()
         
