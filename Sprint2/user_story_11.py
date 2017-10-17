@@ -9,7 +9,7 @@ import Gedcom
 from datetime import datetime
 
 
-def no_bigamy(person):
+def no_bigamy(person, individuals, families):
     spouses = individuals[person]['FAMS']
     
     if len(spouses) < 2:
