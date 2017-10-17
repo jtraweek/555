@@ -42,26 +42,25 @@ class JL(unittest.TestCase):
         condition4 = us22.is_id_unique('F1', families)
         self.assertEqual(condition4, False)
         file.close()
-        
+
+
 class JT(unittest.TestCase):
     def test_us10(self):
-        birthday = datetime.strptime('29 AUG 1993')
-        marriage_ok = datetime.strptime('30 OCT 2018')
-        marriage_not_ok = datetime.strptime('12 DEC 2006')
-        self.asserTrue(user_story_10.marriage_after_14(birthday.date(), marriage_ok.date()))
-        self.asserFalse(user_story_10.marriage_after_14(birthday.date(), marriage_not_ok.date()))
+        birthday = datetime.strptime('29 AUG 1993', '%d %b %Y')
+        marriage_ok = datetime.strptime('30 OCT 2018', '%d %b %Y')
+        marriage_not_ok = datetime.strptime('12 DEC 2006', '%d %b %Y')
+        self.assertTrue(user_story_10.marriage_after_14(birthday.date(), marriage_ok.date()))
+        self.assertFalse(user_story_10.marriage_after_14(birthday.date(), marriage_not_ok.date()))
         self.assertEqual(user_story_10.marriage_after_14(birthday.date(), 'NA'), 'Not married')
-        
-    def test_us11(self):
-        file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-        individuals = Gedcom.read_individuals(file)
-        families = Gedcom.read_families(file)
-        self.assertTrue(user_story_11.no_bigamy('I1', individuals, families))
-        self.assert_False(user_story_11.no_bigamy('I8', individuals, families))
-        file.close()
-        
-        
 
+    def test_us11(self):
+        file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+        GedcomClass.main(file)
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        self.assertTrue(user_story_11.no_bigamy('I1', individuals, families))
+        self.assertFalse(user_story_11.no_bigamy('I8', individuals, families))
+        file.close()
 
 
 if __name__ == "__main__":

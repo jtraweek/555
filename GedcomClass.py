@@ -186,7 +186,3 @@ def main(_file):
     individuals = read_individuals(_file)
     families = read_families(_file)
     create_pretty_tables(individuals, families)
-
-
-# file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-# main(file)
