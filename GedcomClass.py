@@ -44,6 +44,13 @@ def read_individuals(_file):
 
         if is_individual:
             tag = words[1]
+            # date tag
+            # prepare to record
+            if (tag == 'BIRT' or tag == 'DEAT') and level == 1:
+                is_date = True
+                date_tag = tag
+                continue
+
             for i in range(2, len(words)):
                 args += words[i] + ' '
             args = args[:-1]
@@ -60,11 +67,6 @@ def read_individuals(_file):
                         ind.child = args
                     elif tag == 'FAMS':
                         ind.spouse = args
-                    # date tag
-                    # prepare to record
-                    elif tag == 'BIRT' or tag == 'DEAT':
-                        is_date = True
-                        date_tag = tag
                 if level == 2 and tag == 'DATE' and is_date:
                     if date_tag == 'BIRT':
                         ind.birt = args
@@ -97,5 +99,5 @@ def main(_file):
     create_pretty_tables(individuals)
 
 
-# file = open('./Test GEDCOM Files/Liu ged.ged', 'r')
-# main(file)
+file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+main(file)
