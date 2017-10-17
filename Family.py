@@ -19,9 +19,17 @@ class Family(object):
         self._id = None
         self._id_count = 1
         self._wife = None
+<<<<<<< HEAD
+        self._wifeName = None
+        self._div = None
+        self._marr = None
+        self._husb = None
+        self._husbName = None
+=======
         self._husb = None
         self._marr = None
         self._div = None
+>>>>>>> d893aa66d5067761192c3d2e149c62c49c297a76
         self._chil = []
 
     @property
@@ -52,6 +60,16 @@ class Family(object):
     def wife(self, wife):
         self._wife = wife
 
+    @property
+    def wifeName(self):
+        if not self._wifeName:
+            return 'NA'
+        return self._wifeName
+
+    @wifeName.setter
+    def wifeName(self, wifeName):
+        self._wifeName = wifeName
+        
     @property
     def div(self):
         if not self._div:
@@ -94,6 +112,16 @@ class Family(object):
     def husb(self, husb):
         self._husb = husb
 
+    @property
+    def husbName(self):
+        if not self._husbName:
+            return 'NA'
+        return self._husbName
+
+    @husbName.setter
+    def husbName(self, husbName):
+        self._husbName = husbName
+        
     @property
     def chil(self):
         """
