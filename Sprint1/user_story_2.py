@@ -10,22 +10,21 @@ import Gedcom
    Birth date should occur before Marriage date for an indivisual 
    :return: True on valid dates after comparing both dates
 """
-'''
+
 file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
 indivisuals = GedcomClass.read_individuals(file)
-ind-fam = indivisuals.spouse_str
-'''
+families = GedcomClass.read_families(file)
+person = indivisuals.get()
+family = families.get()
 
-def bir_marriage(person_id, family_id, individuals, families):
+def bir_marriage(family,person):
     # this method will ensure that the birth date is before the marriage date.
-    b = Gedcom.get_args(person_id, 'BIRT', individuals)
-    m = Gedcom.get_args(family_id, 'MARR', families)
+    Birth = person.birt_str
+    Marriage = family.marr_str
 
-    if b == 'NA' or m == 'NA':
+    if Birth == 'NA' or Marriage == 'NA':
         return True
-    b_date = datetime.strptime(b, '%d %b %Y')
-    m_date = datetime.strptime(m, '%d %b %Y')
 
-    if m_date >= b_date:
+    if Birth >= Marriage:
         return True
     return False
