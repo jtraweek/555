@@ -4,7 +4,7 @@ from Sprint2 import us15
 from Sprint2 import us22
 import GedcomClass
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
 
 

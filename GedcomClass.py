@@ -35,10 +35,12 @@ def read_individuals(_file):
             # individual tag
             # create a new entry
             # prepare to record
-            ind = Individual()
             if len(words) == 3 and words[2] == 'INDI':
                 is_individual = True
+                ind = Individual()
                 ind.id = words[1].replace("@", "")
+                if ind.id in dic:
+                    ind.id_count = dic[ind.id].id_count + 1
             else:
                 is_individual = False
             continue
@@ -76,8 +78,6 @@ def read_individuals(_file):
                     is_date = False
                     date_tag = ''
         if ind.id != 'NA':
-            if ind.id in dic:
-                ind.id_count = dic[ind.id].id_count + 1
             dic[ind.id] = ind
     return dic
 
@@ -113,10 +113,12 @@ def read_families(_file):
             # individual tag
             # create a new entry
             # prepare to record
-            fam = Family()
             if len(words) == 3 and words[2] == 'FAM':
                 is_family = True
+                fam = Family()
                 fam.id = words[1].replace("@", "")
+                if fam.id in dic:
+                    fam.id_count = dic[fam.id].id_count + 1
             else:
                 is_family = False
             continue
@@ -152,8 +154,6 @@ def read_families(_file):
                     is_date = False
                     date_tag = ''
         if fam.id != 'NA':
-            if fam.id in dic:
-                fam.id_count = dic[fam.id].id_count + 1
             dic[fam.id] = fam
     return dic
 
@@ -188,5 +188,5 @@ def main(_file):
     create_pretty_tables(individuals, families)
 
 
-file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-main(file)
+# file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+# main(file)
