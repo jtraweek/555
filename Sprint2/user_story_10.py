@@ -5,17 +5,15 @@ Created on Tue Oct 17 11:21:29 2017
 User Story 10: Marriage after 14
 Marriage dates should only occur after the individual has turned 14 years of age.
 """
-from dateutil import relativedelta 
+from dateutil import relativedelta
+
 
 def marriage_after_14(birthday, marriage):
     if marriage == 'NA':
         return 'Not married'
     else:
         age_at_marriage = relativedelta.relativedelta(marriage, birthday)
-        print(age_at_marriage.years)
-        if age_at_marriage.years <= 14:
+        if 0 <= age_at_marriage.years < 14:
             return False
         else:
-            return True 
-
-        
+            return True

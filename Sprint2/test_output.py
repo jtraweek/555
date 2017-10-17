@@ -1,7 +1,27 @@
 import GedcomClass
+from Sprint2 import user_story_10
+from Sprint2 import user_story_11
 from Sprint2 import us14
 from Sprint2 import us15
 from Sprint2 import us22
+
+file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+GedcomClass.main(file)
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+for person in individuals.values():
+    spouses = person.spouse
+    if spouses == 'NA':
+        continue
+    for spouse in spouses:
+        if not user_story_10.marriage_after_14(person.birt, families.get(spouse).marr):
+            print('Error: INDIVIDUAL: US010: {}: Marriage {} before 14 years old'
+                  .format(person.id, families.get(spouse).marr_str))
+
+for person in individuals:
+    if not user_story_11.no_bigamy(person, individuals, families):
+        print('Error: INDIVIDUAL: US011: {}: Marriage occurs during another marriage'
+              .format(person))
 
 file = open('./us14_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
