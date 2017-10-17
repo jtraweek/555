@@ -17,12 +17,13 @@ class Family(object):
         Init list attributes with blank list
         """
         self._id = None
+        self._id_count = 1
         self._wife = None
-        self._div = None
-        self._marr = None
         self._husb = None
+        self._marr = None
+        self._div = None
         self._chil = []
-        
+
     @property
     def id(self):
         """
@@ -132,3 +133,11 @@ class Family(object):
             string += c + ', '
         string = string[:-2]
         return string
+
+    @property
+    def id_count(self):
+        return self._id_count
+
+    @id_count.setter
+    def id_count(self, count):
+        self._id_count = count
