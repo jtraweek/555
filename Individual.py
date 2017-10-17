@@ -142,9 +142,9 @@ class Individual(object):
         :return: 'NA' on older than 150 or younger than 0
         """
         if not self._birt:
-            birth = datetime.today()
-        else:
-            birth = self.birt
+            return 'NA'
+
+        birth = self.birt
         if not self._deat:
             death = datetime.today()
         else:
