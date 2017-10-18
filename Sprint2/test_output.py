@@ -5,6 +5,8 @@ from Sprint2 import us14
 from Sprint2 import us15
 from Sprint2 import us16
 from Sprint2 import us22
+from Sprint2 import user_story_09
+from Sprint2 import user_story_12
 
 file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
 GedcomClass.main(file)
@@ -57,3 +59,25 @@ for person in individuals:
 for family in families:
     if not us22.is_id_unique(family, families):
         print('Error: FAMILY: US022: {}: id is not unique'.format(family))
+        
+file = open('./us09_us12.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+GedcomClass.main(file)
+
+for family_id in families:
+    children_list = family_id.chil_str
+    if children_list == 'NA':
+        continue
+    for child in children_list:
+        if not user_story_09.birth_before_parents_death(family_id, child, individuals, families):
+            print('Error: INDIVIDUAL: US09: {}: Not born before parent death'.format(family))
+
+for family_id in families:
+    children_list = family_id.chil_str
+    if children_list == 'NA':
+        continue
+    for child in children_list:
+        if not user_story_09.birth_before_parents_death(family_id, child, individuals, families):
+            print('Error: INDIVIDUAL: US12: {}: Parents not too old'.format(family))
+            
