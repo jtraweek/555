@@ -3,6 +3,7 @@ from Sprint2 import user_story_10
 from Sprint2 import user_story_11
 from Sprint2 import us14
 from Sprint2 import us15
+from Sprint2 import us16
 from Sprint2 import us22
 
 file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
@@ -37,6 +38,14 @@ GedcomClass.main(file)
 for family in families:
     if not us15.has_more_than_fifteen_siblings(family, families):
         print('Error: FAMILY: US015: {}: has more than 15 siblings'.format(family))
+
+file = open('./us16_test.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+GedcomClass.main(file)
+for family in families:
+    if not us16.same_male_last_name(family, individuals, families):
+        print('Error: FAMILY: US016: {}: Last names of male members are not the same'.format(family))
 
 file = open('./us22_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)

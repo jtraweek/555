@@ -2,6 +2,7 @@ import unittest
 from datetime import datetime
 from Sprint2 import us14
 from Sprint2 import us15
+from Sprint2 import us16
 from Sprint2 import us22
 from Sprint2 import user_story_10
 from Sprint2 import user_story_11
@@ -27,6 +28,16 @@ class JL(unittest.TestCase):
         self.assertEqual(condition1, True)
         condition2 = us15.has_more_than_fifteen_siblings('F2', families)
         self.assertEqual(condition2, False)
+        file.close()
+
+    def test_us16(self):
+        file = open('./us16_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        condition1 = us16.same_male_last_name('F1', individuals, families)
+        self.assertEqual(condition1, False)
+        condition2 = us16.same_male_last_name('F2', individuals, families)
+        self.assertEqual(condition2, True)
         file.close()
 
     def test_us22(self):
@@ -55,7 +66,6 @@ class JT(unittest.TestCase):
 
     def test_us11(self):
         file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-        GedcomClass.main(file)
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_11.no_bigamy('I1', individuals, families))
