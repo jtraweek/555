@@ -17,7 +17,7 @@ families = GedcomClass.read_families(file)
 person = indivisuals.get()
 family = families.get()
 
-def bir_marriage(family,person):
+def bir_marriage(person,family,Birth,Marriage):
     # this method will ensure that the birth date is before the marriage date.
     Birth = person.birt_str
     Marriage = family.marr_str
