@@ -20,7 +20,7 @@ file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
 indivisuals = GedcomClass.read_individuals(file)
 person_istance = indivisuals.get()
 
-def bir_deth(person_istance):
+def bir_deth(person_istance,birth,death):
     # this method will compare between birth and date to find legit date format.
     birth = person_istance.birt_str
     death = person_istance.deat_str
