@@ -7,7 +7,6 @@ from Sprint2 import us22
 from Sprint2 import user_story_10
 from Sprint2 import user_story_11
 import GedcomClass
-import Gedcom
 
 
 class JL(unittest.TestCase):
