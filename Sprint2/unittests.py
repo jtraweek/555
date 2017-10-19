@@ -4,8 +4,10 @@ from Sprint2 import us14
 from Sprint2 import us15
 from Sprint2 import us16
 from Sprint2 import us22
+from Sprint2 import user_story_09
 from Sprint2 import user_story_10
 from Sprint2 import user_story_11
+from Sprint2 import user_story_12
 import GedcomClass
 
 
@@ -71,6 +73,28 @@ class JT(unittest.TestCase):
         self.assertTrue(user_story_11.no_bigamy('I11', individuals, families))
         self.assertTrue(user_story_11.no_bigamy('I14', individuals, families))
         self.assertFalse(user_story_11.no_bigamy('I8', individuals, families))
+        file.close()
+
+
+class CS(unittest.TestCase):
+    def test_us09(self):
+        file = open('./us09_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        self.assertTrue(user_story_09.birth_before_parents_death('I1', individuals, families))
+        self.assertTrue(user_story_09.birth_before_parents_death('I4', individuals, families))
+        self.assertTrue(user_story_09.birth_before_parents_death('I5', individuals, families))
+        self.assertFalse(user_story_09.birth_before_parents_death('I3', individuals, families))
+        file.close()
+
+    def test_us12(self):
+        file = open('./us12_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        self.assertTrue(user_story_12.parents_not_too_old('I1', individuals, families))
+        self.assertFalse(user_story_12.parents_not_too_old('I3', individuals, families))
+        self.assertFalse(user_story_12.parents_not_too_old('I4', individuals, families))
+        self.assertTrue(user_story_12.parents_not_too_old('I5', individuals, families))
         file.close()
 
 

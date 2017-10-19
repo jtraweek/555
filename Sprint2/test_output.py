@@ -60,26 +60,18 @@ for family in families:
     if not us22.is_id_unique(family, families):
         print('Error: FAMILY: US022: {}: id is not unique'.format(family))
 
-file = open('./us09_us12.ged', 'r')
+file = open('./us09_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
-dic = {}
+for child in individuals:
+    if not user_story_09.birth_before_parents_death(child, individuals, families):
+        print('Error: INDIVIDUAL: US09: {}: Child birth after parents death'.format(child))
 
-for family in families.values():
-    children_list = family.chil_str
-    if children_list == 'NA':
-        continue
-    for child in children_list:
-        if not user_story_09.birth_before_parents_death(family.id, child, individuals, families):
-            dic['Error: INDIVIDUAL: US09: {}: Not born before parent death'.format(family.id)] = ''
-
-for family in families.values():
-    children_list = family.chil_str
-    if children_list == 'NA':
-        continue
-    for child in children_list:
-        if not user_story_12.parents_not_too_old(family.id, child, individuals, families):
-            dic['Error: INDIVIDUAL: US12: {}: Parents are too old when child birth'.format(family.id)] = ''
-for line in dic:
-    print(line)
+file = open('./us12_test.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+GedcomClass.main(file)
+for child in individuals:
+    if not user_story_12.parents_not_too_old(child, individuals, families):
+        print('Error: INDIVIDUAL: US12: {}: Parents are too old when child birth'.format(child))

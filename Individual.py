@@ -161,7 +161,7 @@ class Individual(object):
         Built-in alive validate
         :return: False on age 'NA' or death record exists
         """
-        if not self._deat or self.age != 'NA':
+        if not self._deat and self.age != 'NA':
             return True
         return False
 
