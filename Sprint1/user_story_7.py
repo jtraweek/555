@@ -11,9 +11,7 @@ from datetime import datetime
    Assuring an indivisual has a date bigger than 0 and less than 150
    :return: True on valid
 """
-file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-indivisuals = GedcomClass.read_individuals(file)
-person_istance = indivisuals.get()
+
 
 def get_age(person_id, individuals):
     """

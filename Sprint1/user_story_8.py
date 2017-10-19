@@ -12,11 +12,6 @@ import GedcomClass
    Birth of spouse and their marriage date should occur before Marriage date for an indivisual
    :return: True on valid dates after checking the spouse marriage and birth dates and then the indivisual.
 """
-file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-indivisuals = GedcomClass.read_individuals(file)
-families = GedcomClass.read_families(file)
-ind = indivisuals.get()
-fam = families.get()
 
 def birth_before_marriage(ind,fam):
     """
