@@ -67,9 +67,9 @@ def read_individuals(_file):
                     elif tag == 'SEX':
                         ind.sex = args
                     elif tag == 'FAMC':
-                        ind.child = args
+                        ind.child_of = args
                     elif tag == 'FAMS':
-                        ind.spouse = args
+                        ind.spouse_of = args
                 if level == 2 and tag == 'DATE' and is_date:
                     if date_tag == 'BIRT':
                         ind.birt = args
@@ -166,7 +166,7 @@ def create_pretty_tables(individuals, families):
         ['ID', 'Name', 'Gender', 'Birthday', 'Age', 'Alive', 'Death', 'Child', 'Spouse'])
     for item in individuals.values():
         pt_indi.add_row([item.id, item.name, item.sex, item.birt_str, item.age,
-                         item.alive, item.deat_str, item.child, item.spouse_str])
+                         item.alive, item.deat_str, item.child_of, item.spouse_str])
 
     pt_fam = PrettyTable(
         ['ID', 'Married', 'Divorced', 'Husband ID', 'Husband Name', 'Wife ID', 'Wife Name', 'Children'])
@@ -186,3 +186,19 @@ def main(_file):
     individuals = read_individuals(_file)
     families = read_families(_file)
     create_pretty_tables(individuals, families)
+
+
+def ged_individual(_id, individuals):
+    _object = individuals.get(_id)
+    if not _object:
+        _object = Individual()
+        print('Error: {} not found in individuals'.format(_id))
+    return _object
+
+
+def ged_family(_id, families):
+    _object = families.get(_id)
+    if not _object:
+        _object = Family()
+        print('Error: {} not found in families'.format(_id))
+    return _object

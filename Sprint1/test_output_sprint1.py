@@ -93,7 +93,7 @@ individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for person in individuals.values():
-    family_id = person.child
+    family_id = person.child_of
     if family_id != 'NA':
         if not user_story_8.birth_before_marriage(person, families.get(family_id)):
             print('Error: FAMILY: US08: {}: Child {} birthday occurs before marriage or after divorce'

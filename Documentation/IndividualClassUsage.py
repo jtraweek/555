@@ -8,11 +8,11 @@ ind = Individual()
 print('First test:')
 print(ind.name)
 print(ind.sex)
-print(ind.child)
+print(ind.child_of)
 print(ind.birt)
 print(ind.birt_str)
 print(ind.deat)
-print(ind.spouse)
+print(ind.spouse_of)
 print(ind.spouse_str)
 
 # set values
@@ -22,10 +22,10 @@ ind.name = 'test'
 ind.sex = 'test'
 ind.birt = '1 JAN 1820'
 ind.deat = '1 JAN 1830'
-ind.child = 'test'
+ind.child_of = 'test'
 print(ind.name)
 print(ind.sex)
-print(ind.child)
+print(ind.child_of)
 # note that the date attribute has two getters
 # default getter will return a datetime object
 # _str getter will return a format date string
@@ -41,18 +41,18 @@ print(ind.alive)
 # note that the list attributes have different implementation of setter
 # list setter will only append the given object to the list attributes
 print('Third test:')
-ind.spouse = 'test1'
+ind.spouse_of = 'test1'
 # the list attributes also have two getters
 # normal getter will return list object
 # _str getter will return a string version of the list
-print(ind.spouse)
+print(ind.spouse_of)
 print(ind.spouse_str)
-ind.spouse = 'test2'
-print(ind.spouse)
+ind.spouse_of = 'test2'
+print(ind.spouse_of)
 print(ind.spouse_str)
 
 # list attributes have a deleter
 print('Fourth test:')
-del ind.spouse
-print(ind.spouse)
+del ind.spouse_of
+print(ind.spouse_of)
 print(ind.spouse_str)

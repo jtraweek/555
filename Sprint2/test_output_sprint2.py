@@ -13,7 +13,7 @@ GedcomClass.main(file)
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 for person in individuals.values():
-    spouses = person.spouse
+    spouses = person.spouse_of
     if spouses == 'NA':
         continue
     for spouse in spouses:

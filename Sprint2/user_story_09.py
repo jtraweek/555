@@ -6,7 +6,6 @@ Created on Tue Oct 16 19:46:07 2017
 @author: celestesakhile
 """
 
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 """
@@ -18,7 +17,7 @@ from dateutil.relativedelta import relativedelta
 
 def birth_before_parents_death(person_id, individuals, families):
     person = individuals.get(person_id)
-    family_id = person.child
+    family_id = person.child_of
     child_birth = person.birt
     if family_id == 'NA' or child_birth == 'NA':
         return True

@@ -87,7 +87,7 @@ class Individual(object):
         return self._deat.strftime('%d %b %Y')
 
     @property
-    def spouse(self):
+    def spouse_of(self):
         """
         Default getter for list attributes
         :return the list object
@@ -96,16 +96,16 @@ class Individual(object):
             return 'NA'
         return self._spouse
 
-    @spouse.setter
-    def spouse(self, spouse):
+    @spouse_of.setter
+    def spouse_of(self, spouse):
         """
         Setter for list attributes
         Append the given object to the list
         """
         self._spouse.append(spouse)
 
-    @spouse.deleter
-    def spouse(self):
+    @spouse_of.deleter
+    def spouse_of(self):
         """
         Deleter for list attributes
         """
@@ -127,13 +127,13 @@ class Individual(object):
         return string
 
     @property
-    def child(self):
+    def child_of(self):
         if not self._child:
             return 'NA'
         return self._child
 
-    @child.setter
-    def child(self, child):
+    @child_of.setter
+    def child_of(self, child):
         self._child = child
 
     @property

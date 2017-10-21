@@ -16,7 +16,7 @@ Created on Tue Oct 16 15:23:67 2017
 
 def parents_not_too_old(person_id, individuals, families):
     person = individuals.get(person_id)
-    family_id = person.child
+    family_id = person.child_of
     if family_id == 'NA':
         return True
     family = families.get(family_id)

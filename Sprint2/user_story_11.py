@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 def no_bigamy(person, individuals, families):
-    spouses = individuals.get(person).spouse
+    spouses = individuals.get(person).spouse_of
     if spouses != 'NA' and len(spouses) > 1:
         marriages = []
         divorces = []
