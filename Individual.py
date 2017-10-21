@@ -13,8 +13,8 @@ class Individual(object):
         self._sex = None
         self._birt = None
         self._deat = None
-        self._spouse = []
-        self._child = None
+        self._spouse_of = []
+        self._child_of = None
 
     @property
     def id(self):
@@ -92,9 +92,9 @@ class Individual(object):
         Default getter for list attributes
         :return the list object
         """
-        if not self._spouse:
+        if not self._spouse_of:
             return 'NA'
-        return self._spouse
+        return self._spouse_of
 
     @spouse_of.setter
     def spouse_of(self, spouse):
@@ -102,14 +102,14 @@ class Individual(object):
         Setter for list attributes
         Append the given object to the list
         """
-        self._spouse.append(spouse)
+        self._spouse_of.append(spouse)
 
     @spouse_of.deleter
     def spouse_of(self):
         """
         Deleter for list attributes
         """
-        self._spouse = []
+        self._spouse_of = []
 
     @property
     def spouse_str(self):
@@ -118,23 +118,23 @@ class Individual(object):
         :return the string version of the list object
                 append commas for multiple values
         """
-        if not self._spouse:
+        if not self._spouse_of:
             return 'NA'
         string = ''
-        for s in self._spouse:
+        for s in self._spouse_of:
             string += s + ', '
         string = string[:-2]
         return string
 
     @property
     def child_of(self):
-        if not self._child:
+        if not self._child_of:
             return 'NA'
-        return self._child
+        return self._child_of
 
     @child_of.setter
     def child_of(self, child):
-        self._child = child
+        self._child_of = child
 
     @property
     def age(self):

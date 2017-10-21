@@ -188,7 +188,7 @@ def main(_file):
     create_pretty_tables(individuals, families)
 
 
-def ged_individual(_id, individuals):
+def get_individual(_id, individuals):
     _object = individuals.get(_id)
     if not _object:
         _object = Individual()
@@ -196,7 +196,7 @@ def ged_individual(_id, individuals):
     return _object
 
 
-def ged_family(_id, families):
+def get_family(_id, families):
     _object = families.get(_id)
     if not _object:
         _object = Family()
