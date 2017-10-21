@@ -8,7 +8,7 @@ from Sprint1 import user_story_6
 from Sprint1 import user_story_7
 from Sprint1 import user_story_8
 
-file = open('./user_story_1_test.ged', 'r')
+file = open('./test_ged/user_story_1_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 GedcomClass.main(file)
 for person in individuals.values():
@@ -19,7 +19,7 @@ for person in individuals.values():
     if not user_story_1.dates_b4_current_indi(deat):
         print('Error: INDIVIDUAL: US01: {}: Death {} occurs in the future'.format(person.id, deat))
 
-file = open('./user_story_2_test.ged', 'r')
+file = open('./test_ged/user_story_2_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
@@ -35,21 +35,21 @@ for family in families.values():
             print('Error: FAMILY: US02: {}: Wife {} birthday occurs after marriage'
                   .format(family.id, wife_id))
 
-file = open('./user_story_3_test.ged', 'r')
+file = open('./test_ged/user_story_3_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 GedcomClass.main(file)
 for person in individuals.values():
     if not user_story_3.bir_deth(person):
         print('Error: INDIVIDUAL: US03: {}: Birthday occurs after death'.format(person.id))
 
-file = open('./user_story_4_test.ged', 'r')
+file = open('./test_ged/user_story_4_test.ged', 'r')
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for family in families.values():
     if not user_story_4.is_marriage_before_divorce(family):
         print('Error: FAMILY: US04: {}: Marriage occurs after divorce'.format(family.id))
 
-file = open('./user_story_5_test.ged', 'r')
+file = open('./test_ged/user_story_5_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
@@ -65,7 +65,7 @@ for family in families.values():
             print('Error: FAMILY: US05: {}: Wife {} death occurs before marriage'.
                   format(family.id, wife_id))
 
-file = open('./user_story_6_test.ged', 'r')
+file = open('./test_ged/user_story_6_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
@@ -81,14 +81,14 @@ for family in families.values():
             print('Error: FAMILY: US06: {}: Divorce occurs after wife {} death'
                   .format(family.id, wife_id))
 
-file = open('./user_story_7_test.ged', 'r')
+file = open('./test_ged/user_story_7_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 GedcomClass.main(file)
 for person in individuals.values():
     if not user_story_7.age_not_too_old(person):
         print('Error: INDIVIDUAL: US07: {} age is larger than 150'.format(person.id))
 
-file = open('./user_story_8_test.ged', 'r')
+file = open('./test_ged/user_story_8_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)

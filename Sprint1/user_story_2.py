@@ -1,10 +1,7 @@
-'''
+"""
 @author: Maryam
 Created: 10/17/2017
-'''
-from datetime import datetime
-import GedcomClass
-import Gedcom
+"""
 
 """
    User Story 2: Birth before Marriage

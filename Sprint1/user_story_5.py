@@ -2,8 +2,6 @@
 """
 Created on Tue Oct 17 11:17:08 2017
 """
-from datetime import datetime
-import Gedcom
 
 
 def is_marriage_before_death(person, family):
