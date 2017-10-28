@@ -11,7 +11,7 @@ from Family import Family
 from Individual import Individual
 
 
-def living_married(families,individuals):
+def living_married(indivisual,families,individuals):
     lm = []
     # getting every indivisual id from indivisuals dictionary.
     for id in individuals:

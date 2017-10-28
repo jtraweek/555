@@ -10,7 +10,7 @@ import GedcomClass
 from Individual import Individual
 
 
-def deceased_people(individuals):
+def deceased_people(indivisual,individuals):
     deceased = []
     # getting every indivisual id from indivisuals dictionary.
     for id in individuals:
