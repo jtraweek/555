@@ -21,6 +21,10 @@ for individual in individuals.values():
 file = open('./test_ged/user_story_18_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
+for family in families.values():
+    if not user_story_18.siblings_not_married(family, individuals):
+         print('Error: FAMILY: US18: {}: Siblings are married.'
+              .format(family.id))
 
 file = open('./test_ged/user_story_21_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
