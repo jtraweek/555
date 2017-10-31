@@ -13,28 +13,19 @@ Created on Tue Oct 16 15:23:67 2017
    :return: True if conditions are satisfied
 """
 
-def parents_not_too_old(family_id, individual_id, individuals, families):
-    
+
+def parents_not_too_old(person_id, individuals, families):
+    person = individuals.get(person_id)
+    family_id = person.child_of
+    if family_id == 'NA':
+        return True
     family = families.get(family_id)
-    husb_id = family.husb
-    wife_id = family.wife
-    
-    husb_info = individuals.get(husb_id)
-    wife_info = individuals.get(wife_id)
-    
-    husb_age= husb_info.age
-    wife_age= wife_info.age
-    
-    
-    if family.chil == 'NA':
-            return False
-    
-    for child_id in family.chil:
-        child = individuals.get(child_id)
-        if child == individual_id:
-            child_age = child.age
-            if (wife_age - child_age < 60 ) and (husb_age - child_age < 80 ) :
-                return True
-            else:
-                return False
-            
+
+    husb_birt = individuals.get(family.husb).birt
+    wife_birt = individuals.get(family.wife).birt
+    child_birt = person.birt
+
+    if husb_birt == 'NA' or child_birt.year - husb_birt.year < 80:
+        if wife_birt == 'NA' or child_birt.year - wife_birt.year < 60:
+            return True
+    return False

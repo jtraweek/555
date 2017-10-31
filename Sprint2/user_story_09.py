@@ -6,9 +6,7 @@ Created on Tue Oct 16 19:46:07 2017
 @author: celestesakhile
 """
 
-from datetime import datetime
 from dateutil.relativedelta import relativedelta
-
 
 """
    User Story 9: Birth before death of parents
@@ -16,56 +14,24 @@ from dateutil.relativedelta import relativedelta
    :return: True on valid dates after checking the parent marriage and death dates and then the individual.
 """
 
-def birth_before_parents_death(family_id, individual_id, individuals, families):
-    
+
+def birth_before_parents_death(person_id, individuals, families):
+    person = individuals.get(person_id)
+    family_id = person.child_of
+    child_birth = person.birt
+    if family_id == 'NA' or child_birth == 'NA':
+        return True
+
     family = families.get(family_id)
-    husb_id = family.husb
-    wife_id = family.wife
-    
-    husb_info = individuals.get(husb_id)
-    wife_info = individuals.get(wife_id)
-    nine_mon_rel = relativedelta(months=9)
-    
-    if husb_info.alive == True and wife_info.alive == True:
-        return False
-        
-    elif husb_info.alive == True and wife_info.alive == False:
-        wife_deat = wife_info.deat
-        if family.chil == 'NA':
+    husb = individuals.get(family.husb)
+    wife = individuals.get(family.wife)
+
+    if not husb.alive:
+        husb_deat = husb.deat + relativedelta(months=9)
+        if child_birth > husb_deat:
             return False
-        for child_id in family.chil:
-            child = individuals.get(child_id)
-            if child == individual_id:
-                child_birth = child.birt
-                if child_birth < wife_deat:
-                    return False
-                else:
-                    return True
-      
-    elif husb_info.alive == False and wife_info.alive == True:
-        husb_deat = husb_info.deat
-        if family.chil == 'NA':
+    if not wife.alive:
+        wife_deat = wife.deat
+        if child_birth > wife_deat:
             return False
-        for child_id in family.chil:
-            child = individuals.get(child_id)
-            if child == individual_id:
-                child_birth = child.birt
-                if child_birth < (nine_mon_rel + husb_deat):
-                    return False
-                else:
-                    return True
-        
-    else: 
-        husb_deat = husb_info.deat
-        wife_deat = wife_info.deat
-        if family.chil == 'NA':
-            return False
-        for child_id in family.chil:
-            child = individuals.get(child_id)
-            if child == individual_id:
-                child_birth = child.birt
-                if child_birth < (nine_mon_rel + husb_deat) and child_birth < wife_deat:
-                    return False
-                else:
-                    return True
-    
+    return True

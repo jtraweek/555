@@ -1,0 +1,154 @@
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------+
+|  ID |         Name         | Gender |   Birthday  | Age | Alive |    Death    | Child |   Spouse   |
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------+
+|  I1 |   Rickard /Stark/    |   M    | 18 Dec 0230 |  50 | False | 09 May 0280 |   NA  |     F1     |
+|  I2 |    Lyarra /Locke/    |   F    | 11 Oct 0239 |  43 | False | 09 Dec 0282 |   NA  |     F1     |
+|  I3 |    Benjen /Stark/    |   M    | 17 Nov 0267 |  NA | False |      NA     |   F1  |     NA     |
+|  I4 |   Brandon /Stark/    |   M    | 16 Mar 0262 |  20 | False | 05 Jul 0282 |   F1  |     NA     |
+|  I5 |    Lyanna /Stark/    |   F    | 30 Jul 0266 |  17 | False | 05 Dec 0283 |   F1  |     F2     |
+|  I6 | Rhaegar /Targaryen/  |   M    | 04 Aug 0259 |  24 | False | 12 Feb 0283 |   NA  |     F2     |
+|  I7 |  Aegar /Targaryen/   |   M    | 11 Oct 0283 |  NA | False |      NA     |   F2  |     NA     |
+|  I8 | Eddard (Ned) /Stark/ |   M    | 15 Feb 0263 |  36 | False | 15 May 0299 |   F1  |   F3, F4   |
+|  I9 |   Catelyn /Tully/    |   F    | 15 Apr 0264 |  35 | False | 28 Jul 0299 |   NA  |     F3     |
+| I10 |     Robb /Stark/     |   M    | 08 Jan 0283 |  16 | False | 28 Jul 0299 |   F3  |     F5     |
+| I11 |    Sansa /Stark/     |   F    | 06 Jun 2019 |  NA | False |      NA     |   F3  | F6, F7, F8 |
+| I12 |     Bran /Stark/     |   M    | 17 Mar 0290 |  NA | False |      NA     |   F3  |     NA     |
+| I13 |    Rickon /Stark/    |   M    | 13 Sep 0295 |  8  | False | 07 Sep 0303 |   F3  |     NA     |
+| I14 |     Arya /Stark/     |   F    | 29 Aug 0289 |  NA | False |      NA     |   F3  |     NA     |
+| I15 |   Talisa /Maegyr/    |   F    | 08 Apr 0286 |  13 | False | 28 Jul 0299 |   NA  |     F5     |
+| I16 | Joffery /Baratheon/  |   M    | 07 Jun 0286 |  14 | False | 12 May 0300 |   NA  |     F6     |
+| I17 |  Tyrion /Lanister/   |   M    | 16 Aug 0273 |  NA | False |      NA     |   NA  |     F7     |
+| I18 |   Ramsey /Bolton/    |   M    | 13 Nov 0282 |  21 | False | 08 Sep 0303 |   NA  |     F8     |
+| I19 |    Wylla /Unkown/    |   F    | 01 Jan 0263 |  NA | False |      NA     |   NA  |     F4     |
+| I20 |      Jon /Snow/      |   M    | 11 Oct 0283 |  NA | False |      NA     |   F4  |     NA     |
++-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------+
++----+-------------+-------------+------------+----------------------+---------+-----------------+-------------------------+
+| ID |   Married   |   Divorced  | Husband ID |     Husband Name     | Wife ID |    Wife Name    |         Children        |
++----+-------------+-------------+------------+----------------------+---------+-----------------+-------------------------+
+| F1 | 17 Nov 0260 |      NA     |     I1     |   Rickard /Stark/    |    I2   |  Lyarra /Locke/ |      I3, I4, I5, I8     |
+| F2 | 08 May 0282 |      NA     |     I6     | Rhaegar /Targaryen/  |    I5   |  Lyanna /Stark/ |            I7           |
+| F3 | 01 Jan 0280 | 01 Jan 0290 |     I8     | Eddard (Ned) /Stark/ |    I9   | Catelyn /Tully/ | I10, I11, I12, I13, I14 |
+| F4 | 07 Jan 0280 |      NA     |     I8     | Eddard (Ned) /Stark/ |   I19   |  Wylla /Unkown/ |           I20           |
+| F5 | 14 Feb 0299 |      NA     |    I10     |     Robb /Stark/     |   I15   | Talisa /Maegyr/ |            NA           |
+| F6 | 22 Oct 0301 |      NA     |    I16     | Joffery /Baratheon/  |   I11   |  Sansa /Stark/  |            NA           |
+| F7 | 15 Nov 0300 | 26 May 0301 |    I17     |  Tyrion /Lanister/   |   I11   |  Sansa /Stark/  |            NA           |
+| F8 | 17 Nov 0302 |      NA     |    I18     |   Ramsey /Bolton/    |   I11   |  Sansa /Stark/  |            NA           |
++----+-------------+-------------+------------+----------------------+---------+-----------------+-------------------------+
+Error: INDIVIDUAL: US010: I15: Marriage 14 Feb 0299 before 14 years old
+Error: INDIVIDUAL: US011: I8: Marriage occurs during another marriage
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I6 |  Child4 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I7 |  Child5 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
+| I8 |  Child6 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |        Children        |
++----+---------+----------+------------+--------------+---------+-----------+------------------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5, I6, I7, I8 |
+| F2 |    NA   |    NA    |     I7     |    Child5    |    I8   |   Child6  |           NA           |
++----+---------+----------+------------+--------------+---------+-----------+------------------------+
+Error: FAMILY: US014: F2: has more than five siblings born at the same time
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  I1 | Father1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I6 |  Child4 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I7 |  Child5 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I8 |  Child6 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+|  I9 |  Child7 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I10 |  Child8 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I11 |  Child9 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I12 | Child10 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I13 | Child11 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I14 | Child12 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I15 | Child13 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I16 | Child14 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
+| I17 | Child15 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+--------------------------------------------------------------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |                              Children                              |
++----+---------+----------+------------+--------------+---------+-----------+--------------------------------------------------------------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14, I15, I16, I17 |
+| F2 |    NA   |    NA    |    I16     |   Child14    |   I17   |  Child15  |                                 NA                                 |
++----+---------+----------+------------+--------------+---------+-----------+--------------------------------------------------------------------+
+Error: FAMILY: US015: F2: has more than 15 siblings
++----+----------------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |      Name      | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+----------------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 |    Father1     |   M    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 |    Mother1     |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 | Child1 Father1 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I4 | Child2 Father1 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 | Child3 Father1 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I6 | Child4 Father1 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I7 | Child5 Father1 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I8 |     Child6     |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
++----+----------------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+----------------+---------+----------------+------------------------+
+| ID | Married | Divorced | Husband ID |  Husband Name  | Wife ID |   Wife Name    |        Children        |
++----+---------+----------+------------+----------------+---------+----------------+------------------------+
+| F1 |    NA   |    NA    |     I1     |    Father1     |    I2   |    Mother1     | I3, I4, I5, I6, I7, I8 |
+| F2 |    NA   |    NA    |     I3     | Child1 Father1 |    I4   | Child2 Father1 |           I5           |
++----+---------+----------+------------+----------------+---------+----------------+------------------------+
+Error: FAMILY: US016: F1: Last names of male members are not the same
++----+---------------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |      Name     | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 |    Father1    |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 |    Mother1    |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 | Child1_Mirror |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 |     Child3    |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F1   |
+| I6 |     Child4    |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F1   |
+| I7 |     Child5    |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
+| I8 |     Child6    |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
++----+---------------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+----------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
++----+---------+----------+------------+--------------+---------+-----------+----------+
+| F1 |    NA   |    NA    |     I5     |    Child3    |    I6   |   Child4  |    NA    |
+| F2 |    NA   |    NA    |     I7     |    Child5    |    I8   |   Child6  |    NA    |
++----+---------+----------+------------+--------------+---------+-----------+----------+
+Error: INDIVIDUAL: US022: I3: id is not unique
+Error: FAMILY: US022: F1: id is not unique
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1800 |  25 | False | 01 Jan 1825 |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 |  30 | False | 01 Jan 1830 |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1826 |  NA | False |      NA     |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |      NA     |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |      NA     |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+Error: INDIVIDUAL: US09: I3: Child birth after parents death
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1860 |  NA | False |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1880 | 137 |  True |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+Error: INDIVIDUAL: US12: I3: Parents are too old when child birth
+Error: INDIVIDUAL: US12: I4: Parents are too old when child birth

@@ -11,32 +11,7 @@ from datetime import datetime
    Assuring an indivisual has a date bigger than 0 and less than 150
    :return: True on valid
 """
-file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
-indivisuals = GedcomClass.read_individuals(file)
-person_istance = indivisuals.get()
 
-def get_age(person_id, individuals):
-    """
-    This function checks for the age of an individual.
-    It either returns the age or 'NA'
-    """
 
-    def age(self):
-        """
-        Built-in age calculation
-        :return: 'NA' on older than 150 or younger than 0
-        """
-        Birthday = person_istance.birt
-        Deathday = person_istance.deat
-        if not Birthday:
-            return 'NA'
-
-        birth = Birthday
-        if not Deathday:
-            death = datetime.today()
-        else:
-            death = Deathday
-        age = death.year - birth.year
-        if age < 150:
-            return age
-        return 'NA'
+def age_not_too_old(person):
+    return person.age != 'NA'

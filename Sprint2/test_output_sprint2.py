@@ -1,10 +1,10 @@
 import GedcomClass
 from Sprint2 import user_story_10
 from Sprint2 import user_story_11
-from Sprint2 import us14
-from Sprint2 import us15
-from Sprint2 import us16
-from Sprint2 import us22
+from Sprint2 import user_story_14
+from Sprint2 import user_story_15
+from Sprint2 import user_story_16
+from Sprint2 import user_story_22
 from Sprint2 import user_story_09
 from Sprint2 import user_story_12
 
@@ -13,7 +13,7 @@ GedcomClass.main(file)
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 for person in individuals.values():
-    spouses = person.spouse
+    spouses = person.spouse_of
     if spouses == 'NA':
         continue
     for spouse in spouses:
@@ -26,58 +26,52 @@ for person in individuals:
         print('Error: INDIVIDUAL: US011: {}: Marriage occurs during another marriage'
               .format(person))
 
-file = open('./us14_test.ged', 'r')
+file = open('./test_ged/user_story_14_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for family in families:
-    if not us14.has_more_than_five_birth(family, individuals, families):
+    if not user_story_14.has_more_than_five_birth(family, individuals, families):
         print('Error: FAMILY: US014: {}: has more than five siblings born at the same time'.format(family))
 
-file = open('./us15_test.ged', 'r')
+file = open('./test_ged/user_story_15_test.ged', 'r')
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for family in families:
-    if not us15.has_more_than_fifteen_siblings(family, families):
+    if not user_story_15.has_more_than_fifteen_siblings(family, families):
         print('Error: FAMILY: US015: {}: has more than 15 siblings'.format(family))
 
-file = open('./us16_test.ged', 'r')
+file = open('./test_ged/user_story_16_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for family in families:
-    if not us16.same_male_last_name(family, individuals, families):
+    if not user_story_16.same_male_last_name(family, individuals, families):
         print('Error: FAMILY: US016: {}: Last names of male members are not the same'.format(family))
 
-file = open('./us22_test.ged', 'r')
+file = open('./test_ged/user_story_22_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
 for person in individuals:
-    if not us22.is_id_unique(person, individuals):
+    if not user_story_22.is_id_unique(person, individuals):
         print('Error: INDIVIDUAL: US022: {}: id is not unique'.format(person))
 for family in families:
-    if not us22.is_id_unique(family, families):
+    if not user_story_22.is_id_unique(family, families):
         print('Error: FAMILY: US022: {}: id is not unique'.format(family))
-        
-file = open('./us09_us12.ged', 'r')
+
+file = open('./test_ged/user_story_9_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
 GedcomClass.main(file)
+for child in individuals:
+    if not user_story_09.birth_before_parents_death(child, individuals, families):
+        print('Error: INDIVIDUAL: US09: {}: Child birth after parents death'.format(child))
 
-for family_id in families:
-    children_list = family_id.chil_str
-    if children_list == 'NA':
-        continue
-    for child in children_list:
-        if not user_story_09.birth_before_parents_death(family_id, child, individuals, families):
-            print('Error: INDIVIDUAL: US09: {}: Not born before parent death'.format(family))
-
-for family_id in families:
-    children_list = family_id.chil_str
-    if children_list == 'NA':
-        continue
-    for child in children_list:
-        if not user_story_09.birth_before_parents_death(family_id, child, individuals, families):
-            print('Error: INDIVIDUAL: US12: {}: Parents not too old'.format(family))
-            
+file = open('./test_ged/user_story_12_test.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+GedcomClass.main(file)
+for child in individuals:
+    if not user_story_12.parents_not_too_old(child, individuals, families):
+        print('Error: INDIVIDUAL: US12: {}: Parents are too old when child birth'.format(child))
