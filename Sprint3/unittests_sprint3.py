@@ -6,6 +6,7 @@ from Sprint3 import US_29
 from Sprint3 import US_30
 from Sprint3 import user_story_23
 from Sprint3 import user_story_24
+from Sprint3 import user_story_18
 from Sprint3 import user_story_28
 
 
@@ -103,6 +104,24 @@ class JT(unittest.TestCase):
         
         condition2= user_story_28.order_siblings_by_age(GedcomClass.get_family('F2', families), individuals)
         self.assertEqual(condition2, 'No children')
+        
+        condition3 = user_story_28.order_siblings_by_age(GedcomClass.get_family('F3', families), individuals)
+        self.assertEqual(condition3, ['I10'])
+        
+        file.close()
+        
+    def test_us18(self):
+        file = file = open('./test_ged/user_story_18_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        
+        condition1 = user_story_18.siblings_not_married(GedcomClass.get_family('F1', families), individuals)
+        self.assertEqual(condition1, True)
+        
+        condition2= user_story_18.siblings_not_married(GedcomClass.get_family('F2', families), individuals)
+        self.assertEqual(condition2, False)        
+        
+        file.close()
 
 if __name__ == "__main__":
     unittest.main()
