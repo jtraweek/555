@@ -20,5 +20,5 @@ def deceased_people(indivisual,individuals):
         if indi.alive()!= True:
             deceased_indi = indi.deat_str
             deceased.append(deceased_indi)
-
+            
     return deceased
