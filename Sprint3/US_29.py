@@ -3,30 +3,18 @@
 Created: 10/27/2017
 '''
 '''
-   User Story 29: list living married indivisuals
-   :return: A list of all indivisuals who are living and married
+   User Story 29: list deceased indivisuals
+   :return: A list of all indivisuals who are dead
 '''
-import GedcomClass
-from Family import Family
-from Individual import Individual
 
 
-def living_married(indivisual,families,individuals):
-    lm = []
-    # getting every indivisual id from indivisuals dictionary.
-    for id in individuals:
-        #allocate the instane of each of those id's
-        indi = GedcomClass.get_individual(id, individuals)
-        #now that we got the instance of indivisuals you can use their attribute to pull their info's
-        living = indi.alive()
-        #fgeting every family number from the spouse list in Indivisual class
-        for famid in indi.spouse_str:
-            fam = GedcomClass.get_family(famid,families)
-            if not fam.div_str:
-                married = fam.marr_str
-                lm.append(married)
-    return lm
+def deceased_people(individuals):
+    deceased = []
+    # getting every individual id from individuals dictionary.
+    for indi in individuals.values():
+        # allocate the instance of each of those id's
+        # now that we got the instance of individuals you can use their attribute to pull their info's
+        if not indi.alive:
+            deceased.append(indi.id)
 
-
-
-
+    return deceased

@@ -192,7 +192,7 @@ def get_individual(_id, individuals):
     _object = individuals.get(_id)
     if not _object:
         _object = Individual()
-        print('Error: {} not found in individuals'.format(_id))
+        # print('Error: {} not found in individuals'.format(_id))
     return _object
 
 
@@ -200,5 +200,5 @@ def get_family(_id, families):
     _object = families.get(_id)
     if not _object:
         _object = Family()
-        print('Error: {} not found in families'.format(_id))
+        # print('Error: {} not found in families'.format(_id))
     return _object
