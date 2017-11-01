@@ -21,6 +21,7 @@ for individual in individuals.values():
 file = open('./test_ged/user_story_18_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
+GedcomClass.main(file)
 for family in families.values():
     if not user_story_18.siblings_not_married(family, individuals):
          print('Error: FAMILY: US18: {}: Siblings are married.'
@@ -45,13 +46,16 @@ individuals = GedcomClass.read_individuals(file)
 file = open('./test_ged/user_story_28_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
+GedcomClass.main(file)
 for family in families.values():
-    if family.chil == 'NA':
+    if user_story_28.order_siblings_by_age(family, individuals)=='No children':
         print('Error: FAMILY: US28: {}: No children.'
               .format(family.id))
-    elif len(family.chil) == 1:
-        print('Error: FAMILY: US28: {}: Only one child.'
+    elif user_story_28.order_siblings_by_age(family, individuals)=='Only one child':
+         print('Error: FAMILY: US28: {}: Only one child.'
               .format(family.id))
+    else:
+        print('FAMILY: US28: {} ordered oldest to youngest.'.format(user_story_28.order_siblings_by_age(family, individuals)))
 
 file = open('./test_ged/user_story_29_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)

@@ -105,7 +105,7 @@ class JT(unittest.TestCase):
         self.assertEqual(condition2, 'No children')
 
         condition3 = user_story_28.order_siblings_by_age(GedcomClass.get_family('F3', families), individuals)
-        self.assertEqual(condition3, ['I10'])
+        self.assertEqual(condition3, 'Only one child')
 
         file.close()
 

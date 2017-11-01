@@ -15,6 +15,9 @@ def order_siblings_by_age(family, individuals):
     
     if children == 'NA':
         return 'No children'
+        
+    if len(children) == 1:
+        return 'Only one child'
     
     for child in children:
         current_child = GedcomClass.get_individual(child, individuals)
