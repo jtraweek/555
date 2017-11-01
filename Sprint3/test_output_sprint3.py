@@ -22,7 +22,7 @@ for individual in individuals.values():
 file = open('./test_ged/user_story_18_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
-print('Test user story 18:')
+print('\n Test user story 18:')
 GedcomClass.main(file)
 for family in families.values():
     if not user_story_18.siblings_not_married(family, individuals):
@@ -32,7 +32,7 @@ for family in families.values():
 file = open('./test_ged/user_story_21_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
-print('Test user story 21:')
+print('\n Test user story 21:')
 GedcomClass.main(file)
 for family in families.values():
     if not user_story_21.correct_gender(family, individuals):
@@ -41,15 +41,27 @@ for family in families.values():
 
 file = open('./test_ged/user_story_23_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
+print('\n Test user story 23:')
+GedcomClass.main(file)
+for individual in individuals.values():
+    if not user_story_23.uniqueNameAndBirth(individual, individuals):
+        print('Error: INDIVIDUAL: US23: {}: Name and Birthday are not unique for the individual'
+              .format(individual.id))
 
 file = open('./test_ged/user_story_24_test.ged', 'r')
 families = GedcomClass.read_families(file)
 individuals = GedcomClass.read_individuals(file)
+print('\n Test user story 13:')
+GedcomClass.main(file)
+for family in families.values():
+    if not user_story_24.uniqueSpousesAndMarriage(family, families, individuals):
+        print('Error: FAMILY: US24: {}: Spouse information and Marriage dates are not unique for this family'
+              .format(family.id))
 
 file = open('./test_ged/user_story_28_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
-print('Test user story 28:')
+print('\n Test user story 28:')
 GedcomClass.main(file)
 for family in families.values():
     if user_story_28.order_siblings_by_age(family, individuals)=='No children':
@@ -63,7 +75,7 @@ for family in families.values():
 
 file = open('./test_ged/user_story_29_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
-print('Test user story 29:')
+print('\n Test user story 29:')
 GedcomClass.main(file)
 if len(US_29.deceased_people(individuals)) == 0:
     print('Error: US29: No deceased')
