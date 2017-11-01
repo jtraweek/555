@@ -17,4 +17,4 @@ GedcomClass.main(file)
 for family in families.values():
     if not user_story_24.uniqueSpousesAndMarriage(family, families, individuals):
         print('Error: FAMILY: US24: {}: Spouse information and Marriage dates are not unique for this family'
-              .format(individual.id))
+              .format(family.id))
