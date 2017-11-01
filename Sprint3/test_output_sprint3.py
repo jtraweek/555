@@ -54,7 +54,7 @@ for individual in individuals.values():
 file = open('./test_ged/user_story_24_test.ged', 'r')
 families = GedcomClass.read_families(file)
 individuals = GedcomClass.read_individuals(file)
-print('\n Test user story 13:')
+print('\n Test user story 24:')
 GedcomClass.main(file)
 for family in families.values():
     if not user_story_24.uniqueSpousesAndMarriage(family, families, individuals):
@@ -76,15 +76,24 @@ for family in families.values():
     else:
         print('FAMILY: US28: {} ordered oldest to youngest.'.format(user_story_28.order_siblings_by_age(family, individuals)))
 
-file = open('./test_ged/user_story_29_test.ged', 'r')
-individuals = GedcomClass.read_individuals(file)
-print('\n Test user story 29:')
-GedcomClass.main(file)
+file1 = open('./test_ged/user_story_29_test.ged', 'r')
+file2 = open('./test_ged/user_story_29_test_2.ged', 'r')
+individuals = GedcomClass.read_individuals(file1)
+print('\n Test user story 29 No deceased:')
+GedcomClass.main(file1)
 if len(US_29.deceased_people(individuals)) == 0:
     print('Error: US29: No deceased')
 else:
     print('INDIVIDUAL: US29: {}'.format(US_29.deceased_people(individuals)))
 
+individuals = GedcomClass.read_individuals(file2)
+print('\n Test user story 29 deceased:')
+GedcomClass.main(file2)
+if len(US_29.deceased_people(individuals)) == 0:
+    print('Error: US29: No deceased')
+else:
+    print('INDIVIDUAL: US29: {}'.format(US_29.deceased_people(individuals)))
+    
 file = open('./test_ged/user_story_30_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
