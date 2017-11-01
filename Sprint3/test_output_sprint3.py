@@ -1,3 +1,6 @@
+"""
+File addresses all outputs for Sprint 3
+"""
 import GedcomClass
 from Sprint3 import user_story_13
 from Sprint3 import user_story_18
@@ -85,3 +88,7 @@ else:
 file = open('./test_ged/user_story_30_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
+print('\n Test user story 30:')
+GedcomClass.main(file)
+print('INFORMATION: FAMILY: US30: The list of living married individuals is {}'
+      .format(US_30.living_married(families, individuals)))
