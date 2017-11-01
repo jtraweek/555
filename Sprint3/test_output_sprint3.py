@@ -1,19 +1,12 @@
 import GedcomClass
-#from Sprint3 
-import user_story_13
-import user_story_18
-#from Sprint3 
-import user_story_21
-#from Sprint3 
-import user_story_23
-#from Sprint3 
-import user_story_24
-#from Sprint3 
-import user_story_28
-#from Sprint3 
-import US_29
-#from Sprint3 
-import US_30
+from Sprint3 import user_story_13
+from Sprint3 import user_story_18
+from Sprint3 import user_story_21
+from Sprint3 import user_story_23
+from Sprint3 import user_story_24
+from Sprint3 import user_story_28
+from Sprint3 import US_29
+from Sprint3 import US_30
 
 file = open('./test_ged/user_story_13_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
