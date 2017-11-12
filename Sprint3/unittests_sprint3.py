@@ -42,18 +42,16 @@ class MM(unittest.TestCase):
         file = open('./test_ged/user_story_30_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
-
         condition1 = US_30.living_married(families, individuals)
         self.assertListEqual(condition1, ['I1', 'I2'])
-
         file.close()
 
     def test_us29(self):
-        file = open('./test_ged/user_story_29_test.ged', 'r')
+        file = open('./test_ged/user_story_29_test_2.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
-
         condition1 = US_29.deceased_people(individuals)
         self.assertListEqual(condition1, ['I1', 'I2', 'I3', 'I4', 'I5'])
+        file.close()
 
 
 class CS(unittest.TestCase):
