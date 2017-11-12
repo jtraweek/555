@@ -1,7 +1,7 @@
 """
 File addresses all outputs for Sprint 4
 """
-import  GedcomClass
+import GedcomClass
 from Sprint4 import US_31
 from Sprint4 import US_41
 
@@ -29,12 +29,11 @@ else:
     print('INDIVIDUAL: US31: {}'.format(US_31.living_singles(families, individuals)))
 
 
-'''
-file = open('./test_ged/user_story_30_test.ged', 'r')
+
+file = open('./test_ged/user_story_41_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
 families = GedcomClass.read_families(file)
-print('\n Test user story 30:')
+print('\n Test user story 41:')
 GedcomClass.main(file)
-print('INFORMATION: FAMILY: US30: The list of living married individuals is {}'
-      .format(US_30.living_married(families, individuals)))
-'''
+print('INFORMATION: FAMILY: US41: The list of upcoming birthdays is {}'
+      .format(US_41.upcoming_births(individuals)))

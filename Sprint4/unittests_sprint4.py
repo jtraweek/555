@@ -43,10 +43,10 @@ class MM(unittest.TestCase):
         file.close()
 
     def test_us41(self):
-        file = open('./test_ged/user_story_41_test_2.ged', 'r')
+        file = open('./test_ged/user_story_41_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = US_41.upcoming_births(individuals)
-        self.assertListEqual(condition1, ['I3', 'I4', 'I5'])
+        self.assertListEqual(condition1, ['I3', 'I1', 'I2'])
         file.close()
 
 # class JT(unittest.TestCase):
