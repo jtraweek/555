@@ -56,33 +56,39 @@ class Individual(object):
 
     @property
     def birt(self):
-        if not self._birt:
+        if (not self._birt) or self._birt == 'E':
             return 'NA'
         return self._birt
 
     @birt.setter
     def birt(self, birt):
-        self._birt = datetime.strptime(birt, '%d %b %Y')
+        try:
+            self._birt = datetime.strptime(birt, '%d %b %Y')
+        except ValueError:
+            self._birt = 'E'
 
     @property
     def birt_str(self):
-        if not self._birt:
+        if (not self._birt) or self._birt == 'E':
             return 'NA'
         return self._birt.strftime('%d %b %Y')
 
     @property
     def deat(self):
-        if not self._deat:
+        if (not self._deat) or self._deat == 'E':
             return 'NA'
         return self._deat
 
     @deat.setter
     def deat(self, deat):
-        self._deat = datetime.strptime(deat, '%d %b %Y')
+        try:
+            self._deat = datetime.strptime(deat, '%d %b %Y')
+        except ValueError:
+            self._deat = 'E'
 
     @property
     def deat_str(self):
-        if not self._deat:
+        if (not self._deat) or self._deat == 'E':
             return 'NA'
         return self._deat.strftime('%d %b %Y')
 
@@ -142,11 +148,11 @@ class Individual(object):
         Built-in age calculation
         :return: 'NA' on older than 150 or younger than 0
         """
-        if not self._birt:
+        if self.birt == 'NA':
             return 'NA'
 
         birth = self.birt
-        if not self._deat:
+        if self.deat == 'NA':
             death = datetime.today()
         else:
             death = self.deat
@@ -161,7 +167,7 @@ class Individual(object):
         Built-in alive validate
         :return: False on age 'NA' or death record exists
         """
-        if not self._deat and self.age != 'NA':
+        if self.deat_str == 'NA' and self.age != 'NA':
             return True
         return False
 
@@ -172,3 +178,6 @@ class Individual(object):
     @id_count.setter
     def id_count(self, count):
         self._id_count = count
+
+    def is_date_valid(self):
+        return self._deat != 'E' and self._birt != 'E'

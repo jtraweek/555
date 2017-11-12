@@ -63,36 +63,42 @@ class Family(object):
     @wifeName.setter
     def wifeName(self, wifeName):
         self._wifeName = wifeName
-        
+
     @property
     def div(self):
-        if not self._div:
+        if (not self._div) or self._div == 'E':
             return 'NA'
         return self._div
 
     @div.setter
     def div(self, div):
-        self._div = datetime.strptime(div, '%d %b %Y')
+        try:
+            self._div = datetime.strptime(div, '%d %b %Y')
+        except ValueError:
+            self._div = "E"
 
     @property
     def div_str(self):
-        if not self._div:
+        if (not self._div) or self._div == 'E':
             return 'NA'
         return self._div.strftime('%d %b %Y')
 
     @property
     def marr(self):
-        if not self._marr:
+        if (not self._marr) or self._marr == 'E':
             return 'NA'
         return self._marr
 
     @marr.setter
     def marr(self, marr):
-        self._marr = datetime.strptime(marr, '%d %b %Y')
+        try:
+            self._marr = datetime.strptime(marr, '%d %b %Y')
+        except ValueError:
+            self._marr = 'E'
 
     @property
     def marr_str(self):
-        if not self._marr:
+        if (not self._marr) or self._marr == 'E':
             return 'NA'
         return self._marr.strftime('%d %b %Y')
 
@@ -115,7 +121,7 @@ class Family(object):
     @husbName.setter
     def husbName(self, husbName):
         self._husbName = husbName
-        
+
     @property
     def chil(self):
         """
@@ -163,3 +169,6 @@ class Family(object):
     @id_count.setter
     def id_count(self, count):
         self._id_count = count
+
+    def is_date_valid(self):
+        return self._marr != 'E' and self._div != 'E'
