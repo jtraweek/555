@@ -2,6 +2,8 @@ import unittest
 import GedcomClass
 from Sprint4 import user_story_42
 from Sprint4 import user_story_34
+from Sprint4 import US_31
+from Sprint4 import US_41
 
 
 class JL(unittest.TestCase):
@@ -31,12 +33,27 @@ class JL(unittest.TestCase):
 
         file.close()
 
+class MM(unittest.TestCase):
+    def test_us31(self):
+        file = open('./test_ged/user_story_31_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        condition1 = US_31.living_singles(families, individuals)
+        self.assertListEqual(condition1, ['I1', 'I4'])
+        file.close()
+
+    def test_us41(self):
+        file = open('./test_ged/user_story_41_test_2.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        condition1 = US_41.upcoming_births(individuals)
+        self.assertListEqual(condition1, ['I3', 'I4', 'I5'])
+        file.close()
 
 # class JT(unittest.TestCase):
 #
 # class CE(unittest.TestCase):
-#
-# class MM(unittest.TestCase):
+
+
 
 
 
