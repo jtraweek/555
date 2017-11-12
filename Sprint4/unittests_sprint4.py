@@ -1,6 +1,7 @@
 import unittest
 import GedcomClass
 from Sprint4 import user_story_42
+from Sprint4 import user_story_34
 
 
 class JL(unittest.TestCase):
@@ -20,11 +21,22 @@ class JL(unittest.TestCase):
 
         file.close()
 
-class JT(unittest.TestCase):
+    def test_us34(self):
+        file = open('./test_ged/user_story_34_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
 
-class CE(unittest.TestCase):
+        condition1 = user_story_34.list_large_age_differences(individuals, families)
+        self.assertEqual(condition1, ['F1'])
 
-class MM(unittest.TestCase):
+        file.close()
+
+
+# class JT(unittest.TestCase):
+#
+# class CE(unittest.TestCase):
+#
+# class MM(unittest.TestCase):
 
 
 
