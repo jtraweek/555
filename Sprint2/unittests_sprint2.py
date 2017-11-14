@@ -98,5 +98,18 @@ class CS(unittest.TestCase):
         file.close()
 
 
-if __name__ == "__main__":
-    unittest.main()
+'''if __name__ == "__main__":
+    unittest.main()'''
+
+def suite():
+    suite = unittest.TestSuite()
+    suite.addTest(JL())
+    suite.addTest(JT())
+    suite.addTest(CS())
+    return suite
+
+
+if __name__ == '__main__':
+    runner = unittest.TextTestRunner()
+    test_suite = suite()
+    runner.run(test_suite)
