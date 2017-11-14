@@ -53,14 +53,14 @@ class TestMethods4(unittest.TestCase):
 
 class JT(unittest.TestCase):
     def test_us35(self):
-        file = open('./test_ged/user_story_35_test.ged', 'r')
+        file = open('./test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_35.recently_born(individuals)
         self.assertEqual(condition1, ['I7', 'I8'])
         
 class JT(unittest.TestCase):
     def test_us36(self):
-        file = open('./test_ged/user_story_35_test.ged', 'r')
+        file = open('./test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_36.recently_dead(individuals)
         self.assertEqual(condition1, ['I1', 'I6'])
