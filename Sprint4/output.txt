@@ -473,7 +473,7 @@ INFORMATION: FAMILY: US30: The list of living married individuals is ['I1', 'I2'
                                                       SPRINT 4
 ------------------------------------------------------------------------------------------------------------------------
 
-Test user story 31 No Living Singles:
+Test user story 31: Living Singles:
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
@@ -490,24 +490,7 @@ Test user story 31 No Living Singles:
 +----+---------+----------+------------+--------------+---------+-----------+------------+
 INFORMATION: INDIVIDUAL: US31: The list of living singles is ['I3', 'I4']
 
-Test user story 38:
-+----+---------+--------+-------------+-----+-------+-------+-------+--------+
-| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
-+----+---------+--------+-------------+-----+-------+-------+-------+--------+
-| I1 | Father1 |   M    | 12 Dec 1980 |  37 |  True |   NA  |   NA  |   F1   |
-| I2 | Mother1 |   F    | 23 Dec 1980 |  37 |  True |   NA  |   NA  |   F1   |
-| I3 |  Child1 |   NA   | 13 Dec 2000 |  17 |  True |   NA  |   F1  |   NA   |
-| I4 |  Child2 |   NA   | 01 Jan 2000 |  17 |  True |   NA  |   F1  |   NA   |
-| I5 |  Child3 |   NA   | 23 Nov 2017 |  0  |  True |   NA  |   F1  |   NA   |
-+----+---------+--------+-------------+-----+-------+-------+-------+--------+
-+----+---------+----------+------------+--------------+---------+-----------+------------+
-| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
-+----+---------+----------+------------+--------------+---------+-----------+------------+
-| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
-+----+---------+----------+------------+--------------+---------+-----------+------------+
-INFORMATION: INDIVIDUAL: US38: The list of upcoming birthdays is ['I5']
-
-Test user story 34:
+Test user story 34: Large Age Difference:
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
@@ -526,7 +509,72 @@ Test user story 34:
 +----+-------------+----------+------------+--------------+---------+-----------+------------+
 INFORMATION: FAMILY: US34: The list of large age difference couples is ['F1']
 
-Test user story 42:
+Test user story 35: Recent Born:
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  I1 | Father1 |   M    | 01 Jan 1960 |  57 | False | 09 Nov 2017 |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1965 |  52 |  True |      NA     |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 01 Jan 1980 |  37 |  True |      NA     |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 01 Jan 1982 |  35 |  True |      NA     |   F1  |   NA   |
+|  I5 |  Child3 |   NA   | 01 Jan 1978 |  39 |  True |      NA     |   NA  |   NA   |
+|  I6 | Person1 |   NA   | 01 Jan 1978 |  39 | False | 20 Oct 2017 |   NA  |   NA   |
+|  I7 | Person2 |   NA   | 21 Oct 2017 |  0  |  True |      NA     |   NA  |   NA   |
+|  I8 | Person3 |   NA   | 01 Nov 2017 |  0  |  True |      NA     |   NA  |   NA   |
+|  I9 | Person4 |   NA   | 01 Jan 1978 |  39 |  True |      NA     |   NA  |   NA   |
+| I10 |  Child4 |   NA   | 01 Jan 1993 |  24 |  True |      NA     |   F1  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 |    NA   |    NA    |     I6     |   Person1    |    I7   |  Person2  |     NA     |
+| F3 |    NA   |    NA    |     I8     |   Person3    |    I9   |  Person4  |    I10     |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+INFORMATION: INDIVIDUAL: US35: The recent born indivisuals are ['I7', 'I8']
+
+Test user story 36: Recent Death:
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  I1 | Father1 |   M    | 01 Jan 1960 |  57 | False | 09 Nov 2017 |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1965 |  52 |  True |      NA     |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 01 Jan 1980 |  37 |  True |      NA     |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 01 Jan 1982 |  35 |  True |      NA     |   F1  |   NA   |
+|  I5 |  Child3 |   NA   | 01 Jan 1978 |  39 |  True |      NA     |   NA  |   NA   |
+|  I6 | Person1 |   NA   | 01 Jan 1978 |  39 | False | 20 Oct 2017 |   NA  |   NA   |
+|  I7 | Person2 |   NA   | 21 Oct 2017 |  0  |  True |      NA     |   NA  |   NA   |
+|  I8 | Person3 |   NA   | 01 Nov 2017 |  0  |  True |      NA     |   NA  |   NA   |
+|  I9 | Person4 |   NA   | 01 Jan 1978 |  39 |  True |      NA     |   NA  |   NA   |
+| I10 |  Child4 |   NA   | 01 Jan 1993 |  24 |  True |      NA     |   F1  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 |    NA   |    NA    |     I6     |   Person1    |    I7   |  Person2  |     NA     |
+| F3 |    NA   |    NA    |     I8     |   Person3    |    I9   |  Person4  |    I10     |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+INFORMATION: INDIVIDUAL: US36: The recent dead indivisuals are ['I1', 'I6']
+
+Test user story 38: Upcoming Birthdays:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   M    | 12 Dec 1980 |  37 |  True |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 23 Dec 1980 |  37 |  True |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 13 Dec 2000 |  17 |  True |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 2000 |  17 |  True |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 23 Nov 2017 |  0  |  True |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+INFORMATION: INDIVIDUAL: US38: The list of upcoming birthdays is ['I5']
+
+Test user story 42: Validating Dates:
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
@@ -545,4 +593,3 @@ Test user story 42:
 ERROR: INDIVIDUAL: US42: Invalid dates occurs in I1
 ERROR: INDIVIDUAL: US42: Invalid dates occurs in I3
 ERROR: FAMILY: US42: Invalid dates occurs in F1
-

@@ -54,7 +54,6 @@ class TestMethods4(unittest.TestCase):
         file.close()
 
 
-class JT(unittest.TestCase):
     def test_us35(self):
         file = open('./test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -80,8 +79,7 @@ class JT(unittest.TestCase):
         condition2 = user_story_35.recently_born(individuals)
         self.assertEqual(condition2, [])
         file.close()
-#
-# class CS4(unittest.TestCase):
+
 
 
 
