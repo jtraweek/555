@@ -10,7 +10,7 @@ from Sprint3 import user_story_18
 from Sprint3 import user_story_28
 
 
-class JL(unittest.TestCase):
+class TestMethods3(unittest.TestCase):
     def test_us13(self):
         file = open('./test_ged/user_story_13_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -37,7 +37,6 @@ class JL(unittest.TestCase):
         file.close()
 
 
-class MM(unittest.TestCase):
     def test_us30(self):
         file = open('./test_ged/user_story_30_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -54,7 +53,6 @@ class MM(unittest.TestCase):
         file.close()
 
 
-class CS(unittest.TestCase):
     def test_us23(self):
         file = open('./test_ged/user_story_23_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -90,7 +88,6 @@ class CS(unittest.TestCase):
         file.close()
 
 
-class JT(unittest.TestCase):
     def test_us28(self):
         file = open('./test_ged/user_story_28_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -123,17 +120,3 @@ class JT(unittest.TestCase):
 
 '''if __name__ == "__main__":
     unittest.main()'''
-
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(JL())
-    suite.addTest(JT())
-    suite.addTest(CS())
-    suite.addTest(MM())
-    return suite
-
-
-if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
-    test_suite = suite()
-    runner.run(test_suite)

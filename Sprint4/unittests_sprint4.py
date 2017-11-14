@@ -6,7 +6,8 @@ from Sprint4 import US_31
 from Sprint4 import US_38
 
 
-class JL(unittest.TestCase):
+
+class TestMethods4(unittest.TestCase):
     def test_us42(self):
         file = open('./test_ged/user_story_42_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -34,7 +35,6 @@ class JL(unittest.TestCase):
         file.close()
 
 
-class MM(unittest.TestCase):
     def test_us31(self):
         file = open('./test_ged/user_story_31_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -50,13 +50,14 @@ class MM(unittest.TestCase):
         file.close()
 
 
-# class JT(unittest.TestCase):
+# class JT4(unittest.TestCase):
 #
-# class CE(unittest.TestCase):
+# class CS4(unittest.TestCase):
 
 
 
 
 
-if __name__ == "__main__":
-    unittest.main()
+'''if __name__ == "__main__":
+    unittest.main()'''
+

@@ -11,7 +11,7 @@ from Sprint2 import user_story_12
 import GedcomClass
 
 
-class JL(unittest.TestCase):
+class TestMethods2(unittest.TestCase):
     def test_us14(self):
         file = open('./test_ged/user_story_14_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -56,7 +56,7 @@ class JL(unittest.TestCase):
         file.close()
 
 
-class JT(unittest.TestCase):
+
     def test_us10(self):
         birthday = datetime.strptime('29 AUG 1993', '%d %b %Y')
         marriage_ok = datetime.strptime('30 OCT 2018', '%d %b %Y')
@@ -76,7 +76,6 @@ class JT(unittest.TestCase):
         file.close()
 
 
-class CS(unittest.TestCase):
     def test_us09(self):
         file = open('./test_ged/user_story_9_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
@@ -101,15 +100,4 @@ class CS(unittest.TestCase):
 '''if __name__ == "__main__":
     unittest.main()'''
 
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(JL())
-    suite.addTest(JT())
-    suite.addTest(CS())
-    return suite
 
-
-if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
-    test_suite = suite()
-    runner.run(test_suite)

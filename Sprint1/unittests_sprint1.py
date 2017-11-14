@@ -75,14 +75,3 @@ class TestMethods(unittest.TestCase):
 '''if __name__ == '__main__':
     unittest.main()'''
 
-
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(TestMethods())
-    return suite
-
-
-if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
-    test_suite = suite()
-    runner.run(test_suite)
