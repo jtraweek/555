@@ -1,11 +1,15 @@
 import unittest
 import GedcomClass
-from Sprint4 import user_story_42
-from Sprint4 import user_story_34
-from Sprint4 import US_31
-from Sprint4 import US_38
-from Sprint4 import user_story_35
-from Sprint4 import user_story_36
+import user_story_42
+#from Sprint4 
+import user_story_34
+#from Sprint4 
+import US_31
+#from Sprint4 
+import US_38
+#from Sprint4 
+import user_story_35
+import user_story_36
 
 class TestMethods4(unittest.TestCase):
     def test_us42(self):
@@ -56,12 +60,26 @@ class JT(unittest.TestCase):
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_35.recently_born(individuals)
         self.assertEqual(condition1, ['I7', 'I8'])
+        file.close()
+        
+        file = open('./test_ged/user_story_35+36_test_2.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        condition2 = user_story_35.recently_born(individuals)
+        self.assertEqual(condition2, [])
+        file.close()
         
     def test_us36(self):
         file = open('./test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_36.recently_dead(individuals)
         self.assertEqual(condition1, ['I1', 'I6'])
+        file.close()
+        
+        file = open('./test_ged/user_story_35+36_test_2.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        condition2 = user_story_35.recently_born(individuals)
+        self.assertEqual(condition2, [])
+        file.close()
 #
 # class CS4(unittest.TestCase):
 
