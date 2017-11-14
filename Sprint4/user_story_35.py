@@ -8,8 +8,7 @@ from datetime import datetime, timedelta
 def recently_born(individuals):
     recently_born = []
     for indi in individuals.values():
-        birth = indi.birt
-        time_dif = datetime.now() - birth
+        time_dif = datetime.now() - indi.birt
         if time_dif.days < 30:
             recently_born.append(indi.id)
     return recently_born
