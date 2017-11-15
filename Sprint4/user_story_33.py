@@ -1,3 +1,4 @@
+import GedcomClass
 def recentOrphans(families, individuals):
     orphans_list = []
 
@@ -8,8 +9,7 @@ def recentOrphans(families, individuals):
 
         if check_chil != []:
             for chil in check_chil:
-                orphans_list.append(chil)
-                chil_age = individuals.get(chil).age
+                chil_age = GedcomClass.get_individual(chil, individuals).age
                 if not check_dad_alive and not check_mom_alive and chil_age < 18:
                     orphans_list.append(chil)
 
