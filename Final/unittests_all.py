@@ -37,14 +37,14 @@ from Sprint4 import user_story_39
 
 class TestMethods(unittest.TestCase):
     def test_us1(self):
-        file = open('./Sprint1/test_ged/user_story_1_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_1_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         self.assertTrue(user_story_1.dates_b4_current_indi(individuals.get('I1').birt))
         self.assertFalse(user_story_1.dates_b4_current_indi(individuals.get('I3').birt))
         file.close()
 
     def test_us2(self):
-        file = open('./Sprint1/test_ged/user_story_2_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_2_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_2.bir_marriage(individuals.get('I2'), families.get('F1')))
@@ -52,21 +52,21 @@ class TestMethods(unittest.TestCase):
         file.close()
 
     def test_us3(self):
-        file = open('./Sprint1/test_ged/user_story_3_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_3_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         self.assertTrue(user_story_3.bir_deth(individuals.get('I2')))
         self.assertFalse(user_story_3.bir_deth(individuals.get('I1')))
         file.close()
 
     def test_us4(self):
-        file = open('./Sprint1/test_ged/user_story_4_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_4_test.ged', 'r')
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_4.is_marriage_before_divorce(families.get('F2')))
         self.assertFalse(user_story_4.is_marriage_before_divorce(families.get('F1')))
         file.close()
 
     def test_us5(self):
-        file = open('./Sprint1/test_ged/user_story_5_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_5_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_5.is_marriage_before_death(individuals.get('I2'), families.get('F1')))
@@ -74,7 +74,7 @@ class TestMethods(unittest.TestCase):
         file.close()
 
     def test_us6(self):
-        file = open('./Sprint1/test_ged/user_story_6_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_6_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_6.div_b4_death(individuals.get('I2'), families.get('F1')))
@@ -82,14 +82,14 @@ class TestMethods(unittest.TestCase):
         file.close()
 
     def test_us7(self):
-        file = open('./Sprint1/test_ged/user_story_7_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_7_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         self.assertTrue(user_story_7.age_not_too_old(individuals.get('I2')))
         self.assertFalse(user_story_7.age_not_too_old(individuals.get('I1')))
         file.close()
 
     def test_us8(self):
-        file = open('./Sprint1/test_ged/user_story_8_test.ged', 'r')
+        file = open('../Sprint1/test_ged/user_story_8_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_8.birth_before_marriage(individuals.get('I5'), families.get('F1')))
@@ -99,7 +99,7 @@ class TestMethods(unittest.TestCase):
 
 class TestMethods2(unittest.TestCase):
     def test_us14(self):
-        file = open('./Sprint2/test_ged/user_story_14_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_14_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_14.has_more_than_five_birth('F1', individuals, families)
@@ -109,7 +109,7 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
     def test_us15(self):
-        file = open('./Sprint2/test_ged/user_story_15_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_15_test.ged', 'r')
         families = GedcomClass.read_families(file)
         condition1 = user_story_15.has_more_than_fifteen_siblings('F1', families)
         self.assertEqual(condition1, True)
@@ -118,7 +118,7 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
     def test_us16(self):
-        file = open('./Sprint2/test_ged/user_story_16_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_16_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_16.same_male_last_name('F1', individuals, families)
@@ -128,7 +128,7 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
     def test_us22(self):
-        file = open('./Sprint2/test_ged/user_story_22_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_22_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_22.is_id_unique('I1', individuals)
@@ -150,7 +150,7 @@ class TestMethods2(unittest.TestCase):
         self.assertEqual(user_story_10.marriage_after_14(birthday.date(), 'NA'), 'Not married')
 
     def test_us11(self):
-        file = open('./Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
+        file = open('../Test GEDCOM Files/JULIE GEDCOM.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_11.no_bigamy('I1', individuals, families))
@@ -160,7 +160,7 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
     def test_us09(self):
-        file = open('./Sprint2/test_ged/user_story_9_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_9_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_09.birth_before_parents_death('I1', individuals, families))
@@ -170,7 +170,7 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
     def test_us12(self):
-        file = open('./Sprint2/test_ged/user_story_12_test.ged', 'r')
+        file = open('../Sprint2/test_ged/user_story_12_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         self.assertTrue(user_story_12.parents_not_too_old('I1', individuals, families))
@@ -182,7 +182,7 @@ class TestMethods2(unittest.TestCase):
 
 class TestMethods3(unittest.TestCase):
     def test_us13(self):
-        file = open('./Sprint3/test_ged/user_story_13_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_13_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_13.siblings_spacing(GedcomClass.get_individual('I4', individuals),
@@ -197,7 +197,7 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us21(self):
-        file = open('./Sprint3/test_ged/user_story_21_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_21_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_21.correct_gender(GedcomClass.get_family('F1', families), individuals)
@@ -207,7 +207,7 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us30(self):
-        file = open('./Sprint3/test_ged/user_story_30_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_30_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_30.living_married(families, individuals)
@@ -215,14 +215,14 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us29(self):
-        file = open('./Sprint3/test_ged/user_story_29_test_2.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_29_test_2.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_29.deceased_people(individuals)
         self.assertListEqual(condition1, ['I1', 'I2', 'I3', 'I4', 'I5'])
         file.close()
 
     def test_us23(self):
-        file = open('./Sprint3/test_ged/user_story_23_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_23_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
 
         condition1 = user_story_23.uniqueNameAndBirth(GedcomClass.get_individual('I1', individuals), individuals)
@@ -237,7 +237,7 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us24(self):
-        file = open('./Sprint3/test_ged/user_story_24_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_24_test.ged', 'r')
         families = GedcomClass.read_families(file)
         individuals = GedcomClass.read_individuals(file)
 
@@ -256,7 +256,7 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us28(self):
-        file = open('./Sprint3/test_ged/user_story_28_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_28_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
 
@@ -272,7 +272,7 @@ class TestMethods3(unittest.TestCase):
         file.close()
 
     def test_us18(self):
-        file = open('./Sprint3/test_ged/user_story_18_test.ged', 'r')
+        file = open('../Sprint3/test_ged/user_story_18_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
 
@@ -287,7 +287,7 @@ class TestMethods3(unittest.TestCase):
 
 class TestMethods4(unittest.TestCase):
     def test_us42(self):
-        file = open('./Sprint4/test_ged/user_story_42_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_42_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
 
@@ -303,7 +303,7 @@ class TestMethods4(unittest.TestCase):
         file.close()
 
     def test_us34(self):
-        file = open('./Sprint4/test_ged/user_story_34_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_34_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
 
@@ -313,47 +313,47 @@ class TestMethods4(unittest.TestCase):
         file.close()
 
     def test_us31(self):
-        file = open('./Sprint4/test_ged/user_story_31_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_31_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_31.living_singles(individuals)
         self.assertListEqual(condition1, ['I3', 'I4'])
         file.close()
 
     def test_us38(self):
-        file = open('./Sprint4/test_ged/user_story_38_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_38_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_38.upcoming_births(individuals)
         self.assertListEqual(condition1, ['I5'])
         file.close()
 
     def test_us35(self):
-        file = open('./Sprint4/test_ged/user_story_35+36_test_1.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_35.recently_born(individuals)
         self.assertEqual(condition1, ['I7', 'I8'])
         file.close()
 
-        file = open('./Sprint4/test_ged/user_story_35+36_test_2.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_35+36_test_2.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition2 = user_story_35.recently_born(individuals)
         self.assertEqual(condition2, [])
         file.close()
 
     def test_us36(self):
-        file = open('./Sprint4/test_ged/user_story_35+36_test_1.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_35+36_test_1.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition1 = user_story_36.recently_dead(individuals)
         self.assertEqual(condition1, ['I1', 'I6'])
         file.close()
 
-        file = open('./Sprint4/test_ged/user_story_35+36_test_2.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_35+36_test_2.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         condition2 = user_story_35.recently_born(individuals)
         self.assertEqual(condition2, [])
         file.close()
 
     def test_us33(self):
-        file = open('./Sprint4/test_ged/user_story_33_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_33_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_33.recent_orphans(families, individuals)
@@ -361,7 +361,7 @@ class TestMethods4(unittest.TestCase):
         file.close()
 
     def test_us39(self):
-        file = open('./Sprint4/test_ged/user_story_33_test.ged', 'r')
+        file = open('../Sprint4/test_ged/user_story_33_test.ged', 'r')
         families = GedcomClass.read_families(file)
         condition1 = user_story_39.upcoming_anniversaries(families)
         self.assertEqual(condition1, ['F3'])
