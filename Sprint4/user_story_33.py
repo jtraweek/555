@@ -13,8 +13,9 @@ def recentOrphans(families,individuals):
         check_mom_alive= individuals.get(check_family.wife).alive
         check_chil = check_family.chil_str
 
-        if check_chil != 'NA':
+        if check_chil != []:
             for chil in check_chil:
+                orphans_list.append(chil)
                 chil_age = individuals.get(chil).age
                 if(check_dad_alive == False and check_mom_alive == False and chil_age < 18):
                     orphans_list.append(chil)

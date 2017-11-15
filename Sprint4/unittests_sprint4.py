@@ -90,7 +90,7 @@ class TestMethods4(unittest.TestCase):
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
         condition1 = user_story_39.upcomingAnniversaries(families,individuals)
-        self.assertEquals(condition1, ["21 Nov 1973"])
+        self.assertEquals(condition1, ['( Father3 Mother3 )'])
 
 
 
