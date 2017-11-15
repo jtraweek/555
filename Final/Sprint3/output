@@ -1,0 +1,174 @@
+Test user story 13:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 02 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Oct 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I6 |  Child4 |   NA   | 03 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+----------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |    Children    |
++----+---------+----------+------------+--------------+---------+-----------+----------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5, I6 |
++----+---------+----------+------------+--------------+---------+-----------+----------------+
+Error: FAMILY: US13: F1: Birth dates of siblings are more than 2 days and less than 8 months
+
+ Test user story 18:
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  I1 | Father1 |   M    | 01 Jan 1960 |  57 |  True |   NA  |   F0  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1965 |  52 |  True |   NA  |  F12  |   F1   |
+|  I3 |  Child1 |   NA   | 01 Jan 1980 |  37 |  True |   NA  |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 01 Jan 1982 |  35 |  True |   NA  |   F1  |   NA   |
+|  I5 |  Child3 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   F1  |   NA   |
+| I10 |  Child4 |   NA   | 01 Jan 1993 |  24 |  True |   NA  |   F1  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 |    NA   |    NA    |     I4     |    Child2    |    I5   |   Child3  |     NA     |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+Error: FAMILY: US18: F2: Siblings are married.
+
+ Test user story 21:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   F    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   M    | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 |    NA   |    NA    |     I4     |    Child2    |    I5   |   Child3  |     NA     |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+Error: FAMILY: US21: F2: Husband is not male or wife is not female
+
+ Test user story 23:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Person1 |   M    | 31 Oct 1994 |  23 |  True |   NA  |   F1  |   NA   |
+| I2 | Person2 |   F    | 22 Jan 1972 |  45 |  True |   NA  |   NA  |   F1   |
+| I3 | Person3 |   M    | 08 Jun 1965 |  52 |  True |   NA  |   NA  |   F1   |
+| I4 | Person4 |   NA   | 10 Oct 1997 |  20 |  True |   NA  |   F1  |   NA   |
+| I5 | Person5 |   M    | 01 Mar 1983 |  34 |  True |   NA  |   NA  |   F2   |
+| I6 | Person6 |   F    | 03 Aug 1985 |  32 |  True |   NA  |   NA  |   F2   |
+| I7 | Person1 |   F    | 31 Oct 1994 |  23 |  True |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+----------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
++----+---------+----------+------------+--------------+---------+-----------+----------+
+| F1 |    NA   |    NA    |     I3     |   Person3    |    I2   |  Person2  |  I1, I4  |
+| F2 |    NA   |    NA    |     I5     |   Person5    |    I6   |  Person6  |    I7    |
++----+---------+----------+------------+--------------+---------+-----------+----------+
+Error: INDIVIDUAL: US23: I1: Name and Birthday are not unique for the individual
+Error: INDIVIDUAL: US23: I7: Name and Birthday are not unique for the individual
+
+ Test user story 24:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Person1 |   M    | 31 Oct 1994 |  23 |  True |   NA  |   F1  |   NA   |
+| I2 | Person2 |   F    | 22 Jan 1972 |  45 |  True |   NA  |   NA  |   F1   |
+| I3 | Person3 |   M    | 08 Jun 1965 |  52 |  True |   NA  |   NA  |   F1   |
+| I4 | Person4 |   NA   | 10 Oct 1997 |  20 |  True |   NA  |   F1  |   NA   |
+| I5 | Person5 |   M    | 01 Mar 1983 |  34 |  True |   NA  |   NA  |   F2   |
+| I6 | Person6 |   F    | 03 Aug 1985 |  32 |  True |   NA  |   NA  |   F2   |
+| I7 | Person1 |   F    | 31 Oct 1994 |  23 |  True |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| ID |   Married   | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| F1 | 28 Apr 1993 |    NA    |     I3     |   Person3    |    I2   |  Person2  |  I1, I4  |
+| F2 | 26 Sep 1990 |    NA    |     I5     |   Person5    |    I6   |  Person6  |    I7    |
+| F3 | 28 Apr 1993 |    NA    |     I3     |   Person3    |    I2   |  Person2  |  I1, I4  |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+Error: FAMILY: US24: F1: Spouse information and Marriage dates are not unique for this family
+Error: FAMILY: US24: F3: Spouse information and Marriage dates are not unique for this family
+
+ Test user story 28:
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
+|  I1 | Father1 |   M    | 01 Jan 1960 |  57 |  True |   NA  |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1965 |  52 |  True |   NA  |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 01 Jan 1980 |  37 |  True |   NA  |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 01 Jan 1982 |  35 |  True |   NA  |   F1  |   NA   |
+|  I5 |  Child3 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   NA  |   NA   |
+|  I6 | Person1 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   NA  |   NA   |
+|  I7 | Person2 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   NA  |   NA   |
+|  I8 | Person3 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   NA  |   NA   |
+|  I9 | Person4 |   NA   | 01 Jan 1978 |  39 |  True |   NA  |   NA  |   NA   |
+| I10 |  Child4 |   NA   | 01 Jan 1993 |  24 |  True |   NA  |   F1  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 |    NA   |    NA    |     I6     |   Person1    |    I7   |  Person2  |     NA     |
+| F3 |    NA   |    NA    |     I8     |   Person3    |    I9   |  Person4  |    I10     |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+FAMILY: US28: ['I5', 'I3', 'I4'] ordered oldest to youngest.
+Error: FAMILY: US28: F2: No children.
+Error: FAMILY: US28: F3: Only one child.
+
+ Test user story 29 No deceased:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1950 |  67 |  True |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1952 |  65 |  True |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1970 |  47 |  True |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1975 |  42 |  True |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1976 |  41 |  True |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+Error: US29: No deceased
+
+ Test user story 29 deceased:
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1800 | 100 | False | 01 Jan 1900 |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 | 100 | False | 01 Jan 1900 |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 1825 |  75 | False | 01 Jan 1900 |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1825 |  75 | False | 01 Jan 1900 |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1825 |  75 | False | 01 Jan 1900 |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+INDIVIDUAL: US29: ['I1', 'I2', 'I3', 'I4', 'I5']
+
+ Test user story 30:
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
+| I1 | Father1 |   M    | 01 Jan 1980 |  37 |  True |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1980 |  37 |  True |   NA  |   NA  |   F1   |
+| I3 |  Child1 |   NA   | 01 Jan 2000 |  17 |  True |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 2000 |  17 |  True |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 2000 |  17 |  True |   NA  |   F1  |   NA   |
++----+---------+--------+-------------+-----+-------+-------+-------+--------+
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+| F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
++----+---------+----------+------------+--------------+---------+-----------+------------+
+INFORMATION: FAMILY: US30: The list of living married individuals is ['I1', 'I2']
