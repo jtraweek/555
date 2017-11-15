@@ -19,16 +19,16 @@ from Sprint2 import user_story_11
 from Sprint2 import user_story_12
 from Sprint3 import user_story_13
 from Sprint3 import user_story_21
-from Sprint3 import US_30
-from Sprint3 import US_29
+from Sprint3 import user_story_30
+from Sprint3 import user_story_29
 from Sprint3 import user_story_23
 from Sprint3 import user_story_24
 from Sprint3 import user_story_18
 from Sprint3 import user_story_28
 from Sprint4 import user_story_42
 from Sprint4 import user_story_34
-from Sprint4 import US_31
-from Sprint4 import US_38
+from Sprint4 import user_story_31
+from Sprint4 import user_story_38
 
 class TestMethods(unittest.TestCase):
     def test_us1(self):
@@ -207,14 +207,14 @@ class TestMethods3(unittest.TestCase):
         file = open('./Sprint3/test_ged/user_story_30_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
         families = GedcomClass.read_families(file)
-        condition1 = US_30.living_married(families, individuals)
+        condition1 = user_story_30.living_married(families, individuals)
         self.assertListEqual(condition1, ['I1', 'I2'])
         file.close()
 
     def test_us29(self):
         file = open('./Sprint3/test_ged/user_story_29_test_2.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
-        condition1 = US_29.deceased_people(individuals)
+        condition1 = user_story_29.deceased_people(individuals)
         self.assertListEqual(condition1, ['I1', 'I2', 'I3', 'I4', 'I5'])
         file.close()
 
@@ -314,14 +314,14 @@ class TestMethods4(unittest.TestCase):
     def test_us31(self):
         file = open('./Sprint4/test_ged/user_story_31_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
-        condition1 = US_31.living_singles(individuals)
+        condition1 = user_story_31.living_singles(individuals)
         self.assertListEqual(condition1, ['I3', 'I4'])
         file.close()
 
     def test_us38(self):
         file = open('./Sprint4/test_ged/user_story_38_test.ged', 'r')
         individuals = GedcomClass.read_individuals(file)
-        condition1 = US_38.upcoming_births(individuals)
+        condition1 = user_story_38.upcoming_births(individuals)
         self.assertListEqual(condition1, ['I5'])
         file.close()
 

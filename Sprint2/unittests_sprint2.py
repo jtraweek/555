@@ -55,8 +55,6 @@ class TestMethods2(unittest.TestCase):
         self.assertEqual(condition4, False)
         file.close()
 
-
-
     def test_us10(self):
         birthday = datetime.strptime('29 AUG 1993', '%d %b %Y')
         marriage_ok = datetime.strptime('30 OCT 2018', '%d %b %Y')
@@ -74,7 +72,6 @@ class TestMethods2(unittest.TestCase):
         self.assertTrue(user_story_11.no_bigamy('I14', individuals, families))
         self.assertFalse(user_story_11.no_bigamy('I8', individuals, families))
         file.close()
-
 
     def test_us09(self):
         file = open('./test_ged/user_story_9_test.ged', 'r')
@@ -97,7 +94,5 @@ class TestMethods2(unittest.TestCase):
         file.close()
 
 
-'''if __name__ == "__main__":
-    unittest.main()'''
-
-
+if __name__ == "__main__":
+    unittest.main()

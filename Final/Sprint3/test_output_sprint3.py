@@ -8,8 +8,8 @@ from Sprint3 import user_story_21
 from Sprint3 import user_story_23
 from Sprint3 import user_story_24
 from Sprint3 import user_story_28
-from Sprint3 import US_29
-from Sprint3 import US_30
+from Sprint3 import user_story_29
+from Sprint3 import user_story_30
 
 file = open('./test_ged/user_story_13_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
@@ -81,18 +81,18 @@ file2 = open('./test_ged/user_story_29_test_2.ged', 'r')
 individuals = GedcomClass.read_individuals(file1)
 print('\n Test user story 29 No deceased:')
 GedcomClass.main(file1)
-if len(US_29.deceased_people(individuals)) == 0:
+if len(user_story_29.deceased_people(individuals)) == 0:
     print('Error: US29: No deceased')
 else:
-    print('INDIVIDUAL: US29: {}'.format(US_29.deceased_people(individuals)))
+    print('INDIVIDUAL: US29: {}'.format(user_story_29.deceased_people(individuals)))
 
 individuals = GedcomClass.read_individuals(file2)
 print('\n Test user story 29 deceased:')
 GedcomClass.main(file2)
-if len(US_29.deceased_people(individuals)) == 0:
+if len(user_story_29.deceased_people(individuals)) == 0:
     print('Error: US29: No deceased')
 else:
-    print('INDIVIDUAL: US29: {}'.format(US_29.deceased_people(individuals)))
+    print('INDIVIDUAL: US29: {}'.format(user_story_29.deceased_people(individuals)))
     
 file = open('./test_ged/user_story_30_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
@@ -100,4 +100,4 @@ families = GedcomClass.read_families(file)
 print('\n Test user story 30:')
 GedcomClass.main(file)
 print('INFORMATION: FAMILY: US30: The list of living married individuals is {}'
-      .format(US_30.living_married(families, individuals)))
+      .format(user_story_30.living_married(families, individuals)))
