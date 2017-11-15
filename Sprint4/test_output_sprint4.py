@@ -8,6 +8,8 @@ from Sprint4 import user_story_34
 from Sprint4 import user_story_42
 from Sprint4 import user_story_35
 from Sprint4 import user_story_36
+from Sprint4 import user_story_33
+from Sprint4 import user_story_39
 
 file = open('./test_ged/user_story_31_test.ged', 'r')
 individuals = GedcomClass.read_individuals(file)
@@ -73,3 +75,22 @@ for family in families.values():
     if not user_story_42.is_date_valid(family):
         print('ERROR: FAMILY: US42: Invalid dates occurs in {}'
               .format(family.id))
+
+
+
+file = open('./test_ged/user_story_39_test.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+print('\nTest user story 39: Upcoming Anniversaries of couples: ')
+GedcomClass.main(file)
+print('INFORMATION: FAMILY: US39: The list of anniversaries of couples is {}'
+      .format(user_story_39.upcomingAnniversaries(families,individuals)))
+
+
+file = open('./test_ged/user_story_33_test.ged', 'r')
+individuals = GedcomClass.read_individuals(file)
+families = GedcomClass.read_families(file)
+print('\nTest user story 33: List of orphaned Children: ')
+GedcomClass.main(file)
+print('INFORMATION: INDIDIVUAL: US33: The list of orphans is {}'
+      .format(user_story_33.recentOrphans(families,individuals)))

@@ -1,15 +1,13 @@
 import unittest
 import GedcomClass
-import user_story_42
-#from Sprint4 
-import user_story_34
-#from Sprint4 
-import US_31
-#from Sprint4 
-import US_38
-#from Sprint4 
-import user_story_35
-import user_story_36
+from Sprint4 import user_story_42
+from Sprint4 import user_story_34
+from Sprint4 import US_31
+from Sprint4 import US_38
+from Sprint4 import user_story_35
+from Sprint4 import user_story_36
+from Sprint4 import user_story_33
+from Sprint4 import user_story_39
 
 class TestMethods4(unittest.TestCase):
     def test_us42(self):
@@ -80,6 +78,19 @@ class TestMethods4(unittest.TestCase):
         self.assertEqual(condition2, [])
         file.close()
 
+    def test_us33(self):
+        file = open('./test_ged/user_story_33_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        condition1 = user_story_33.recentOrphans(families,individuals)
+        self.assertEqual(condition1, ['I3'])
+
+    def test_us39(self):
+        file = open('./test_ged/user_story_33_test.ged', 'r')
+        individuals = GedcomClass.read_individuals(file)
+        families = GedcomClass.read_families(file)
+        condition1 = user_story_39.upcomingAnniversaries(families,individuals)
+        self.assertEquals(condition1, [])
 
 
 
