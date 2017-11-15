@@ -84,6 +84,7 @@ class TestMethods4(unittest.TestCase):
         families = GedcomClass.read_families(file)
         condition1 = user_story_33.recentOrphans(families,individuals)
         self.assertEqual(condition1, ['I3'])
+        file.close()
 
     def test_us39(self):
         file = open('./test_ged/user_story_33_test.ged', 'r')
@@ -91,7 +92,7 @@ class TestMethods4(unittest.TestCase):
         families = GedcomClass.read_families(file)
         condition1 = user_story_39.upcomingAnniversaries(families,individuals)
         self.assertEqual(condition1, ['( Father3 Mother3 )'])
-
+        file.close()
 
 
 
