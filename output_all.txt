@@ -1,6 +1,3 @@
-------------------------------------------------------------------------------------------------------------------------
-                                                        SPRINT 1
-------------------------------------------------------------------------------------------------------------------------
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
@@ -20,7 +17,7 @@ Error: INDIVIDUAL: US01: I3: Birthday 2200-01-01 00:00:00 occurs in the future
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | I1 | Father1 |   M    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
-| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1795 |  NA | False |   NA  |   NA  |   F1   |
 | I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
 | I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
 | I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
@@ -31,7 +28,6 @@ Error: INDIVIDUAL: US01: I3: Birthday 2200-01-01 00:00:00 occurs in the future
 | F1 | 01 Jan 1799 |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
 +----+-------------+----------+------------+--------------+---------+-----------+------------+
 Error: FAMILY: US02: F1: Husband I1 birthday occurs after marriage
-Error: FAMILY: US02: F1: Wife I2 birthday occurs after marriage
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
@@ -53,13 +49,14 @@ Error: INDIVIDUAL: US03: I1: Birthday occurs after death
 | I1 | Father1 |   M    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
 | I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
 | I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
-| I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
-| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
+| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   F2   |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 +----+-------------+-------------+------------+--------------+---------+-----------+------------+
 | ID |   Married   |   Divorced  | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
 +----+-------------+-------------+------------+--------------+---------+-----------+------------+
 | F1 | 01 Jan 1825 | 01 Jan 1824 |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
+| F2 | 01 Jan 1824 | 01 Jan 1825 |     I4     |    Child2    |    I5   |   Child3  |     NA     |
 +----+-------------+-------------+------------+--------------+---------+-----------+------------+
 Error: FAMILY: US04: F1: Marriage occurs after divorce
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
@@ -96,7 +93,7 @@ Error: FAMILY: US06: F1: Divorce occurs after husband I1 death
 | ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
 +----+---------+--------+-------------+-----+-------+-------------+-------+--------+
 | I1 | Father1 |   M    | 01 Jan 1800 |  NA | False | 01 Jan 2000 |   NA  |   F1   |
-| I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |      NA     |   NA  |   F1   |
+| I2 | Mother1 |   F    | 01 Jan 1800 | 100 | False | 01 Jan 1900 |   NA  |   F1   |
 | I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |      NA     |   F1  |   NA   |
 | I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |      NA     |   F1  |   NA   |
 | I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |      NA     |   F1  |   NA   |
@@ -107,7 +104,6 @@ Error: FAMILY: US06: F1: Divorce occurs after husband I1 death
 | F1 |    NA   |    NA    |     I1     |   Father1    |    I2   |  Mother1  | I3, I4, I5 |
 +----+---------+----------+------------+--------------+---------+-----------+------------+
 Error: INDIVIDUAL: US07: I1 age is larger than 150
-Error: INDIVIDUAL: US07: I2 age is larger than 150
 Error: INDIVIDUAL: US07: I3 age is larger than 150
 Error: INDIVIDUAL: US07: I4 age is larger than 150
 Error: INDIVIDUAL: US07: I5 age is larger than 150
@@ -118,7 +114,7 @@ Error: INDIVIDUAL: US07: I5 age is larger than 150
 | I2 | Mother1 |   F    | 01 Jan 1800 |  NA | False |   NA  |   NA  |   F1   |
 | I3 |  Child1 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
 | I4 |  Child2 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
-| I5 |  Child3 |   NA   | 01 Jan 1825 |  NA | False |   NA  |   F1  |   NA   |
+| I5 |  Child3 |   NA   | 01 Jan 1828 |  NA | False |   NA  |   F1  |   NA   |
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 +----+-------------+----------+------------+--------------+---------+-----------+------------+
 | ID |   Married   | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |  Children  |
@@ -127,13 +123,6 @@ Error: INDIVIDUAL: US07: I5 age is larger than 150
 +----+-------------+----------+------------+--------------+---------+-----------+------------+
 Error: FAMILY: US08: F1: Child I3 birthday occurs before marriage or after divorce
 Error: FAMILY: US08: F1: Child I4 birthday occurs before marriage or after divorce
-Error: FAMILY: US08: F1: Child I5 birthday occurs before marriage or after divorce
-
-
-------------------------------------------------------------------------------------------------------------------------
-                                                      SPRINT 2
-------------------------------------------------------------------------------------------------------------------------
-
 +-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------+
 |  ID |         Name         | Gender |   Birthday  | Age | Alive |    Death    | Child |   Spouse   |
 +-----+----------------------+--------+-------------+-----+-------+-------------+-------+------------+
@@ -288,11 +277,6 @@ Error: INDIVIDUAL: US09: I3: Child birth after parents death
 +----+---------+----------+------------+--------------+---------+-----------+------------+
 Error: INDIVIDUAL: US12: I3: Parents are too old when child birth
 Error: INDIVIDUAL: US12: I4: Parents are too old when child birth
-
-------------------------------------------------------------------------------------------------------------------------
-                                                     SPRINT 3
-------------------------------------------------------------------------------------------------------------------------
-
 Test user story 13:
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
@@ -468,11 +452,6 @@ INDIVIDUAL: US29: ['I1', 'I2', 'I3', 'I4', 'I5']
 +----+---------+----------+------------+--------------+---------+-----------+------------+
 INFORMATION: FAMILY: US30: The list of living married individuals is ['I1', 'I2']
 
-
-------------------------------------------------------------------------------------------------------------------------
-                                                      SPRINT 4
-------------------------------------------------------------------------------------------------------------------------
-
 Test user story 31: Living Singles:
 +----+---------+--------+-------------+-----+-------+-------+-------+--------+
 | ID |   Name  | Gender |   Birthday  | Age | Alive | Death | Child | Spouse |
@@ -593,3 +572,51 @@ Test user story 42: Validating Dates:
 ERROR: INDIVIDUAL: US42: Invalid dates occurs in I1
 ERROR: INDIVIDUAL: US42: Invalid dates occurs in I3
 ERROR: FAMILY: US42: Invalid dates occurs in F1
+
+Test user story 39: Upcoming Anniversaries of couples:
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  I1 | Father1 |   M    | 01 May 1970 |  46 | False | 03 Feb 2016 |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1972 |  45 | False | 08 Oct 2017 |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 19 Dec 2005 |  12 |  True |      NA     |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 08 Apr 1990 |  27 |  True |      NA     |   F1  |   NA   |
+|  I5 | Father2 |   M    | 01 Dec 1980 |  35 | False | 13 Jul 2015 |   NA  |   F2   |
+|  I6 | Mother2 |   F    | 17 Sep 1987 |  30 |  True |      NA     |   NA  |   F2   |
+|  I7 |  Child1 |   NA   | 14 Oct 2008 |  9  |  True |      NA     |   F2  |   NA   |
+|  I8 | Father3 |   M    | 05 Sep 1960 |  57 |  True |      NA     |   NA  |   F3   |
+|  I9 | Mother3 |   F    | 17 Jan 1967 |  50 |  True |      NA     |   NA  |   F3   |
+| I10 |  Child1 |   NA   | 03 May 1986 |  31 |  True |      NA     |   F3  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| ID |   Married   | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| F1 | 11 Nov 1989 |    NA    |     I1     |   Father1    |    I2   |  Mother1  |  I3, I4  |
+| F2 | 15 Dec 1994 |    NA    |     I5     |   Father2    |    I6   |  Mother2  |    I7    |
+| F3 | 21 Nov 2017 |    NA    |     I8     |   Father3    |    I9   |  Mother3  |   I10    |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+INFORMATION: FAMILY: US39: The list of anniversaries of couples is ['F2', 'F3']
+
+Test user story 33: List of orphaned Children:
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  ID |   Name  | Gender |   Birthday  | Age | Alive |    Death    | Child | Spouse |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
+|  I1 | Father1 |   M    | 01 May 1970 |  46 | False | 03 Feb 2016 |   NA  |   F1   |
+|  I2 | Mother1 |   F    | 01 Jan 1972 |  45 | False | 08 Oct 2017 |   NA  |   F1   |
+|  I3 |  Child1 |   NA   | 19 Dec 2005 |  12 |  True |      NA     |   F1  |   NA   |
+|  I4 |  Child2 |   NA   | 08 Apr 1990 |  27 |  True |      NA     |   F1  |   NA   |
+|  I5 | Father2 |   M    | 01 Dec 1980 |  35 | False | 13 Jul 2015 |   NA  |   F2   |
+|  I6 | Mother2 |   F    | 17 Sep 1987 |  30 |  True |      NA     |   NA  |   F2   |
+|  I7 |  Child1 |   NA   | 14 Oct 2008 |  9  |  True |      NA     |   F2  |   NA   |
+|  I8 | Father3 |   M    | 05 Sep 1960 |  57 |  True |      NA     |   NA  |   F3   |
+|  I9 | Mother3 |   F    | 17 Jan 1967 |  50 |  True |      NA     |   NA  |   F3   |
+| I10 |  Child1 |   NA   | 03 May 1986 |  31 |  True |      NA     |   F3  |   NA   |
++-----+---------+--------+-------------+-----+-------+-------------+-------+--------+
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| ID |   Married   | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+| F1 | 01 Jan 1989 |    NA    |     I1     |   Father1    |    I2   |  Mother1  |  I3, I4  |
+| F2 | 21 Apr 1994 |    NA    |     I5     |   Father2    |    I6   |  Mother2  |    I7    |
+| F3 | 11 Dec 1973 |    NA    |     I8     |   Father3    |    I9   |  Mother3  |   I10    |
++----+-------------+----------+------------+--------------+---------+-----------+----------+
+INFORMATION: INDIDIVUAL: US33: The list of orphans is ['I3']
